@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="left|center_vertical"
-            android:text="Time left"
+            android:text="Time left: 30 sec"
             android:textSize="20sp"/>
 
         <TextView
@@ -71,8 +71,8 @@
                 android:layout_row="0"
                 android:width="150dp"
                 android:height="150dp"
-                android:tag="0"
-                />
+                android:onClick="AnswerSelected"
+                android:tag="0"/>
 
             <Button
                 android:id="@+id/button2"
@@ -82,8 +82,8 @@
                 android:layout_row="1"
                 android:width="150dp"
                 android:height="150dp"
-                android:tag="2"
-                />
+                android:onClick="AnswerSelected"
+                android:tag="2"/>
 
             <Button
                 android:id="@+id/button1"
@@ -93,8 +93,8 @@
                 android:layout_row="0"
                 android:width="150dp"
                 android:height="150dp"
-                android:tag="1"
-                />
+                android:onClick="AnswerSelected"
+                android:tag="1"/>
 
             <Button
                 android:id="@+id/button3"
@@ -104,8 +104,8 @@
                 android:layout_row="1"
                 android:width="150dp"
                 android:height="150dp"
-                android:tag="3"
-                />
+                android:onClick="AnswerSelected"
+                android:tag="3"/>
         </GridLayout>
     </LinearLayout>
 
@@ -120,6 +120,7 @@
             android:id="@+id/restartButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="Restart"
             android:text="Restart"/>
     </LinearLayout>
 
