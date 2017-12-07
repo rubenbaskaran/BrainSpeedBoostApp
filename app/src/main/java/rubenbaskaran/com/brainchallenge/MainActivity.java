@@ -1,8 +1,9 @@
 package rubenbaskaran.com.brainchallenge;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -21,8 +22,10 @@ public class MainActivity extends AppCompatActivity
     int correctAnswer;
     int correctAnswerIndexValue;
     int answeredCorrectly = 0;
-    int questionsAsked = 0;
-    int counter;
+    int questionsAnswered = 0;
+    int counter = 31;
+    GridLayout gridLayout;
+    Timer timer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,16 +36,32 @@ public class MainActivity extends AppCompatActivity
         scoreTextView = (TextView) findViewById(R.id.scoreTextView);
         equationTextView = (TextView) findViewById(R.id.equationTextView);
         counterTextView = (TextView) findViewById(R.id.counterTextView);
+        gridLayout = findViewById(R.id.gridLayout);
 
         GenerateEquation();
         UpdateScore();
         StartTimer();
     }
 
+    public void GridlayoutSetEnabled(boolean bool)
+    {
+        final boolean input = bool;
+        runOnUiThread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                for (int i = 0; i < gridLayout.getChildCount(); i++)
+                {
+                    gridLayout.getChildAt(i).setEnabled(input);
+                }
+            }
+        });
+    }
+
     public void StartTimer()
     {
-        counter = 31;
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask()
         {
             @Override
@@ -60,17 +79,45 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-                if (counter == 0)
+                if (counter == 0 || counter < 0)
                 {
-                    this.cancel();
+                    GridlayoutSetEnabled(false);
+                    timer.cancel();
+
+                    runOnUiThread(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            OpenDialog();
+                        }
+                    });
                 }
             }
         }, 0, 1000);
     }
 
+    public void OpenDialog()
+    {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.btn_star)
+                .setTitle("Congratulations!")
+                .setMessage("You scored " + answeredCorrectly + " out of " + questionsAnswered + ". Restart game?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    {
+                        Restart(null);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .setCancelable(false)
+                .show();
+    }
+
     public void GenerateEquation()
     {
-        questionsAsked++;
         Random random = new Random();
         int number1 = random.nextInt(20);
         int number2 = random.nextInt(20);
@@ -82,10 +129,9 @@ public class MainActivity extends AppCompatActivity
         GenerateAnswers();
     }
 
-    private String[] GenerateAnswers()
+    private void GenerateAnswers()
     {
         Random random = new Random();
-        GridLayout gridLayout = findViewById(R.id.gridLayout);
         String[] answers = new String[4];
 
         correctAnswerIndexValue = random.nextInt(3);
@@ -110,16 +156,23 @@ public class MainActivity extends AppCompatActivity
                 button.setText(String.valueOf(answers[correctAnswerIndexValue]));
             }
         }
-
-        return answers;
     }
 
     public void Restart(View view)
     {
         answeredCorrectly = 0;
-        questionsAsked = 0;
-        UpdateScore();
+        questionsAnswered = 0;
+        counter = 31;
         GenerateEquation();
+        UpdateScore();
+        GridlayoutSetEnabled(true);
+
+        if (timer != null)
+        {
+            timer.cancel();
+        }
+
+        StartTimer();
     }
 
     public void AnswerSelected(View view)
@@ -130,13 +183,14 @@ public class MainActivity extends AppCompatActivity
             answeredCorrectly++;
         }
 
+        questionsAnswered++;
         UpdateScore();
         GenerateEquation();
     }
 
     public void UpdateScore()
     {
-        String score = answeredCorrectly + "/" + questionsAsked;
+        String score = answeredCorrectly + "/" + questionsAnswered;
         scoreTextView.setText(score);
     }
 }

@@ -18,19 +18,21 @@
 
         <TextView
             android:id="@+id/counterTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
             android:text="Time left: 30 sec"
             android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/scoreTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="right|center_vertical"
+            android:paddingRight="20dp"
             android:text="Your score"
             android:textSize="20sp"/>
     </LinearLayout>
@@ -38,7 +40,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.15"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -49,13 +51,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Math equation"
-            android:textSize="30sp"/>
+            android:textSize="50sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.65"
+        android:layout_weight="0.6"
         android:gravity="center">
 
         <GridLayout
@@ -72,7 +75,8 @@
                 android:width="150dp"
                 android:height="150dp"
                 android:onClick="AnswerSelected"
-                android:tag="0"/>
+                android:tag="0"
+                android:textSize="30sp"/>
 
             <Button
                 android:id="@+id/button2"
@@ -83,7 +87,8 @@
                 android:width="150dp"
                 android:height="150dp"
                 android:onClick="AnswerSelected"
-                android:tag="2"/>
+                android:tag="2"
+                android:textSize="30sp"/>
 
             <Button
                 android:id="@+id/button1"
@@ -94,7 +99,8 @@
                 android:width="150dp"
                 android:height="150dp"
                 android:onClick="AnswerSelected"
-                android:tag="1"/>
+                android:tag="1"
+                android:textSize="30sp"/>
 
             <Button
                 android:id="@+id/button3"
@@ -105,7 +111,8 @@
                 android:width="150dp"
                 android:height="150dp"
                 android:onClick="AnswerSelected"
-                android:tag="3"/>
+                android:tag="3"
+                android:textSize="30sp"/>
         </GridLayout>
     </LinearLayout>
 
