@@ -24,7 +24,10 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         setContentView(R.layout.activity_highscore);
 
         Bundle bundle = getIntent().getExtras();
-        Scores score = (Scores)bundle.get("Scores");
+        if(bundle != null)
+        {
+            Scores score = (Scores) bundle.get("Scores");
+        }
 
         // TODO: Save score in SQLite database if less than 3 registrered scores in database
         // or if higher percentage than existing scores or if more correctly answered questions with 100% than existing ones
