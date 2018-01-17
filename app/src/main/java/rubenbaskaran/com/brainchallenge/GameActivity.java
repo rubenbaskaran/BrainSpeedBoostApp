@@ -14,6 +14,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
+
 public class GameActivity extends AppCompatActivity
 {
     TextView equationTextView;
@@ -128,7 +130,7 @@ public class GameActivity extends AppCompatActivity
 
     public void OpenDialog()
     {
-        String buttonText = currentLevel == Levels.LevelThree ? "Go to main menu" : "Next level";
+        String buttonText = currentLevel == Levels.LevelThree ? "Check score" : "Next level";
 
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.btn_star)
@@ -141,7 +143,7 @@ public class GameActivity extends AppCompatActivity
                     {
                         if (currentLevel == Levels.LevelThree)
                         {
-                            Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                            Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
                             startActivity(i);
                             return;
                         }
