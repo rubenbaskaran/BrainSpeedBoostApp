@@ -31,7 +31,7 @@ public class MainMenuActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainmenu_activity);
+        setContentView(R.layout.activity_mainmenu);
 
         scoreTextView = (TextView) findViewById(R.id.scoreTextView);
         equationTextView = (TextView) findViewById(R.id.equationTextView);
