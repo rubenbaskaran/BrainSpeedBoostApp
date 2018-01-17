@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity
+public class MainMenuActivity extends AppCompatActivity
 {
 
     TextView equationTextView;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.mainmenu_activity);
 
         scoreTextView = (TextView) findViewById(R.id.scoreTextView);
         equationTextView = (TextView) findViewById(R.id.equationTextView);
