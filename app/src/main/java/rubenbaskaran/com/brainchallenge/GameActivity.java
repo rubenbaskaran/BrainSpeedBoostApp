@@ -10,11 +10,13 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
+import rubenbaskaran.com.brainchallenge.Highscore.Scores;
 
 public class GameActivity extends AppCompatActivity
 {
@@ -25,16 +27,19 @@ public class GameActivity extends AppCompatActivity
     int correctAnswerIndexValue;
     int answeredCorrectly = 0;
     int questionsAnswered = 0;
-    int counter = 10;
+    int counter = 5;
     GridLayout gridLayout;
     Timer timer = null;
     Levels currentLevel;
+    Scores scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        scores = new Scores();
 
         scoreTextView = findViewById(R.id.scoreTextView);
         equationTextView = findViewById(R.id.equationTextView);
@@ -141,9 +146,15 @@ public class GameActivity extends AppCompatActivity
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
+                        SaveScore();
+
                         if (currentLevel == Levels.LevelThree)
                         {
+                            finish();
                             Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("Scores", scores);
+                            i.putExtras(bundle);
                             startActivity(i);
                             return;
                         }
@@ -161,6 +172,29 @@ public class GameActivity extends AppCompatActivity
                 })
                 .setCancelable(false)
                 .show();
+    }
+
+    private void SaveScore()
+    {
+        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+        switch (currentLevel)
+        {
+            case LevelOne:
+                scores.LevelOneQuestionsAnswered = questionsAnswered;
+                scores.LevelOneQuestionsAnsweredCorrectly = answeredCorrectly;
+                scores.LevelOnePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+                break;
+            case LevelTwo:
+                scores.LevelTwoQuestionsAnswered = questionsAnswered;
+                scores.LevelTwoQuestionsAnsweredCorrectly = answeredCorrectly;
+                scores.LevelTwoPercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+                break;
+            case LevelThree:
+                scores.LevelThreeQuestionsAnswered = questionsAnswered;
+                scores.LevelThreeQuestionsAnsweredCorrectly = answeredCorrectly;
+                scores.LevelThreePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+                break;
+        }
     }
 
     public String SetResultComment()
@@ -256,7 +290,7 @@ public class GameActivity extends AppCompatActivity
     {
         answeredCorrectly = 0;
         questionsAnswered = 0;
-        counter = 10;
+        counter = 5;
         GenerateEquation();
         UpdateScore();
         GridlayoutSetEnabled(true);

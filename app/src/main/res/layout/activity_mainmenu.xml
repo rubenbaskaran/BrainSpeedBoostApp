@@ -11,7 +11,7 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.4"/>
+        android:layout_weight="0.2"/>
 
    <Button
        android:layout_width="match_parent"
@@ -19,6 +19,13 @@
        android:layout_weight="0.2"
        android:text="Start game!"
        android:onClick="StartGame"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:text="Highscores"
+        android:onClick="ShowHighscores"/>
 
     <Space
         android:layout_width="match_parent"

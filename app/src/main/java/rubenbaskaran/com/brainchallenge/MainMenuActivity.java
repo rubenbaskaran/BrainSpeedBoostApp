@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
+
 public class MainMenuActivity extends AppCompatActivity
 {
     @Override
@@ -18,6 +20,12 @@ public class MainMenuActivity extends AppCompatActivity
     public void StartGame(View view)
     {
         Intent i = new Intent(getApplicationContext(), GameActivity.class);
+        startActivity(i);
+    }
+
+    public void ShowHighscores(View view)
+    {
+        Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
         startActivity(i);
     }
 }
