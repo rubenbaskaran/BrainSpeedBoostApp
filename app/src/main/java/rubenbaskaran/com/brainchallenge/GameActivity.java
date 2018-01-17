@@ -1,6 +1,7 @@
 package rubenbaskaran.com.brainchallenge;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,9 +23,10 @@ public class GameActivity extends AppCompatActivity
     int correctAnswerIndexValue;
     int answeredCorrectly = 0;
     int questionsAnswered = 0;
-    int counter = 31;
+    int counter = 10;
     GridLayout gridLayout;
     Timer timer = null;
+    Levels currentLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +38,8 @@ public class GameActivity extends AppCompatActivity
         equationTextView = findViewById(R.id.equationTextView);
         counterTextView = findViewById(R.id.counterTextView);
         gridLayout = findViewById(R.id.gridLayout);
+
+        currentLevel = Levels.LevelOne;
 
         new AlertDialog.Builder(this)
                 .setTitle("Welcome!")
@@ -124,11 +128,28 @@ public class GameActivity extends AppCompatActivity
 
     public void OpenDialog()
     {
+        String buttonText = currentLevel == Levels.LevelThree ? "Go to main menu" : "Next level";
+
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.btn_star)
                 .setTitle(SetResultComment())
-                .setMessage("You scored " + answeredCorrectly + " out of " + questionsAnswered + ". Restart game?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                .setMessage("You scored " + answeredCorrectly + " out of " + questionsAnswered)
+                .setPositiveButton(buttonText, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (currentLevel == Levels.LevelThree)
+                        {
+                            Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                            startActivity(i);
+                            return;
+                        }
+                        currentLevel = currentLevel == Levels.LevelOne ? Levels.LevelTwo : Levels.LevelThree;
+                        Restart(null);
+                    }
+                })
+                .setNegativeButton("Restart level", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i)
@@ -136,7 +157,6 @@ public class GameActivity extends AppCompatActivity
                         Restart(null);
                     }
                 })
-                .setNegativeButton("No", null)
                 .setCancelable(false)
                 .show();
     }
@@ -166,12 +186,37 @@ public class GameActivity extends AppCompatActivity
     public void GenerateEquation()
     {
         Random random = new Random();
-        int number1 = random.nextInt(20);
-        int number2 = random.nextInt(20);
+        int number1;
+        int number2;
+        String equation = "Equation is missing";
 
-        String equation = String.format(String.valueOf(number1) + " + " + String.valueOf(number2));
+        switch (currentLevel)
+        {
+            case LevelOne:
+                number1 = random.nextInt(50);
+                number2 = random.nextInt(50);
+                equation = String.format(String.valueOf(number1) + " + " + String.valueOf(number2));
+                correctAnswer = number1 + number2;
+                break;
+            case LevelTwo:
+                number1 = random.nextInt(100);
+                number2 = random.nextInt(100);
+                while (number2 > number1)
+                {
+                    number2 = random.nextInt(100);
+                }
+                equation = String.format(String.valueOf(number1) + " - " + String.valueOf(number2));
+                correctAnswer = number1 - number2;
+                break;
+            case LevelThree:
+                number1 = random.nextInt(10);
+                number2 = random.nextInt(10);
+                equation = String.format(String.valueOf(number1) + " X " + String.valueOf(number2));
+                correctAnswer = number1 * number2;
+                break;
+        }
+
         equationTextView.setText(equation);
-        correctAnswer = number1 + number2;
 
         GenerateAnswers();
     }
@@ -188,10 +233,10 @@ public class GameActivity extends AppCompatActivity
         {
             if (answers[i] == null)
             {
-                String randomNumber = String.valueOf(random.nextInt(20));
+                String randomNumber = String.valueOf(random.nextInt(100));
                 while (randomNumber.equals(answers[0]) || randomNumber.equals(answers[1]) || randomNumber.equals(answers[2]) || randomNumber.equals(answers[3]))
                 {
-                    randomNumber = String.valueOf(random.nextInt(20));
+                    randomNumber = String.valueOf(random.nextInt(100));
                 }
                 answers[i] = randomNumber;
                 Button button = gridLayout.findViewWithTag(String.valueOf(i));
@@ -209,7 +254,7 @@ public class GameActivity extends AppCompatActivity
     {
         answeredCorrectly = 0;
         questionsAnswered = 0;
-        counter = 31;
+        counter = 10;
         GenerateEquation();
         UpdateScore();
         GridlayoutSetEnabled(true);
@@ -232,7 +277,10 @@ public class GameActivity extends AppCompatActivity
 
         questionsAnswered++;
         UpdateScore();
-        GenerateEquation();
+        if (counter != 0 && !(counter < 0))
+        {
+            GenerateEquation();
+        }
     }
 
     public void UpdateScore()
@@ -246,5 +294,10 @@ public class GameActivity extends AppCompatActivity
     {
         super.onDestroy();
         timer.cancel();
+    }
+
+    public enum Levels
+    {
+        LevelOne, LevelTwo, LevelThree;
     }
 }
