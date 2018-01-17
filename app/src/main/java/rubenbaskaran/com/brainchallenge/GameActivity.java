@@ -32,9 +32,9 @@ public class GameActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        scoreTextView = (TextView) findViewById(R.id.scoreTextView);
-        equationTextView = (TextView) findViewById(R.id.equationTextView);
-        counterTextView = (TextView) findViewById(R.id.counterTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
+        equationTextView = findViewById(R.id.equationTextView);
+        counterTextView = findViewById(R.id.counterTextView);
         gridLayout = findViewById(R.id.gridLayout);
 
         new AlertDialog.Builder(this)
