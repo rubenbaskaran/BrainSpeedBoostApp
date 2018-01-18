@@ -15,7 +15,6 @@ public class GlobalHighscoreFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        //TODO: Initialize content
         return inflater.inflate(R.layout.fragment_global_highscore, container, false);
     }
 }
