@@ -19,11 +19,13 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + LocalDatabaseContract.ScoresTable.TABLE_NAME + " (" +
                     LocalDatabaseContract.ScoresTable._ID + " INTEGER PRIMARY KEY," +
-                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE + " INTEGER," +
-                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE + " INTEGER," +
-                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE + " INTEGER)";
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_CORRECTLY_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_CORRECTLY_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_CORRECTLY_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED + " INTEGER)";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + LocalDatabaseContract.ScoresTable.TABLE_NAME;
-
 
     public LocalDatabaseManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
     {
