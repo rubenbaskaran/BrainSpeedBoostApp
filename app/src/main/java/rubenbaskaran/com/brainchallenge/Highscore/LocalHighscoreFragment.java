@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Data.LocalDatabase;
+import rubenbaskaran.com.brainchallenge.Data.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class LocalHighscoreFragment extends Fragment
@@ -31,8 +31,8 @@ public class LocalHighscoreFragment extends Fragment
         LevelTwoFirstScore = view.findViewById(R.id.LevelTwoFirstScore);
         LevelThreeFirstScore = view.findViewById(R.id.LevelThreeFirstScore);
 
-        LocalDatabase localDatabase = new LocalDatabase();
-        ShowScore(localDatabase.GetLocalHighscores());
+        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager();
+        ShowScore(localDatabaseManager.GetLocalHighscores());
 
         return view;
     }

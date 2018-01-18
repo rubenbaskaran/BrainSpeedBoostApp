@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import java.io.Serializable;
 
-import rubenbaskaran.com.brainchallenge.Data.LocalDatabase;
+import rubenbaskaran.com.brainchallenge.Data.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class HighscoreActivity extends AppCompatActivity implements Serializable
@@ -31,8 +31,8 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
             score = (Scores) bundle.get("Scores");
         }
 
-        LocalDatabase localDatabase = new LocalDatabase();
-        localDatabase.SaveNewScore(score);
+        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager();
+        localDatabaseManager.SaveNewScore(score);
 
         ShowLocalHighscoreButton = findViewById(R.id.ShowLocalHighscoreButton);
         ShowGlobalHighscoreButton = findViewById(R.id.ShowGlobalHighscoreButton);
