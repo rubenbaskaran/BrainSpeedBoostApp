@@ -19,29 +19,29 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text=""/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text="Level 1"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text="Level 2"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text="Level 3"/>
         </TableRow>
 
@@ -54,33 +54,33 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text="1st"/>
 
             <TextView
                 android:id="@+id/LevelOneFirstScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="5 out of 5"/>
+                android:gravity="center"
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/LevelTwoFirstScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="7 out of 7"/>
+                android:gravity="center"
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/LevelThreeFirstScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="9 out of 11"/>
+                android:gravity="center"
+                android:text="-"/>
         </TableRow>
 
         <TableRow
@@ -92,33 +92,33 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text="2nd"/>
 
             <TextView
                 android:id="@+id/LevelOneSecondScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="10 out of 10"/>
+                android:gravity="center"
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/LevelTwoSecondScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="15 out of 15"/>
+                android:gravity="center"
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/LevelThreeSecondScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="2 out of 9"/>
+                android:gravity="center"
+                android:text="-"/>
         </TableRow>
 
         <TableRow
@@ -130,33 +130,33 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
+                android:gravity="center"
                 android:text="3rd"/>
 
             <TextView
                 android:id="@+id/LevelOneThirdScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="20 out of 21"/>
+                android:gravity="center"
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/LevelTwoThirdScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="6 out of 7"/>
+                android:gravity="center"
+                android:text="-"/>
 
             <TextView
                 android:id="@+id/LevelThreeThirdScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="@drawable/table_cell_border"
-                android:text="9 out of 9/"/>
+                android:gravity="center"
+                android:text="-"/>
         </TableRow>
     </TableLayout>
 </FrameLayout>

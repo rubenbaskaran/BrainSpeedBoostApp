@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.Serializable;
 
@@ -22,11 +23,12 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
+        Scores score = null;
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null)
+        if (bundle != null)
         {
-            Scores score = (Scores) bundle.get("Scores");
+            score = (Scores) bundle.get("Scores");
         }
 
         // TODO: Show received score data in local highscore grid
@@ -39,11 +41,14 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         ShowLocalHighscoreButton.setEnabled(false);
 
         LocalHighscoreFragment localHighscoreFragment = new LocalHighscoreFragment();
+        localHighscoreFragment.setScore(score);
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, localHighscoreFragment, null);
         fragmentTransaction.commit();
     }
+
+
 
     public void ShowLocalHighscore(View view)
     {
