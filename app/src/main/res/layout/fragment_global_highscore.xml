@@ -59,6 +59,7 @@
                 android:text="1st"/>
 
             <TextView
+                android:id="@+id/LevelOneFirstScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -66,6 +67,7 @@
                 android:text="5 out of 5"/>
 
             <TextView
+                android:id="@+id/LevelTwoFirstScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -73,6 +75,7 @@
                 android:text="7 out of 7"/>
 
             <TextView
+                android:id="@+id/LevelThreeFirstScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -94,6 +97,7 @@
                 android:text="2nd"/>
 
             <TextView
+                android:id="@+id/LevelOneSecondScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -101,6 +105,7 @@
                 android:text="10 out of 10"/>
 
             <TextView
+                android:id="@+id/LevelTwoSecondScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -108,6 +113,7 @@
                 android:text="15 out of 15"/>
 
             <TextView
+                android:id="@+id/LevelThreeSecondScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -129,6 +135,7 @@
                 android:text="3rd"/>
 
             <TextView
+                android:id="@+id/LevelOneThirdScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -136,6 +143,7 @@
                 android:text="20 out of 21"/>
 
             <TextView
+                android:id="@+id/LevelTwoThirdScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -143,6 +151,7 @@
                 android:text="6 out of 7"/>
 
             <TextView
+                android:id="@+id/LevelThreeThirdScoreGlobal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"

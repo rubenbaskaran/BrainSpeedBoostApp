@@ -29,8 +29,8 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
             Scores score = (Scores) bundle.get("Scores");
         }
 
-        // TODO: Save score in SQLite database if less than 3 registrered scores in database
-        // or if higher percentage than existing scores or if more correctly answered questions with 100% than existing ones
+        // TODO: Show received score data in local highscore grid
+        // TODO: Save received score data in SQLite database
 
         ShowLocalHighscoreButton = findViewById(R.id.ShowLocalHighscoreButton);
         ShowGlobalHighscoreButton = findViewById(R.id.ShowGlobalHighscoreButton);
