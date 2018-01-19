@@ -31,15 +31,15 @@ public class LocalHighscoreFragment extends Fragment
         LevelTwoFirstScore = view.findViewById(R.id.LevelTwoFirstScore);
         LevelThreeFirstScore = view.findViewById(R.id.LevelThreeFirstScore);
 
-        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager();
+        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(HighscoreActivity.context, "",null,0);
         ShowScore(localDatabaseManager.GetLocalHighscores());
 
         return view;
     }
 
-    public void ShowScore(ArrayList<Scores> highscores)
+    public void ShowScore(ArrayList<Score> highscores)
     {
-        Scores score = highscores.get(0);
+        Score score = highscores.get(0);
 
         String output1 = score.LevelOneQuestionsAnsweredCorrectly + " out of " + score.LevelOneQuestionsAnswered;
         LevelOneFirstScore.setText(output1);

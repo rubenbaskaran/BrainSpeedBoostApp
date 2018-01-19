@@ -16,7 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
-import rubenbaskaran.com.brainchallenge.Highscore.Scores;
+import rubenbaskaran.com.brainchallenge.Highscore.Score;
 
 public class GameActivity extends AppCompatActivity
 {
@@ -31,7 +31,7 @@ public class GameActivity extends AppCompatActivity
     GridLayout gridLayout;
     Timer timer = null;
     Levels currentLevel;
-    Scores scores;
+    Score score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,7 +39,7 @@ public class GameActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        scores = new Scores();
+        score = new Score();
 
         scoreTextView = findViewById(R.id.scoreTextView);
         equationTextView = findViewById(R.id.equationTextView);
@@ -153,7 +153,7 @@ public class GameActivity extends AppCompatActivity
                             finish();
                             Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("Scores", scores);
+                            bundle.putSerializable("Score", score);
                             i.putExtras(bundle);
                             startActivity(i);
                             return;
@@ -180,19 +180,19 @@ public class GameActivity extends AppCompatActivity
         switch (currentLevel)
         {
             case LevelOne:
-                scores.LevelOneQuestionsAnswered = questionsAnswered;
-                scores.LevelOneQuestionsAnsweredCorrectly = answeredCorrectly;
-                scores.LevelOnePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+                score.LevelOneQuestionsAnswered = questionsAnswered;
+                score.LevelOneQuestionsAnsweredCorrectly = answeredCorrectly;
+                score.LevelOnePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
                 break;
             case LevelTwo:
-                scores.LevelTwoQuestionsAnswered = questionsAnswered;
-                scores.LevelTwoQuestionsAnsweredCorrectly = answeredCorrectly;
-                scores.LevelTwoPercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+                score.LevelTwoQuestionsAnswered = questionsAnswered;
+                score.LevelTwoQuestionsAnsweredCorrectly = answeredCorrectly;
+                score.LevelTwoPercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
                 break;
             case LevelThree:
-                scores.LevelThreeQuestionsAnswered = questionsAnswered;
-                scores.LevelThreeQuestionsAnsweredCorrectly = answeredCorrectly;
-                scores.LevelThreePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+                score.LevelThreeQuestionsAnswered = questionsAnswered;
+                score.LevelThreeQuestionsAnsweredCorrectly = answeredCorrectly;
+                score.LevelThreePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
                 break;
         }
     }

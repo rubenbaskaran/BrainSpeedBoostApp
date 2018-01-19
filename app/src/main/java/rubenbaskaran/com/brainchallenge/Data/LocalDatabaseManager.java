@@ -1,12 +1,15 @@
 package rubenbaskaran.com.brainchallenge.Data;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Highscore.Scores;
+import rubenbaskaran.com.brainchallenge.Highscore.Score;
 
 /**
  * Created by Ruben on 17-01-2018.
@@ -21,10 +24,13 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
                     LocalDatabaseContract.ScoresTable._ID + " INTEGER PRIMARY KEY," +
                     LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_CORRECTLY_ANSWERED + " INTEGER," +
                     LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_PERCENTAGE + " DOUBLE," +
                     LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_CORRECTLY_ANSWERED + " INTEGER," +
                     LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_PERCENTAGE + " DOUBLE," +
                     LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_CORRECTLY_ANSWERED + " INTEGER," +
-                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED + " INTEGER)";
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED + " INTEGER," +
+                    LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_PERCENTAGE + " DOUBLE)";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + LocalDatabaseContract.ScoresTable.TABLE_NAME;
 
     public LocalDatabaseManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
@@ -52,32 +58,102 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
-    public void SaveNewScore(Scores score)
+    public void SaveNewScore(Score score)
     {
-        // TODO: If less than 3 existing scores then save new score
-        // TODO: If existing 3 scores have less than 100% percentage, then compare percentage, and if new score has higher percentage then save it
-        // TODO: If existing 3 scores have 100% percentage, then compare number of correctly answered questions, and save new score if it has higher amount
+        ResetDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_CORRECTLY_ANSWERED, score.LevelOneQuestionsAnsweredCorrectly);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_ANSWERED, score.LevelOneQuestionsAnswered);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_PERCENTAGE, score.LevelOnePercentage);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_CORRECTLY_ANSWERED, score.LevelTwoQuestionsAnsweredCorrectly);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_ANSWERED, score.LevelTwoQuestionsAnswered);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_PERCENTAGE, score.LevelTwoPercentage);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_CORRECTLY_ANSWERED, score.LevelThreeQuestionsAnsweredCorrectly);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED, score.LevelThreeQuestionsAnswered);
+        values.put(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_PERCENTAGE, score.LevelThreePercentage);
+
+        SQLiteDatabase db = getWritableDatabase();
+        long returnValue = db.insert(LocalDatabaseContract.ScoresTable.TABLE_NAME, null, values);
+
+        if (returnValue == -1)
+        {
+            Log.e("Error", "Couldn't save record to local database");
+        }
     }
 
-    public ArrayList<Scores> GetLocalHighscores()
+    public ArrayList<Score> GetLocalHighscores()
     {
-        // TODO: Get top 3 highscores from SQLite database
+        String[] projection =
+                {
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_CORRECTLY_ANSWERED,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_ANSWERED,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_PERCENTAGE,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_CORRECTLY_ANSWERED,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_ANSWERED,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_PERCENTAGE,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_CORRECTLY_ANSWERED,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED,
+                        LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_PERCENTAGE
+                };
 
-        Scores score = new Scores();
-        score.LevelOneQuestionsAnsweredCorrectly = 10;
-        score.LevelOneQuestionsAnswered = 20;
-        score.LevelOnePercentage = 50;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(
+                LocalDatabaseContract.ScoresTable.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
 
-        score.LevelTwoQuestionsAnsweredCorrectly = 5;
-        score.LevelTwoQuestionsAnswered = 10;
-        score.LevelTwoPercentage = 50;
+        ArrayList<Score> scores = new ArrayList<>();
+        while (cursor.moveToNext())
+        {
+            int levelOneAnsweredCorrectly = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_CORRECTLY_ANSWERED));
+            int levelOneAnswered = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_ANSWERED));
+            double levelOnePercentage = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELONE_SCORE_PERCENTAGE));
+            int levelTwoAnsweredCorrectly = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_CORRECTLY_ANSWERED));
+            int levelTwoAnswered = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_ANSWERED));
+            double levelTwoPercentage = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTWO_SCORE_PERCENTAGE));
+            int levelThreeAnsweredCorrectly = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_CORRECTLY_ANSWERED));
+            int levelThreeAnswered = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED));
+            double levelThreePercentage = cursor.getInt(cursor.getColumnIndexOrThrow(LocalDatabaseContract.ScoresTable.COLUMN_NAME_LEVELTHREE_SCORE_PERCENTAGE));
 
-        score.LevelThreeQuestionsAnsweredCorrectly = 2;
-        score.LevelThreeQuestionsAnswered = 5;
-        score.LevelThreePercentage = 50;
+            scores.add(new Score
+                    (
+                            levelOneAnswered,
+                            levelOneAnsweredCorrectly,
+                            levelOnePercentage,
+                            levelTwoAnswered,
+                            levelTwoAnsweredCorrectly,
+                            levelTwoPercentage,
+                            levelThreeAnswered,
+                            levelThreeAnsweredCorrectly,
+                            levelThreePercentage
+                    ));
+        }
+        cursor.close();
 
-        ArrayList<Scores> scores = new ArrayList<Scores>();
-        scores.add(score);
+        if (scores.isEmpty())
+        {
+            Score score = new Score
+                    (
+                            10,
+                            10,
+                            100,
+                            10,
+                            10,
+                            100,
+                            10,
+                            10,
+                            100
+                    );
+
+            scores.add(score);
+        }
+
         return scores;
     }
 }

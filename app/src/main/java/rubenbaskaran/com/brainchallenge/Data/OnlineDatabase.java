@@ -8,6 +8,6 @@ public class OnlineDatabase
 {
     public OnlineDatabase()
     {
-        // TODO: Implement with Firebase
+
     }
 }

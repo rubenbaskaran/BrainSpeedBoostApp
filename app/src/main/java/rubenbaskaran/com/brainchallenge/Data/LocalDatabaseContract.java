@@ -17,9 +17,12 @@ public class LocalDatabaseContract
         public static final String TABLE_NAME = "scores";
         public static final String COLUMN_NAME_LEVELONE_SCORE_CORRECTLY_ANSWERED = "levelonescorecorrectlyanswered";
         public static final String COLUMN_NAME_LEVELONE_SCORE_ANSWERED = "levelonescoreanswered";
+        public static final String COLUMN_NAME_LEVELONE_SCORE_PERCENTAGE = "levelonescorepercentage";
         public static final String COLUMN_NAME_LEVELTWO_SCORE_CORRECTLY_ANSWERED = "leveltwoscorecorrectlyanswered";
         public static final String COLUMN_NAME_LEVELTWO_SCORE_ANSWERED = "leveltwoscoreanswered";
+        public static final String COLUMN_NAME_LEVELTWO_SCORE_PERCENTAGE = "leveltwoscorepercentage";
         public static final String COLUMN_NAME_LEVELTHREE_SCORE_CORRECTLY_ANSWERED = "levelthreescorecorrectlyanswered";
         public static final String COLUMN_NAME_LEVELTHREE_SCORE_ANSWERED = "levelthreescoreanswered";
+        public static final String COLUMN_NAME_LEVELTHREE_SCORE_PERCENTAGE = "levelthreescorepercentage";
     }
 }

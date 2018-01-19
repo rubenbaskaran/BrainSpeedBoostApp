@@ -2,6 +2,7 @@ package rubenbaskaran.com.brainchallenge.Highscore;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,22 +18,23 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
     Button ShowLocalHighscoreButton;
     Button ShowGlobalHighscoreButton;
     FragmentManager fragmentManager;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
-        Scores score = null;
+        context = getApplicationContext();
+        Score score = null;
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
         {
-            score = (Scores) bundle.get("Scores");
+            score = (Score) bundle.get("Score");
+            LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext(), "", null, 0);
+            localDatabaseManager.SaveNewScore(score);
         }
-
-        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager();
-        localDatabaseManager.SaveNewScore(score);
 
         ShowLocalHighscoreButton = findViewById(R.id.ShowLocalHighscoreButton);
         ShowGlobalHighscoreButton = findViewById(R.id.ShowGlobalHighscoreButton);
