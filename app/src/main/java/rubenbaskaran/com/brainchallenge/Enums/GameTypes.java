@@ -1,10 +1,10 @@
-package rubenbaskaran.com.brainchallenge.GameCategories;
+package rubenbaskaran.com.brainchallenge.Enums;
 
 /**
  * Created by Ruben on 20-01-2018.
  */
 
-public enum GameTypesEnum
+public enum GameTypes
 {
         Addition, Subtraction, Multiplication, Division, Color
 }

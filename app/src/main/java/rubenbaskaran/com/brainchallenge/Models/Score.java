@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Highscore;
+package rubenbaskaran.com.brainchallenge.Models;
 
 import java.io.Serializable;
 

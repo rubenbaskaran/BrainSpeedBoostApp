@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenuActivity">
+        <activity android:name=".Menus.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".Highscore.HighscoreActivity">
         </activity>
-        <activity android:name=".NumbersMenuActivity">
+        <activity android:name=".Menus.NumbersMenuActivity">
         </activity>
     </application>
 

@@ -10,8 +10,8 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import rubenbaskaran.com.brainchallenge.Data.Contracts.DatabaseContract;
-import rubenbaskaran.com.brainchallenge.GameCategories.GameTypesEnum;
-import rubenbaskaran.com.brainchallenge.Highscore.Score;
+import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainchallenge.Models.Score;
 
 /**
  * Created by Ruben on 17-01-2018.
@@ -60,12 +60,13 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     private static final String SQL_DELETE_ADDITION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.AdditionHighscore.TABLE_NAME;
     private static final String SQL_DELETE_SUBTRACTION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.SubtractionHighscore.TABLE_NAME;
     private static final String SQL_DELETE_MULTIPLICATION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.MultiplicationHighscore.TABLE_NAME;
-    private static final String SQL_DELETE_DIVISION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.MultiplicationHighscore.TABLE_NAME;
+    private static final String SQL_DELETE_DIVISION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.DivisionHighscore.TABLE_NAME;
     private static final String SQL_DELETE_COLOR_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.ColorHighscore.TABLE_NAME;
 
-    public LocalDatabaseManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+    public LocalDatabaseManager(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        ResetDatabase();
     }
 
     @Override
@@ -81,11 +82,11 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        DeleteDatabase(db);
+        DeleteTables(db);
         onCreate(db);
     }
 
-    public void DeleteDatabase(SQLiteDatabase db)
+    public void DeleteTables(SQLiteDatabase db)
     {
         db.execSQL(SQL_DELETE_ADDITION_TABLE);
         db.execSQL(SQL_DELETE_SUBTRACTION_TABLE);
@@ -97,7 +98,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     public void ResetDatabase()
     {
         SQLiteDatabase db = getWritableDatabase();
-        DeleteDatabase(db);
+        DeleteTables(db);
         onCreate(db);
     }
 
@@ -145,14 +146,14 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         }
     }
 
-    public ArrayList<Score> GetLocalHighscores(GameTypesEnum gameTypesEnum)
+    public ArrayList<Score> GetLocalHighscores(GameTypes gameTypes)
     {
         String tableName = null;
         String AnsweredCorrectlyColumn = null;
         String AnsweredColumn = null;
         String PercentageColumn = null;
 
-        switch (gameTypesEnum)
+        switch (gameTypes)
         {
             case Addition:
                 tableName = DatabaseContract.AdditionHighscore.TABLE_NAME;

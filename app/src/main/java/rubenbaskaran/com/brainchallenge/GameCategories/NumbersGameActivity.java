@@ -16,8 +16,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import rubenbaskaran.com.brainchallenge.Data.Contracts.DatabaseContract;
+import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
-import rubenbaskaran.com.brainchallenge.Highscore.Score;
+import rubenbaskaran.com.brainchallenge.Models.Score;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class NumbersGameActivity extends AppCompatActivity
@@ -33,16 +34,16 @@ public class NumbersGameActivity extends AppCompatActivity
     GridLayout gridLayout;
     Timer timer = null;
     Score score;
-    GameTypesEnum gameType;
+    GameTypes gameType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_numbers_game);
 
         score = new Score();
-        gameType = GameTypesEnum.Addition;
+        gameType = GameTypes.Addition;
 
         scoreTextView = findViewById(R.id.scoreTextView);
         equationTextView = findViewById(R.id.equationTextView);

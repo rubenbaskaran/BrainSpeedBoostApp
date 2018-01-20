@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge;
+package rubenbaskaran.com.brainchallenge.Menus;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.GameCategories.NumbersGameActivity;
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
+import rubenbaskaran.com.brainchallenge.R;
 
 public class MainMenuActivity extends AppCompatActivity
 {

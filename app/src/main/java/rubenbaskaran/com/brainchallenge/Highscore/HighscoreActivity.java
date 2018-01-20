@@ -11,7 +11,8 @@ import android.widget.Button;
 import java.io.Serializable;
 
 import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainchallenge.GameCategories.GameTypesEnum;
+import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainchallenge.Models.Score;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class HighscoreActivity extends AppCompatActivity implements Serializable
@@ -33,7 +34,7 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         if (bundle != null)
         {
             score = (Score) bundle.get("Score");
-            LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext(), "", null, 0);
+            LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
             localDatabaseManager.SaveNewScore(score);
         }
 
@@ -44,7 +45,7 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         ShowLocalHighscoreButton.setEnabled(false);
 
         LocalHighscoreFragment localHighscoreFragment = new LocalHighscoreFragment();
-        localHighscoreFragment.gameType = GameTypesEnum.Addition;
+        localHighscoreFragment.gameType = GameTypes.Addition;
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, localHighscoreFragment, null);
@@ -57,6 +58,7 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         ShowLocalHighscoreButton.setEnabled(false);
         ShowGlobalHighscoreButton.setEnabled(true);
         LocalHighscoreFragment localHighscoreFragment = new LocalHighscoreFragment();
+        localHighscoreFragment.gameType = GameTypes.Addition;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, localHighscoreFragment, null);
         fragmentTransaction.commit();

@@ -10,7 +10,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainchallenge.GameCategories.GameTypesEnum;
+import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainchallenge.Models.Score;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class LocalHighscoreFragment extends Fragment
@@ -18,7 +19,7 @@ public class LocalHighscoreFragment extends Fragment
     TextView LevelOneFirstScore;
     TextView LevelTwoFirstScore;
     TextView LevelThreeFirstScore;
-    GameTypesEnum gameType;
+    GameTypes gameType;
 
     public LocalHighscoreFragment()
     {
@@ -33,7 +34,7 @@ public class LocalHighscoreFragment extends Fragment
         LevelTwoFirstScore = view.findViewById(R.id.LevelTwoFirstScore);
         LevelThreeFirstScore = view.findViewById(R.id.LevelThreeFirstScore);
 
-        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(HighscoreActivity.context, "",null,0);
+        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(HighscoreActivity.context);
         ShowScore(localDatabaseManager.GetLocalHighscores(gameType));
 
         return view;
