@@ -10,7 +10,8 @@ import android.widget.Button;
 
 import java.io.Serializable;
 
-import rubenbaskaran.com.brainchallenge.Data.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.GameCategories.GameTypesEnum;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class HighscoreActivity extends AppCompatActivity implements Serializable
@@ -43,6 +44,7 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         ShowLocalHighscoreButton.setEnabled(false);
 
         LocalHighscoreFragment localHighscoreFragment = new LocalHighscoreFragment();
+        localHighscoreFragment.gameType = GameTypesEnum.Addition;
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, localHighscoreFragment, null);

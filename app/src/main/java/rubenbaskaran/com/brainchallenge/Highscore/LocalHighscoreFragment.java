@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Data.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.GameCategories.GameTypesEnum;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class LocalHighscoreFragment extends Fragment
@@ -17,6 +18,7 @@ public class LocalHighscoreFragment extends Fragment
     TextView LevelOneFirstScore;
     TextView LevelTwoFirstScore;
     TextView LevelThreeFirstScore;
+    GameTypesEnum gameType;
 
     public LocalHighscoreFragment()
     {
@@ -32,7 +34,7 @@ public class LocalHighscoreFragment extends Fragment
         LevelThreeFirstScore = view.findViewById(R.id.LevelThreeFirstScore);
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(HighscoreActivity.context, "",null,0);
-        ShowScore(localDatabaseManager.GetLocalHighscores());
+        ShowScore(localDatabaseManager.GetLocalHighscores(gameType));
 
         return view;
     }
@@ -41,13 +43,7 @@ public class LocalHighscoreFragment extends Fragment
     {
         Score score = highscores.get(0);
 
-        String output1 = score.LevelOneQuestionsAnsweredCorrectly + " out of " + score.LevelOneQuestionsAnswered;
+        String output1 = score.AnsweredCorrectly + " out of " + score.Answered;
         LevelOneFirstScore.setText(output1);
-
-        String output2 = score.LevelTwoQuestionsAnsweredCorrectly + " out of " + score.LevelTwoQuestionsAnswered;
-        LevelTwoFirstScore.setText(output2);
-
-        String output3 = score.LevelThreeQuestionsAnsweredCorrectly + " out of " + score.LevelThreeQuestionsAnswered;
-        LevelThreeFirstScore.setText(output3);
     }
 }

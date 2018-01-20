@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge;
+package rubenbaskaran.com.brainchallenge.GameCategories;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,10 +15,12 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import rubenbaskaran.com.brainchallenge.Data.Contracts.DatabaseContract;
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
 import rubenbaskaran.com.brainchallenge.Highscore.Score;
+import rubenbaskaran.com.brainchallenge.R;
 
-public class GameActivity extends AppCompatActivity
+public class NumbersGameActivity extends AppCompatActivity
 {
     TextView equationTextView;
     TextView scoreTextView;
@@ -30,8 +32,8 @@ public class GameActivity extends AppCompatActivity
     int counter = 5;
     GridLayout gridLayout;
     Timer timer = null;
-    Levels currentLevel;
     Score score;
+    GameTypesEnum gameType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,13 +42,12 @@ public class GameActivity extends AppCompatActivity
         setContentView(R.layout.activity_game);
 
         score = new Score();
+        gameType = GameTypesEnum.Addition;
 
         scoreTextView = findViewById(R.id.scoreTextView);
         equationTextView = findViewById(R.id.equationTextView);
         counterTextView = findViewById(R.id.counterTextView);
         gridLayout = findViewById(R.id.gridLayout);
-
-        currentLevel = Levels.LevelOne;
 
         new AlertDialog.Builder(this)
                 .setTitle("Welcome!")
@@ -135,31 +136,24 @@ public class GameActivity extends AppCompatActivity
 
     public void OpenDialog()
     {
-        String buttonText = currentLevel == Levels.LevelThree ? "Check score" : "Next level";
-
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.btn_star)
                 .setTitle(SetResultComment())
                 .setMessage("You scored " + answeredCorrectly + " out of " + questionsAnswered)
-                .setPositiveButton(buttonText, new DialogInterface.OnClickListener()
+                .setPositiveButton("Finish", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
                         SaveScore();
 
-                        if (currentLevel == Levels.LevelThree)
-                        {
-                            finish();
-                            Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("Score", score);
-                            i.putExtras(bundle);
-                            startActivity(i);
-                            return;
-                        }
-                        currentLevel = currentLevel == Levels.LevelOne ? Levels.LevelTwo : Levels.LevelThree;
-                        Restart(null);
+                        finish();
+                        Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Score", score);
+                        i.putExtras(bundle);
+                        startActivity(i);
+                        return;
                     }
                 })
                 .setNegativeButton("Restart level", new DialogInterface.OnClickListener()
@@ -176,25 +170,25 @@ public class GameActivity extends AppCompatActivity
 
     private void SaveScore()
     {
-        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
-        switch (currentLevel)
+        switch (gameType)
         {
-            case LevelOne:
-                score.LevelOneQuestionsAnswered = questionsAnswered;
-                score.LevelOneQuestionsAnsweredCorrectly = answeredCorrectly;
-                score.LevelOnePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+            case Addition:
+                score.Table = DatabaseContract.AdditionHighscore.TABLE_NAME;
                 break;
-            case LevelTwo:
-                score.LevelTwoQuestionsAnswered = questionsAnswered;
-                score.LevelTwoQuestionsAnsweredCorrectly = answeredCorrectly;
-                score.LevelTwoPercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+            case Subtraction:
+                score.Table = DatabaseContract.SubtractionHighscore.TABLE_NAME;
                 break;
-            case LevelThree:
-                score.LevelThreeQuestionsAnswered = questionsAnswered;
-                score.LevelThreeQuestionsAnsweredCorrectly = answeredCorrectly;
-                score.LevelThreePercentage = Double.valueOf(decimalFormat.format((((double)answeredCorrectly) / questionsAnswered)*100));
+            case Multiplication:
+                score.Table = DatabaseContract.MultiplicationHighscore.TABLE_NAME;
+                break;
+            case Division:
+                score.Table = DatabaseContract.DivisionHighscore.TABLE_NAME;
                 break;
         }
+        score.Answered = questionsAnswered;
+        score.AnsweredCorrectly = answeredCorrectly;
+        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+        score.Percentage = Double.valueOf(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
     }
 
     public String SetResultComment()
@@ -226,15 +220,15 @@ public class GameActivity extends AppCompatActivity
         int number2;
         String equation = "Equation is missing";
 
-        switch (currentLevel)
+        switch (gameType)
         {
-            case LevelOne:
+            case Addition:
                 number1 = random.nextInt(50);
                 number2 = random.nextInt(50);
                 equation = String.format(String.valueOf(number1) + " + " + String.valueOf(number2));
                 correctAnswer = number1 + number2;
                 break;
-            case LevelTwo:
+            case Subtraction:
                 number1 = random.nextInt(100);
                 number2 = random.nextInt(100);
                 while (number2 > number1)
@@ -244,16 +238,25 @@ public class GameActivity extends AppCompatActivity
                 equation = String.format(String.valueOf(number1) + " - " + String.valueOf(number2));
                 correctAnswer = number1 - number2;
                 break;
-            case LevelThree:
+            case Multiplication:
                 number1 = random.nextInt(10);
                 number2 = random.nextInt(10);
                 equation = String.format(String.valueOf(number1) + " X " + String.valueOf(number2));
                 correctAnswer = number1 * number2;
                 break;
+            case Division:
+                number1 = random.nextInt(100);
+                number2 = random.nextInt(10);
+                while (number1 < number2)
+                {
+                    number2 = random.nextInt(100);
+                }
+                equation = String.format(String.valueOf(number1) + " / " + String.valueOf(number2));
+                correctAnswer = number1 / number2;
+                break;
         }
 
         equationTextView.setText(equation);
-
         GenerateAnswers();
     }
 
@@ -330,10 +333,5 @@ public class GameActivity extends AppCompatActivity
     {
         super.onDestroy();
         timer.cancel();
-    }
-
-    public enum Levels
-    {
-        LevelOne, LevelTwo, LevelThree;
     }
 }

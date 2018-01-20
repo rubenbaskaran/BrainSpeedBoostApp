@@ -8,32 +8,20 @@ import java.io.Serializable;
 
 public class Score implements Serializable
 {
-    public int LevelOneQuestionsAnswered;
-    public int LevelOneQuestionsAnsweredCorrectly;
-    public double LevelOnePercentage;
-
-    public int LevelTwoQuestionsAnswered;
-    public int LevelTwoQuestionsAnsweredCorrectly;
-    public double LevelTwoPercentage;
-
-    public int LevelThreeQuestionsAnswered;
-    public int LevelThreeQuestionsAnsweredCorrectly;
-    public double LevelThreePercentage;
+    public String Table;
+    public int Answered;
+    public int AnsweredCorrectly;
+    public double Percentage;
 
     public Score()
     {
     }
 
-    public Score(int levelOneQuestionsAnswered, int levelOneQuestionsAnsweredCorrectly, double levelOnePercentage, int levelTwoQuestionsAnswered, int levelTwoQuestionsAnsweredCorrectly, double levelTwoPercentage, int levelThreeQuestionsAnswered, int levelThreeQuestionsAnsweredCorrectly, double levelThreePercentage)
+    public Score(String table, int answered, int answeredcorrectly, double percentage)
     {
-        LevelOneQuestionsAnswered = levelOneQuestionsAnswered;
-        LevelOneQuestionsAnsweredCorrectly = levelOneQuestionsAnsweredCorrectly;
-        LevelOnePercentage = levelOnePercentage;
-        LevelTwoQuestionsAnswered = levelTwoQuestionsAnswered;
-        LevelTwoQuestionsAnsweredCorrectly = levelTwoQuestionsAnsweredCorrectly;
-        LevelTwoPercentage = levelTwoPercentage;
-        LevelThreeQuestionsAnswered = levelThreeQuestionsAnswered;
-        LevelThreeQuestionsAnsweredCorrectly = levelThreeQuestionsAnsweredCorrectly;
-        LevelThreePercentage = levelThreePercentage;
+        this.Table = table;
+        this.Answered = answered;
+        this.AnsweredCorrectly = answeredcorrectly;
+        this.Percentage = percentage;
     }
 }
