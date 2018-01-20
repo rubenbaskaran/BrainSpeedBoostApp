@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class MainMenuActivity extends AppCompatActivity
@@ -21,12 +20,6 @@ public class MainMenuActivity extends AppCompatActivity
     public void NavigateToNumbersMenu(View view)
     {
         Intent i = new Intent(getApplicationContext(), NumbersMenuActivity.class);
-        startActivity(i);
-    }
-
-    public void ShowHighscores(View view)
-    {
-        Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
         startActivity(i);
     }
 

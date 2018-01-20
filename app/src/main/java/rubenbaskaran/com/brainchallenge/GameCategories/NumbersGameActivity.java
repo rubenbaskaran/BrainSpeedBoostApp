@@ -149,6 +149,7 @@ public class NumbersGameActivity extends AppCompatActivity
                         SaveScore();
                         finish();
                         Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
+                        i.putExtra("gametype", gameType);
                         startActivity(i);
                     }
                 })

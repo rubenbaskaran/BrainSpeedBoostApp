@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.GameCategories.NumbersGameActivity;
+import rubenbaskaran.com.brainchallenge.GameCategories.AdditionActivity;
+import rubenbaskaran.com.brainchallenge.GameCategories.DivisionActivity;
+import rubenbaskaran.com.brainchallenge.GameCategories.MultiplicationActivity;
+import rubenbaskaran.com.brainchallenge.GameCategories.SubtractionActivity;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class NumbersMenuActivity extends AppCompatActivity
@@ -22,26 +24,24 @@ public class NumbersMenuActivity extends AppCompatActivity
     public void StartGame(View view)
     {
         String tag = (String) view.getTag();
-        GameTypes gameType = null;
+        Intent i = null;
 
         switch (tag)
         {
             case "addition":
-                gameType = GameTypes.Addition;
+                i = new Intent(getApplicationContext(), AdditionActivity.class);
                 break;
             case "subtraction":
-                gameType = GameTypes.Subtraction;
+                i = new Intent(getApplicationContext(), SubtractionActivity.class);
                 break;
             case "multiplication":
-                gameType = GameTypes.Multiplication;
+                i = new Intent(getApplicationContext(), MultiplicationActivity.class);
                 break;
             case "division":
-                gameType = GameTypes.Division;
+                i = new Intent(getApplicationContext(), DivisionActivity.class);
                 break;
         }
 
-        Intent i = new Intent(getApplicationContext(), NumbersGameActivity.class);
-        i.putExtra("gametype", gameType);
         startActivity(i);
     }
 }

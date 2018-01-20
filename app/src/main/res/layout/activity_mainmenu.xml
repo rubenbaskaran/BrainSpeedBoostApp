@@ -33,13 +33,6 @@
         android:text="Colors"
         android:onClick="NavigateToColors"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:text="Highscores"
-        android:onClick="ShowHighscores"/>
-
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"

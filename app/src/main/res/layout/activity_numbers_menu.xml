@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
     android:orientation="vertical"
     tools:context="rubenbaskaran.com.brainchallenge.Menus.NumbersMenuActivity">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"></Space>
+        android:layout_weight="0.05"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="Choose a numbers game"/>
 
     <Button
         android:layout_width="match_parent"
@@ -48,6 +53,6 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"></Space>
+        android:layout_weight="0.1"/>
 
 </LinearLayout>
