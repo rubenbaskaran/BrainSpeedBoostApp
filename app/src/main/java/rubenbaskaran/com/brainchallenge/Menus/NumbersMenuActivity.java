@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.GameCategories.AdditionActivity;
-import rubenbaskaran.com.brainchallenge.GameCategories.DivisionActivity;
-import rubenbaskaran.com.brainchallenge.GameCategories.MultiplicationActivity;
-import rubenbaskaran.com.brainchallenge.GameCategories.SubtractionActivity;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class NumbersMenuActivity extends AppCompatActivity
@@ -29,16 +25,16 @@ public class NumbersMenuActivity extends AppCompatActivity
         switch (tag)
         {
             case "addition":
-                i = new Intent(getApplicationContext(), AdditionActivity.class);
+                i = new Intent(getApplicationContext(), AdditionMenuActivity.class);
                 break;
             case "subtraction":
-                i = new Intent(getApplicationContext(), SubtractionActivity.class);
+                i = new Intent(getApplicationContext(), SubtractionMenuActivity.class);
                 break;
             case "multiplication":
-                i = new Intent(getApplicationContext(), MultiplicationActivity.class);
+                i = new Intent(getApplicationContext(), MultiplicationMenuActivity.class);
                 break;
             case "division":
-                i = new Intent(getApplicationContext(), DivisionActivity.class);
+                i = new Intent(getApplicationContext(), DivisionMenuActivity.class);
                 break;
         }
 

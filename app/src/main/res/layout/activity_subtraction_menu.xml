@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="rubenbaskaran.com.brainchallenge.GameCategories.AdditionActivity">
+    tools:context="rubenbaskaran.com.brainchallenge.Menus.SubtractionMenuActivity">
 
     <Space
         android:layout_width="match_parent"
@@ -16,20 +16,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="Addition"/>
+        android:text="Subtraction"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:onClick="StartAdditionGame"
+        android:onClick="StartSubtractionGame"
         android:text="Start game!"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:onClick="ShowAdditionHighscores"
+        android:onClick="ShowSubtractionHighscores"
         android:text="Highscores"/>
 
     <Space

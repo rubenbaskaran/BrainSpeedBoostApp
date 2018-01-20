@@ -22,13 +22,13 @@
         </activity>
         <activity android:name=".Menus.NumbersMenuActivity">
         </activity>
-        <activity android:name=".GameCategories.AdditionActivity">
+        <activity android:name=".Menus.AdditionMenuActivity">
         </activity>
-        <activity android:name=".GameCategories.SubtractionActivity">
+        <activity android:name=".Menus.SubtractionMenuActivity">
         </activity>
-        <activity android:name=".GameCategories.MultiplicationActivity">
+        <activity android:name=".Menus.MultiplicationMenuActivity">
         </activity>
-        <activity android:name=".GameCategories.DivisionActivity">
+        <activity android:name=".Menus.DivisionMenuActivity">
         </activity>
     </application>
 
