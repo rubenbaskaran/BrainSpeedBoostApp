@@ -18,9 +18,9 @@ public class MainMenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_mainmenu);
     }
 
-    public void StartGame(View view)
+    public void NavigateToNumbersMenu(View view)
     {
-        Intent i = new Intent(getApplicationContext(), NumbersGameActivity.class);
+        Intent i = new Intent(getApplicationContext(), NumbersMenuActivity.class);
         startActivity(i);
     }
 
@@ -28,5 +28,9 @@ public class MainMenuActivity extends AppCompatActivity
     {
         Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
         startActivity(i);
+    }
+
+    public void NavigateToColors(View view)
+    {
     }
 }

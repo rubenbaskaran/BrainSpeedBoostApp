@@ -4,45 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="1"
     android:orientation="vertical"
-    tools:context="rubenbaskaran.com.brainchallenge.MainMenuActivity"
-    android:weightSum="1">
+    tools:context="rubenbaskaran.com.brainchallenge.NumbersMenuActivity">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:text="Choose a category"/>
-
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="0.2"
-       android:text="Numbers"
-       android:onClick="NavigateToNumbersMenu"/>
+        android:layout_weight="0.2"></Space>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Colors"
-        android:onClick="NavigateToColors"/>
+        android:text="Addition"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Highscores"
-        android:onClick="ShowHighscores"/>
+        android:text="Subtraction"/>
 
-    <Space
+    <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.2"
+        android:text="Multiplication"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:text="Division"/>
 
 </LinearLayout>

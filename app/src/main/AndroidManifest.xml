@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".Highscore.HighscoreActivity">
         </activity>
+        <activity android:name=".NumbersMenuActivity">
+        </activity>
     </application>
 
 </manifest>
