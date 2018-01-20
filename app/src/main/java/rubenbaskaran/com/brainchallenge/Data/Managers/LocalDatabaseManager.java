@@ -266,7 +266,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
                 null,
                 null,
                 null,
-                PercentageColumn + " ASC," + AnsweredCorrectlyColumn + " ASC;"
+                PercentageColumn + " DESC," + AnsweredCorrectlyColumn + " DESC;"
         );
 
         ArrayList<Score> scores = new ArrayList<>();

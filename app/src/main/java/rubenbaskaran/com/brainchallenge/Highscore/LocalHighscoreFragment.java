@@ -68,40 +68,45 @@ public class LocalHighscoreFragment extends Fragment
             return;
         }
 
-        if (highscores.get(4) != null)
+        if (highscores.get(0) != null)
         {
-            Score score = highscores.get(4);
+            Score score = highscores.get(0);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
             firstPlaceScore.setText(text);
-            firstPlacePercentage.setText(String.valueOf(score.Percentage));
+            String percentage = String.valueOf(score.Percentage) + "%";
+            firstPlacePercentage.setText(percentage);
         }
-        if (highscores.get(3) != null)
+        if (highscores.get(1) != null)
         {
-            Score score = highscores.get(3);
+            Score score = highscores.get(1);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
             secondPlaceScore.setText(text);
-            secondPlacePercentage.setText(String.valueOf(score.Percentage));
+            String percentage = String.valueOf(score.Percentage) + "%";
+            secondPlacePercentage.setText(percentage);
         }
         if (highscores.get(2) != null)
         {
             Score score = highscores.get(2);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
             thirdPlaceScore.setText(text);
-            thirdPlacePercentage.setText(String.valueOf(score.Percentage));
+            String percentage = String.valueOf(score.Percentage) + "%";
+            thirdPlacePercentage.setText(percentage);
         }
-        if (highscores.get(1) != null)
+        if (highscores.get(3) != null)
         {
-            Score score = highscores.get(1);
+            Score score = highscores.get(3);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
             fourthPlaceScore.setText(text);
-            fourthPlacePercentage.setText(String.valueOf(score.Percentage));
+            String percentage = String.valueOf(score.Percentage) + "%";
+            fourthPlacePercentage.setText(percentage);
         }
-        if (highscores.get(0) != null)
+        if (highscores.get(4) != null)
         {
-            Score score = highscores.get(0);
+            Score score = highscores.get(4);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
             fifthPlaceScore.setText(text);
-            fifthPlacePercentage.setText(String.valueOf(score.Percentage));
+            String percentage = String.valueOf(score.Percentage) + "%";
+            fifthPlacePercentage.setText(percentage);
         }
     }
 }
