@@ -19,14 +19,14 @@ public class SubtractionActivity extends AppCompatActivity
         setContentView(R.layout.activity_subtraction);
     }
 
-    public void StartGame(View view)
+    public void StartSubtractionGame(View view)
     {
         Intent i = new Intent(getApplicationContext(), NumbersGameActivity.class);
         i.putExtra("gametype", GameTypes.Subtraction);
         startActivity(i);
     }
 
-    public void ShowHighscore(View view)
+    public void ShowSubtractionHighscores(View view)
     {
         Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
         i.putExtra("gametype", GameTypes.Subtraction);

@@ -19,14 +19,14 @@ public class DivisionActivity extends AppCompatActivity
         setContentView(R.layout.activity_division);
     }
 
-    public void StartGame(View view)
+    public void StartDivisionGame(View view)
     {
         Intent i = new Intent(getApplicationContext(), NumbersGameActivity.class);
         i.putExtra("gametype", GameTypes.Division);
         startActivity(i);
     }
 
-    public void ShowHighscore(View view)
+    public void ShowDivisionHighscores(View view)
     {
         Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
         i.putExtra("gametype", GameTypes.Division);
