@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,13 +20,12 @@ public class LocalHighscoreFragment extends Fragment
     TextView LevelOneFirstScore;
     TextView LevelTwoFirstScore;
     TextView LevelThreeFirstScore;
+    GameTypes gameType;
 
     public void setGameType(GameTypes gameType)
     {
         this.gameType = gameType;
     }
-
-    GameTypes gameType;
 
     public LocalHighscoreFragment()
     {
@@ -48,7 +48,13 @@ public class LocalHighscoreFragment extends Fragment
 
     public void ShowScore(ArrayList<Score> highscores)
     {
-        Score score = highscores.get(0);
+        if(highscores.size() == 0)
+        {
+            Toast.makeText(HighscoreActivity.context, "Highscore list is emtpy", Toast.LENGTH_SHORT ).show();
+            return;
+        }
+
+        Score score = highscores.get(highscores.size() - 1);
 
         String output1 = score.AnsweredCorrectly + " out of " + score.Answered;
         LevelOneFirstScore.setText(output1);

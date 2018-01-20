@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class MainMenuActivity extends AppCompatActivity
@@ -15,6 +17,13 @@ public class MainMenuActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
+
+        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
+        localDatabaseManager.GetLocalHighscores(GameTypes.Addition);
+        localDatabaseManager.GetLocalHighscores(GameTypes.Subtraction);
+        localDatabaseManager.GetLocalHighscores(GameTypes.Multiplication);
+        localDatabaseManager.GetLocalHighscores(GameTypes.Division);
+        localDatabaseManager.GetLocalHighscores(GameTypes.Color);
     }
 
     public void NavigateToNumbersMenu(View view)

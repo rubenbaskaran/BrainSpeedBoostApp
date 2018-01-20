@@ -172,16 +172,16 @@ public class NumbersGameActivity extends AppCompatActivity
         switch (gameType)
         {
             case Addition:
-                score.Table = DatabaseContract.AdditionHighscore.TABLE_NAME;
+                score.GameType = GameTypes.Addition;
                 break;
             case Subtraction:
-                score.Table = DatabaseContract.SubtractionHighscore.TABLE_NAME;
+                score.GameType = GameTypes.Subtraction;
                 break;
             case Multiplication:
-                score.Table = DatabaseContract.MultiplicationHighscore.TABLE_NAME;
+                score.GameType = GameTypes.Multiplication;
                 break;
             case Division:
-                score.Table = DatabaseContract.DivisionHighscore.TABLE_NAME;
+                score.GameType = GameTypes.Division;
                 break;
         }
         score.Answered = questionsAnswered;
