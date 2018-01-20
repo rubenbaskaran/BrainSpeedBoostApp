@@ -15,7 +15,6 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import rubenbaskaran.com.brainchallenge.Data.Contracts.DatabaseContract;
 import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
@@ -42,8 +41,7 @@ public class NumbersGameActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers_game);
 
-        GameTypes clickedNumbersGame = (GameTypes)getIntent().getSerializableExtra("gametype");
-        gameType = clickedNumbersGame;
+        gameType = (GameTypes) getIntent().getSerializableExtra("gametype");
 
         scoreTextView = findViewById(R.id.scoreTextView);
         equationTextView = findViewById(R.id.equationTextView);
@@ -146,10 +144,15 @@ public class NumbersGameActivity extends AppCompatActivity
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        SaveScore();
+                        boolean newHighscore = false;
+                        if (SaveScore())
+                        {
+                            newHighscore = true;
+                        }
                         finish();
                         Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
                         i.putExtra("gametype", gameType);
+                        i.putExtra("newhighscore", newHighscore);
                         startActivity(i);
                     }
                 })
@@ -165,7 +168,7 @@ public class NumbersGameActivity extends AppCompatActivity
                 .show();
     }
 
-    private void SaveScore()
+    private boolean SaveScore()
     {
         Score score = new Score();
 
@@ -190,7 +193,7 @@ public class NumbersGameActivity extends AppCompatActivity
         score.Percentage = Double.valueOf(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
-        localDatabaseManager.SaveNewScore(score);
+        return localDatabaseManager.SaveNewScore(score);
     }
 
     public String SetResultComment()

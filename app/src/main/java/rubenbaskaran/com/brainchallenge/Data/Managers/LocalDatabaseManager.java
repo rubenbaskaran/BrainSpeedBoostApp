@@ -101,10 +101,10 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         onCreate(db);
     }
 
-    public void SaveNewScore(Score score)
+    public boolean SaveNewScore(Score score)
     {
         ArrayList<Score> highscoreList = GetLocalHighscores(score.GameType);
-        boolean listIsFull = highscoreList.size() >= 10;
+        boolean listIsFull = highscoreList.size() >= 5;
 
         if (listIsFull)
         {
@@ -112,7 +112,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
             if (!ValidateHighscore(score, highscoreList))
             {
                 Log.e("SaveNewScore", "Not a new highscore - Returning!");
-                return;
+                return false;
             }
             Log.e("SaveNewScore", "New highscore!");
         }
@@ -175,7 +175,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         }
         else
         {
-            Log.e("SaveNewScore", "List has less than 10 rows. No need to delete existing ones!");
+            Log.e("SaveNewScore", "List has less than 5 rows. No need to delete existing ones!");
         }
 
         long returnValue = db.insert(table, null, values);
@@ -184,6 +184,8 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         {
             Log.e("Error", "Couldn't save record to local database");
         }
+
+        return true;
     }
 
     private boolean ValidateHighscore(Score newScore, ArrayList<Score> oldScores)
