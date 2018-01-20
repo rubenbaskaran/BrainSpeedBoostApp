@@ -16,6 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import rubenbaskaran.com.brainchallenge.Data.Contracts.DatabaseContract;
+import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
 import rubenbaskaran.com.brainchallenge.Models.Score;
@@ -33,7 +34,6 @@ public class NumbersGameActivity extends AppCompatActivity
     int counter = 5;
     GridLayout gridLayout;
     Timer timer = null;
-    Score score;
     GameTypes gameType;
 
     @Override
@@ -42,8 +42,8 @@ public class NumbersGameActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers_game);
 
-        score = new Score();
-        gameType = GameTypes.Addition;
+        GameTypes clickedNumbersGame = (GameTypes)getIntent().getSerializableExtra("gametype");
+        gameType = clickedNumbersGame;
 
         scoreTextView = findViewById(R.id.scoreTextView);
         equationTextView = findViewById(R.id.equationTextView);
@@ -147,14 +147,9 @@ public class NumbersGameActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which)
                     {
                         SaveScore();
-
                         finish();
                         Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("Score", score);
-                        i.putExtras(bundle);
                         startActivity(i);
-                        return;
                     }
                 })
                 .setNegativeButton("Restart level", new DialogInterface.OnClickListener()
@@ -171,6 +166,8 @@ public class NumbersGameActivity extends AppCompatActivity
 
     private void SaveScore()
     {
+        Score score = new Score();
+
         switch (gameType)
         {
             case Addition:
@@ -190,6 +187,9 @@ public class NumbersGameActivity extends AppCompatActivity
         score.AnsweredCorrectly = answeredCorrectly;
         DecimalFormat decimalFormat = new DecimalFormat("##0.00");
         score.Percentage = Double.valueOf(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
+
+        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
+        localDatabaseManager.SaveNewScore(score);
     }
 
     public String SetResultComment()

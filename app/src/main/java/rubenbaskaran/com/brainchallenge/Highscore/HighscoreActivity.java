@@ -8,19 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.Serializable;
-
-import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Models.Score;
 import rubenbaskaran.com.brainchallenge.R;
 
-public class HighscoreActivity extends AppCompatActivity implements Serializable
+public class HighscoreActivity extends AppCompatActivity
 {
     Button ShowLocalHighscoreButton;
     Button ShowGlobalHighscoreButton;
     FragmentManager fragmentManager;
     public static Context context;
+    LocalHighscoreFragment localHighscoreFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,15 +25,8 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
         context = getApplicationContext();
-        Score score = null;
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null)
-        {
-            score = (Score) bundle.get("Score");
-            LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
-            localDatabaseManager.SaveNewScore(score);
-        }
+        GameTypes gameTypes = (GameTypes)getIntent().getSerializableExtra("gametype");
 
         ShowLocalHighscoreButton = findViewById(R.id.ShowLocalHighscoreButton);
         ShowGlobalHighscoreButton = findViewById(R.id.ShowGlobalHighscoreButton);
@@ -44,8 +34,8 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
         ShowGlobalHighscoreButton.setEnabled(true);
         ShowLocalHighscoreButton.setEnabled(false);
 
-        LocalHighscoreFragment localHighscoreFragment = new LocalHighscoreFragment();
-        localHighscoreFragment.gameType = GameTypes.Addition;
+        localHighscoreFragment = new LocalHighscoreFragment();
+        localHighscoreFragment.setGameType(gameTypes);
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, localHighscoreFragment, null);
@@ -57,8 +47,6 @@ public class HighscoreActivity extends AppCompatActivity implements Serializable
     {
         ShowLocalHighscoreButton.setEnabled(false);
         ShowGlobalHighscoreButton.setEnabled(true);
-        LocalHighscoreFragment localHighscoreFragment = new LocalHighscoreFragment();
-        localHighscoreFragment.gameType = GameTypes.Addition;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, localHighscoreFragment, null);
         fragmentTransaction.commit();

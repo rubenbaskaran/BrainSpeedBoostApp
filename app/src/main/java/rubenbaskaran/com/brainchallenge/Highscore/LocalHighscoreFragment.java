@@ -19,6 +19,12 @@ public class LocalHighscoreFragment extends Fragment
     TextView LevelOneFirstScore;
     TextView LevelTwoFirstScore;
     TextView LevelThreeFirstScore;
+
+    public void setGameType(GameTypes gameType)
+    {
+        this.gameType = gameType;
+    }
+
     GameTypes gameType;
 
     public LocalHighscoreFragment()

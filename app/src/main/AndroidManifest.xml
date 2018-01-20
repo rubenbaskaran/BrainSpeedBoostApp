@@ -16,11 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GameCategories.GameActivity">
+        <activity android:name=".GameCategories.NumbersGameActivity">
         </activity>
         <activity android:name=".Highscore.HighscoreActivity">
         </activity>
         <activity android:name=".Menus.NumbersMenuActivity">
+        </activity>
+        <activity android:name=".GameCategories.AdditionActivity">
+        </activity>
+        <activity android:name=".GameCategories.SubtractionActivity">
+        </activity>
+        <activity android:name=".GameCategories.MultiplicationActivity">
+        </activity>
+        <activity android:name=".GameCategories.DivisionActivity">
         </activity>
     </application>
 

@@ -11,30 +11,43 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"></Space>
+        android:layout_weight="0.1"></Space>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Addition"/>
+        android:text="Addition"
+        android:tag="addition"
+        android:onClick="StartGame"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Subtraction"/>
+        android:text="Subtraction"
+        android:tag="subtraction"
+        android:onClick="StartGame"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Multiplication"/>
+        android:text="Multiplication"
+        android:tag="multiplication"
+        android:onClick="StartGame"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Division"/>
+        android:text="Division"
+        android:tag="division"
+        android:onClick="StartGame"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"></Space>
 
 </LinearLayout>
