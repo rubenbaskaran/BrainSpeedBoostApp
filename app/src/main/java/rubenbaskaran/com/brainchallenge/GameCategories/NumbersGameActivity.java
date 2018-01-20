@@ -249,7 +249,7 @@ public class NumbersGameActivity extends AppCompatActivity
             case Division:
                 number1 = random.nextInt(100);
                 number2 = random.nextInt(10);
-                while (number1 < number2)
+                while (number1 < number2 || number2 == 0)
                 {
                     number2 = random.nextInt(100);
                 }

@@ -66,7 +66,6 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     public LocalDatabaseManager(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        ResetDatabase();
     }
 
     @Override
@@ -105,7 +104,6 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     public void SaveNewScore(Score score)
     {
         ResetDatabase();
-
         ContentValues values = new ContentValues();
 
         switch (score.Table)
