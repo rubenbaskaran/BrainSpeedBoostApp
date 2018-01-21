@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Timer;
@@ -189,8 +190,10 @@ public class NumbersGameActivity extends AppCompatActivity
         }
         score.Answered = questionsAnswered;
         score.AnsweredCorrectly = answeredCorrectly;
-        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
-        score.Percentage = Double.valueOf(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
+        DecimalFormat decimalFormat = new DecimalFormat();
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
+        decimalFormat.setMaximumFractionDigits(0);
+        score.Percentage = Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         return localDatabaseManager.SaveNewScore(score);
@@ -250,14 +253,14 @@ public class NumbersGameActivity extends AppCompatActivity
                 correctAnswer = number1 * number2;
                 break;
             case Division:
-                number1 = random.nextInt(100);
+                number1 = random.nextInt(10);
                 number2 = random.nextInt(10);
-                while (number1 < number2 || number2 == 0)
+                while (number2 == 0)
                 {
-                    number2 = random.nextInt(100);
+                    number2 = random.nextInt(10);
                 }
-                equation = String.format(String.valueOf(number1) + " / " + String.valueOf(number2));
-                correctAnswer = number1 / number2;
+                equation = String.format(String.valueOf(number1*number2) + " / " + String.valueOf(number2));
+                correctAnswer = number1;
                 break;
         }
 

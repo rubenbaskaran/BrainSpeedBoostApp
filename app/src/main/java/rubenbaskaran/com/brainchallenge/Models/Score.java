@@ -14,13 +14,13 @@ public class Score implements Serializable
     public GameTypes GameType;
     public int Answered;
     public int AnsweredCorrectly;
-    public double Percentage;
+    public int Percentage;
 
     public Score()
     {
     }
 
-    public Score(GameTypes gameType, int answered, int answeredcorrectly, double percentage)
+    public Score(GameTypes gameType, int answered, int answeredcorrectly, int percentage)
     {
         this.GameType = gameType;
         this.Answered = answered;
@@ -28,7 +28,7 @@ public class Score implements Serializable
         this.Percentage = percentage;
     }
 
-    public Score(Integer _id, GameTypes gameType, int answered, int answeredcorrectly, double percentage)
+    public Score(Integer _id, GameTypes gameType, int answered, int answeredcorrectly, int percentage)
     {
         this._Id = _id;
         this.GameType = gameType;

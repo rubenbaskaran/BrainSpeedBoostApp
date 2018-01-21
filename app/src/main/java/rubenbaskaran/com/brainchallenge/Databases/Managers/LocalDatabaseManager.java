@@ -27,35 +27,35 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
                     DatabaseContract.AdditionHighscore._ID + " INTEGER PRIMARY KEY," +
                     DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
                     DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE + " DOUBLE)";
+                    DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
 
     private static final String SQL_CREATE_SUBTRACTION_TABLE =
             "CREATE TABLE " + DatabaseContract.SubtractionHighscore.TABLE_NAME + " (" +
                     DatabaseContract.SubtractionHighscore._ID + " INTEGER PRIMARY KEY," +
                     DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
                     DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE + " DOUBLE)";
+                    DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
 
     private static final String SQL_CREATE_MULTIPLICATION_TABLE =
             "CREATE TABLE " + DatabaseContract.MultiplicationHighscore.TABLE_NAME + " (" +
                     DatabaseContract.MultiplicationHighscore._ID + " INTEGER PRIMARY KEY," +
                     DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
                     DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE + " DOUBLE)";
+                    DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
 
     private static final String SQL_CREATE_DIVISION_TABLE =
             "CREATE TABLE " + DatabaseContract.DivisionHighscore.TABLE_NAME + " (" +
                     DatabaseContract.DivisionHighscore._ID + " INTEGER PRIMARY KEY," +
                     DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
                     DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE + " DOUBLE)";
+                    DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
 
     private static final String SQL_CREATE_COLOR_TABLE =
             "CREATE TABLE " + DatabaseContract.ColorHighscore.TABLE_NAME + " (" +
                     DatabaseContract.ColorHighscore._ID + " INTEGER PRIMARY KEY," +
                     DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
                     DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE + " DOUBLE)";
+                    DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
 
     private static final String SQL_DELETE_ADDITION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.AdditionHighscore.TABLE_NAME;
     private static final String SQL_DELETE_SUBTRACTION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.SubtractionHighscore.TABLE_NAME;
@@ -275,7 +275,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
             Integer _ID = cursor.getInt(cursor.getColumnIndexOrThrow(id));
             int levelOneAnsweredCorrectly = cursor.getInt(cursor.getColumnIndexOrThrow(AnsweredCorrectlyColumn));
             int levelOneAnswered = cursor.getInt(cursor.getColumnIndexOrThrow(AnsweredColumn));
-            double levelOnePercentage = cursor.getInt(cursor.getColumnIndexOrThrow(PercentageColumn));
+            int levelOnePercentage = cursor.getInt(cursor.getColumnIndexOrThrow(PercentageColumn));
 
             scores.add(new Score
                     (
