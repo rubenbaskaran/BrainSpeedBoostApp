@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.GameCategories;
+package rubenbaskaran.com.brainchallenge.Games;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,9 +15,9 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.Databases.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
+import rubenbaskaran.com.brainchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainchallenge.Models.Score;
 import rubenbaskaran.com.brainchallenge.R;
 
@@ -30,7 +30,7 @@ public class NumbersGameActivity extends AppCompatActivity
     int correctAnswerIndexValue;
     int answeredCorrectly = 0;
     int questionsAnswered = 0;
-    int counter = 5;
+    int counter = 16;
     GridLayout gridLayout;
     Timer timer = null;
     GameTypes gameType;
@@ -298,7 +298,7 @@ public class NumbersGameActivity extends AppCompatActivity
     {
         answeredCorrectly = 0;
         questionsAnswered = 0;
-        counter = 5;
+        counter = 16;
         GenerateEquation();
         UpdateScore();
         GridlayoutSetEnabled(true);

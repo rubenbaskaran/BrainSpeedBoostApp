@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Data.Managers;
+package rubenbaskaran.com.brainchallenge.Databases.Managers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Data.Contracts.DatabaseContract;
+import rubenbaskaran.com.brainchallenge.Databases.Contracts.DatabaseContract;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.Models.Score;
 
@@ -164,8 +164,8 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
 
         if (listIsFull)
         {
-            String[] arguments = {String.valueOf(highscoreList.get(0)._Id)};
-            Log.e("SaveNewScore", "Deleting the lowest score on the top 10!");
+            String[] arguments = {String.valueOf(highscoreList.get(highscoreList.size()-1)._Id)};
+            Log.e("SaveNewScore", "Deleting the lowest score on the top 5!");
             long returnValue = db.delete(table, rowColumnToDelete + " = ?", arguments);
 
             if (returnValue == -1)

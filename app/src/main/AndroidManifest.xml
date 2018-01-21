@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GameCategories.NumbersGameActivity">
+        <activity android:name=".Games.NumbersGameActivity">
         </activity>
-        <activity android:name=".Highscore.HighscoreActivity">
+        <activity android:name=".Highscores.HighscoreActivity">
         </activity>
         <activity android:name=".Menus.NumbersMenuActivity">
         </activity>

@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Highscore;
+package rubenbaskaran.com.brainchallenge.Highscores;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;

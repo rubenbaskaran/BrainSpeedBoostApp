@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.Databases.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.R;
 

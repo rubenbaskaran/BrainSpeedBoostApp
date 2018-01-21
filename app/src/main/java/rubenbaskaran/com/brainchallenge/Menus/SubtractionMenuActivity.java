@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.GameCategories.NumbersGameActivity;
-import rubenbaskaran.com.brainchallenge.Highscore.HighscoreActivity;
+import rubenbaskaran.com.brainchallenge.Games.NumbersGameActivity;
+import rubenbaskaran.com.brainchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainchallenge.R;
 
 public class SubtractionMenuActivity extends AppCompatActivity

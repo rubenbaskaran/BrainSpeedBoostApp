@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Highscore;
+package rubenbaskaran.com.brainchallenge.Highscores;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Data.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainchallenge.Databases.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainchallenge.Models.Score;
 import rubenbaskaran.com.brainchallenge.R;
@@ -64,11 +64,11 @@ public class LocalHighscoreFragment extends Fragment
     {
         if (highscores.size() == 0)
         {
-            Toast.makeText(HighscoreActivity.context, "Highscore list is emtpy", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HighscoreActivity.context, "Highscores list is emtpy", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (highscores.get(0) != null)
+        if (highscores.size() > 0)
         {
             Score score = highscores.get(0);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
@@ -76,7 +76,7 @@ public class LocalHighscoreFragment extends Fragment
             String percentage = String.valueOf(score.Percentage) + "%";
             firstPlacePercentage.setText(percentage);
         }
-        if (highscores.get(1) != null)
+        if (highscores.size() > 1)
         {
             Score score = highscores.get(1);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
@@ -84,7 +84,7 @@ public class LocalHighscoreFragment extends Fragment
             String percentage = String.valueOf(score.Percentage) + "%";
             secondPlacePercentage.setText(percentage);
         }
-        if (highscores.get(2) != null)
+        if (highscores.size() > 2)
         {
             Score score = highscores.get(2);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
@@ -92,7 +92,7 @@ public class LocalHighscoreFragment extends Fragment
             String percentage = String.valueOf(score.Percentage) + "%";
             thirdPlacePercentage.setText(percentage);
         }
-        if (highscores.get(3) != null)
+        if (highscores.size() > 3)
         {
             Score score = highscores.get(3);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;
@@ -100,7 +100,7 @@ public class LocalHighscoreFragment extends Fragment
             String percentage = String.valueOf(score.Percentage) + "%";
             fourthPlacePercentage.setText(percentage);
         }
-        if (highscores.get(4) != null)
+        if (highscores.size() == 5)
         {
             Score score = highscores.get(4);
             String text = score.AnsweredCorrectly + " out of " + score.Answered;

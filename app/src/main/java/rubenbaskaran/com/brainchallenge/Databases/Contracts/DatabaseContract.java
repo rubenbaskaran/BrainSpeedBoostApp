@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Data.Contracts;
+package rubenbaskaran.com.brainchallenge.Databases.Contracts;
 
 import android.provider.BaseColumns;
 

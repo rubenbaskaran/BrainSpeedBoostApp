@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Data.Managers;
+package rubenbaskaran.com.brainchallenge.Databases.Managers;
 
 /**
  * Created by Ruben on 17-01-2018.
