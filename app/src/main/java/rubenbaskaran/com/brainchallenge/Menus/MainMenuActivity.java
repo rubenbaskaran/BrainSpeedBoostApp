@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import rubenbaskaran.com.brainchallenge.Databases.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
@@ -34,5 +35,6 @@ public class MainMenuActivity extends AppCompatActivity
 
     public void NavigateToColors(View view)
     {
+        Toast.makeText(getApplicationContext(), "Coming in next update!", Toast.LENGTH_SHORT).show();
     }
 }
