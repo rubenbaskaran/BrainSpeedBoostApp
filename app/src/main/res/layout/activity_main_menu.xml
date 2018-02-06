@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="rubenbaskaran.com.brainchallenge.Menus.MainMenuActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="rubenbaskaran.com.brainchallenge.Menus.MainMenuActivity">
 
     <Space
         android:layout_width="match_parent"
@@ -19,19 +19,23 @@
         android:layout_weight="0.1"
         android:text="Choose a category"/>
 
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="0.2"
-       android:text="Numbers"
-       android:onClick="NavigateToNumbersMenu"/>
-
     <Button
+        style="@style/MenuButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:text="Colors"
-        android:onClick="NavigateToColors"/>
+        android:background="@drawable/menu_button_background"
+        android:onClick="NavigateToNumbersMenu"
+        android:text="Numbers"/>
+
+    <Button
+        style="@style/MenuButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/menu_button_background"
+        android:onClick="NavigateToColors"
+        android:text="Colors"/>
 
     <Space
         android:layout_width="match_parent"

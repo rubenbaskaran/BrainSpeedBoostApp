@@ -10,7 +10,7 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.05"/>
+        android:layout_weight="0.1"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -24,7 +24,9 @@
         android:layout_weight="0.2"
         android:text="Addition"
         android:tag="addition"
-        android:onClick="StartGame"/>
+        android:onClick="StartGame"
+        style="@style/MenuButtonStyle"
+        android:background="@drawable/menu_button_background"/>
 
     <Button
         android:layout_width="match_parent"
@@ -32,7 +34,9 @@
         android:layout_weight="0.2"
         android:text="Subtraction"
         android:tag="subtraction"
-        android:onClick="StartGame"/>
+        android:onClick="StartGame"
+        style="@style/MenuButtonStyle"
+        android:background="@drawable/menu_button_background"/>
 
     <Button
         android:layout_width="match_parent"
@@ -40,7 +44,9 @@
         android:layout_weight="0.2"
         android:text="Multiplication"
         android:tag="multiplication"
-        android:onClick="StartGame"/>
+        android:onClick="StartGame"
+        style="@style/MenuButtonStyle"
+        android:background="@drawable/menu_button_background"/>
 
     <Button
         android:layout_width="match_parent"
@@ -48,11 +54,13 @@
         android:layout_weight="0.2"
         android:text="Division"
         android:tag="division"
-        android:onClick="StartGame"/>
+        android:onClick="StartGame"
+        style="@style/MenuButtonStyle"
+        android:background="@drawable/menu_button_background"/>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"/>
+        android:layout_weight="0.05"/>
 
 </LinearLayout>

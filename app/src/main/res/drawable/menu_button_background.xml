@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item>
+        <shape>
+            <corners android:radius="@dimen/cornerRadius"/>
+            <gradient android:angle="@dimen/gradientAngle" android:endColor="@color/menuButtonLightBlue" android:startColor="@color/menuButtonDarkBlue"/>
+            <stroke android:width="@dimen/strokeWidth" android:color="@color/menuButtonStrokeColor"/>
+        </shape>
+    </item>
 </selector>

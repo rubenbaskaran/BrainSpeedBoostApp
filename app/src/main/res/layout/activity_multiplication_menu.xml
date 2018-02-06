@@ -23,14 +23,18 @@
         android:layout_height="0dp"
         android:layout_weight="0.2"
         android:onClick="StartMultiplicationGame"
-        android:text="Start game!"/>
+        android:text="@string/startGameButtonText"
+        style="@style/MenuButtonStyle"
+        android:background="@drawable/menu_button_background"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
         android:onClick="ShowMultiplicationHighscores"
-        android:text="Highscores"/>
+        android:text="Highscores"
+        style="@style/MenuButtonStyle"
+        android:background="@drawable/menu_button_background"/>
 
     <Space
         android:layout_width="match_parent"
