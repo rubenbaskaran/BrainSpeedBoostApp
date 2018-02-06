@@ -193,7 +193,7 @@ public class NumbersGameActivity extends AppCompatActivity
         DecimalFormat decimalFormat = new DecimalFormat();
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         decimalFormat.setMaximumFractionDigits(0);
-        score.Percentage = Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
+        score.Percentage = questionsAnswered == 0 ? 0 : Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         return localDatabaseManager.SaveNewScore(score);
@@ -203,19 +203,19 @@ public class NumbersGameActivity extends AppCompatActivity
     {
         if (answeredCorrectly == questionsAnswered && answeredCorrectly != 0)
         {
-            return "Perfect! :D";
+            return "Perfect!";
         }
         else if (answeredCorrectly == 0)
         {
-            return "Oooh noo! :(";
+            return "Oooh!";
         }
         else if (answeredCorrectly > questionsAnswered / 2)
         {
-            return "Awesome! :)";
+            return "Awesome!";
         }
         else if (answeredCorrectly == questionsAnswered / 2 || answeredCorrectly < questionsAnswered / 2)
         {
-            return "Too bad! :|";
+            return "Too bad!";
         }
 
         return "Congratulations";

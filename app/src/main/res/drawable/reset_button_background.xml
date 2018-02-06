@@ -4,7 +4,7 @@
         <shape>
             <corners android:radius="@dimen/numbersGameButtonCornerRadius"/>
             <gradient android:angle="@dimen/numbersGameButtonBackgroundGradientAngle" android:endColor="@color/numbersGameButtonLightBlue" android:startColor="@color/numbersGameButtonDarkBlue"/>
-            <stroke android:width="@dimen/numbersGameButtonStrokeWidth" android:color="@color/numbersGameButtonStrokeColor"/>
+            <stroke android:width="@dimen/numbersGameResetButtonStrokeWidth" android:color="@color/numbersGameButtonStrokeColor"/>
         </shape>
     </item>
 </selector>

@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <corners android:radius="@dimen/cornerRadius"/>
-            <gradient android:angle="@dimen/buttonBackgroundGradientAngle" android:endColor="@color/menuButtonLightBlue" android:startColor="@color/menuButtonDarkBlue"/>
-            <stroke android:width="@dimen/strokeWidth" android:color="@color/menuButtonStrokeColor"/>
+            <corners android:radius="@dimen/menuButtonCornerRadius"/>
+            <gradient android:angle="@dimen/menuButtonBackgroundGradientAngle" android:endColor="@color/menuButtonLightBlue" android:startColor="@color/menuButtonDarkBlue"/>
+            <stroke android:width="@dimen/menuButtonStrokeWidth" android:color="@color/menuButtonStrokeColor"/>
         </shape>
     </item>
 </selector>

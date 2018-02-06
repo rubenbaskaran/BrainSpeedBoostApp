@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="strokeWidth">3dp</dimen>
-    <dimen name="buttonBackgroundGradientAngle">90</dimen>
-    <dimen name="cornerRadius">100dp</dimen>
+    <dimen name="menuButtonStrokeWidth">3dp</dimen>
+    <dimen name="menuButtonBackgroundGradientAngle">90</dimen>
+    <dimen name="menuButtonCornerRadius">100dp</dimen>
     <dimen name="appBackgroundGradientAngle">270</dimen>
+    <dimen name="numbersGameButtonStrokeWidth">3dp</dimen>
+    <dimen name="numbersGameButtonBackgroundGradientAngle">90</dimen>
+    <dimen name="numbersGameButtonCornerRadius">10dp</dimen>
+    <dimen name="numbersGameResetButtonStrokeWidth">1dp</dimen>
 </resources>

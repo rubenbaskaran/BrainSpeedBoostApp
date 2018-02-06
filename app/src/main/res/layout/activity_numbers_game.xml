@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="1"
     tools:context="rubenbaskaran.com.brainchallenge.Games.NumbersGameActivity"
-    android:weightSum="1">
+    android:background="@drawable/app_background">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -24,7 +25,8 @@
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
             android:text="Time left"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/numbersGameHeadlineColor"/>
 
         <TextView
             android:id="@+id/scoreTextView"
@@ -34,7 +36,8 @@
             android:gravity="right|center_vertical"
             android:paddingRight="20dp"
             android:text="Your score"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/numbersGameHeadlineColor"/>
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +55,8 @@
             android:gravity="center"
             android:text="Equation"
             android:textSize="50sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/numbersGameHeadlineColor"/>
     </LinearLayout>
 
     <LinearLayout
@@ -68,51 +72,39 @@
 
             <Button
                 android:id="@+id/button0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/numbersGameButtonStyle"
                 android:layout_column="0"
                 android:layout_row="0"
-                android:width="150dp"
-                android:height="150dp"
                 android:onClick="AnswerSelected"
                 android:tag="0"
-                android:textSize="30sp"/>
+                android:background="@drawable/game_button_background"/>
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/numbersGameButtonStyle"
                 android:layout_column="0"
                 android:layout_row="1"
-                android:width="150dp"
-                android:height="150dp"
                 android:onClick="AnswerSelected"
                 android:tag="2"
-                android:textSize="30sp"/>
+                android:background="@drawable/game_button_background"/>
 
             <Button
                 android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/numbersGameButtonStyle"
                 android:layout_column="1"
                 android:layout_row="0"
-                android:width="150dp"
-                android:height="150dp"
                 android:onClick="AnswerSelected"
                 android:tag="1"
-                android:textSize="30sp"/>
+                android:background="@drawable/game_button_background"/>
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/numbersGameButtonStyle"
                 android:layout_column="1"
                 android:layout_row="1"
-                android:width="150dp"
-                android:height="150dp"
                 android:onClick="AnswerSelected"
                 android:tag="3"
-                android:textSize="30sp"/>
+                android:background="@drawable/game_button_background"/>
         </GridLayout>
     </LinearLayout>
 
@@ -128,7 +120,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Restart"
-            android:text="Restart"/>
+            android:text="Restart"
+            android:textStyle="bold"
+            android:background="@drawable/reset_button_background"/>
     </LinearLayout>
 
 </LinearLayout>
