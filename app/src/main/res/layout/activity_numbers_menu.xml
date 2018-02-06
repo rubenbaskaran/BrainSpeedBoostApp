@@ -11,13 +11,14 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"/>
+        android:layout_weight="0.02"/>
 
     <TextView
+        style="@style/fontFamilyStyle.menuHeadlineStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.05"
-        android:text="Choose a numbers game"/>
+        android:layout_weight="0.13"
+        android:text="select game"/>
 
     <Button
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         android:text="Addition"
         android:tag="addition"
         android:onClick="StartGame"
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:background="@drawable/menu_button_background"/>
 
     <Button
@@ -36,7 +37,7 @@
         android:text="Subtraction"
         android:tag="subtraction"
         android:onClick="StartGame"
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:background="@drawable/menu_button_background"/>
 
     <Button
@@ -46,7 +47,7 @@
         android:text="Multiplication"
         android:tag="multiplication"
         android:onClick="StartGame"
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:background="@drawable/menu_button_background"/>
 
     <Button
@@ -56,7 +57,7 @@
         android:text="Division"
         android:tag="division"
         android:onClick="StartGame"
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:background="@drawable/menu_button_background"/>
 
     <Space

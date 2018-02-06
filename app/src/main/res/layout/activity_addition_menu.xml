@@ -11,13 +11,19 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.15"/>
 
     <TextView
+        style="@style/fontFamilyStyle.menuHeadlineStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="Addition"/>
+        android:text="addition"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"/>
 
     <Button
         android:layout_width="match_parent"
@@ -25,7 +31,7 @@
         android:layout_weight="0.2"
         android:onClick="StartAdditionGame"
         android:text="@string/startGameButtonText"
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:background="@drawable/menu_button_background"/>
 
     <Button
@@ -34,7 +40,7 @@
         android:layout_weight="0.2"
         android:onClick="ShowAdditionHighscores"
         android:text="Highscores"
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:background="@drawable/menu_button_background"/>
 
     <Space

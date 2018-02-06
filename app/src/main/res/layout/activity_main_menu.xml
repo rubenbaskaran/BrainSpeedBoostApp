@@ -12,16 +12,22 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.15"/>
 
     <TextView
+        style="@style/fontFamilyStyle.menuHeadlineStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="Choose a category"/>
+        android:text="select category"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"/>
 
     <Button
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
@@ -30,7 +36,7 @@
         android:text="Numbers"/>
 
     <Button
-        style="@style/MenuButtonStyle"
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"

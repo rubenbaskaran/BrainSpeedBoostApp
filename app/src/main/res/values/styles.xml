@@ -4,14 +4,33 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/actionBarStyle</item>
     </style>
 
-    <style name="MenuButtonStyle">
+    <style name="actionBarStyle" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/actionBarTitleTextStyle</item>
+    </style>
+
+    <style name="actionBarTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="fontFamilyStyle.MenuButtonStyle">
         <item name="android:layout_margin">10dp</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/buttonTextColor</item>
-        <item name="android:fontFamily">casual</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fontFamilyStyle.menuHeadlineStyle">
+        <item name="android:textSize">40sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/menuHeadlineColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fontFamilyStyle">
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
     </style>
 
 </resources>

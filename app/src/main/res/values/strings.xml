@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">BrainChallenge</string>
-    <string name="startGameButtonText">Play Game</string>
+    <string name="app_name">BrainSpeedChallenge</string>
+    <string name="startGameButtonText">Play game</string>
 </resources>

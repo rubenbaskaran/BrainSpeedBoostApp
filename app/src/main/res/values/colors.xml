@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#e3f2fd</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="menuButtonDarkBlue">#2286c3</color>
     <color name="menuButtonLightBlue">#9be7ff</color>
@@ -9,4 +9,5 @@
     <color name="buttonTextColor">#212121</color>
     <color name="appBackgroundLightBlue">#e3f2fd</color>
     <color name="appBackgroundDarkBlue">#64b5f6</color>
+    <color name="menuHeadlineColor">#212121</color>
 </resources>
