@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="rubenbaskaran.com.brainchallenge.Menus.MainMenuActivity">
+    tools:context="rubenbaskaran.com.brainchallenge.Menus.MainMenuActivity"
+    android:background="@drawable/app_background">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"/>
+        android:layout_weight="0.2"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -40,6 +41,6 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+        android:layout_weight="0.1"/>
 
 </LinearLayout>

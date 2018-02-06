@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="strokeWidth">3dp</dimen>
-    <dimen name="gradientAngle">90</dimen>
+    <dimen name="buttonBackgroundGradientAngle">90</dimen>
     <dimen name="cornerRadius">100dp</dimen>
+    <dimen name="appBackgroundGradientAngle">270</dimen>
 </resources>

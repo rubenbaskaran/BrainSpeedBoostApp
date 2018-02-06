@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="rubenbaskaran.com.brainchallenge.Menus.NumbersMenuActivity">
+    tools:context="rubenbaskaran.com.brainchallenge.Menus.NumbersMenuActivity"
+    android:background="@drawable/app_background">
 
     <Space
         android:layout_width="match_parent"

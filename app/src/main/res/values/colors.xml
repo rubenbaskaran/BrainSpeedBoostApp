@@ -7,4 +7,6 @@
     <color name="menuButtonLightBlue">#9be7ff</color>
     <color name="menuButtonStrokeColor">#000000</color>
     <color name="buttonTextColor">#212121</color>
+    <color name="appBackgroundLightBlue">#e3f2fd</color>
+    <color name="appBackgroundDarkBlue">#64b5f6</color>
 </resources>
