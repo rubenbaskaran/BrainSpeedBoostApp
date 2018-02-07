@@ -9,26 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menus.MainMenuActivity">
+        <activity android:name=".Menus.MainMenuActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Games.NumbersGameActivity">
+        <activity android:name=".Games.NumbersGameActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Highscores.HighscoreActivity">
+        <activity android:name=".Highscores.HighscoreActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.NumbersMenuActivity">
+        <activity android:name=".Menus.NumbersMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.AdditionMenuActivity">
+        <activity android:name=".Menus.AdditionMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.SubtractionMenuActivity">
+        <activity android:name=".Menus.SubtractionMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.MultiplicationMenuActivity">
+        <activity android:name=".Menus.MultiplicationMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.DivisionMenuActivity">
+        <activity android:name=".Menus.DivisionMenuActivity" android:screenOrientation="portrait">
         </activity>
     </application>
 
