@@ -7,39 +7,39 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="3"
         android:layout_margin="6dp"
-        android:background="@drawable/highscore_background">
+        android:background="@drawable/highscore_background"
+        android:columnCount="3">
 
         <TextView
-            android:id="@+id/editText0"
+            style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="Rank"/>
+            android:text="rank"/>
 
         <TextView
-            android:id="@+id/editText1"
+            style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="Score"/>
+            android:text="score"/>
 
         <TextView
-            android:id="@+id/editText2"
+            style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="Percentage"/>
+            android:text="pct"/>
 
         <TextView
-            android:id="@+id/editText3"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -49,24 +49,26 @@
 
         <TextView
             android:id="@+id/editText4"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="x out of x"/>
+            android:text="1 out of 10"/>
 
         <TextView
             android:id="@+id/editText5"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="%"/>
+            android:text="10%"/>
 
         <TextView
-            android:id="@+id/editText6"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -76,24 +78,26 @@
 
         <TextView
             android:id="@+id/editText7"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="x out of x"/>
+            android:text="0 out of 0"/>
 
         <TextView
             android:id="@+id/editText8"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="%"/>
+            android:text="0%"/>
 
         <TextView
-            android:id="@+id/editText9"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -103,24 +107,26 @@
 
         <TextView
             android:id="@+id/editText10"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="x out of x"/>
+            android:text="0 out of 0"/>
 
         <TextView
             android:id="@+id/editText11"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:gravity="center"
-            android:text="%"/>
+            android:text="0%"/>
 
         <TextView
-            android:id="@+id/editText12"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -130,6 +136,7 @@
 
         <TextView
             android:id="@+id/editText13"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -139,6 +146,7 @@
 
         <TextView
             android:id="@+id/editText14"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -147,7 +155,7 @@
             android:text="%"/>
 
         <TextView
-            android:id="@+id/editText15"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -157,6 +165,7 @@
 
         <TextView
             android:id="@+id/editText16"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -166,6 +175,7 @@
 
         <TextView
             android:id="@+id/editText17"
+            style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"

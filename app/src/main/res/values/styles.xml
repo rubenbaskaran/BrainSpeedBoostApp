@@ -42,4 +42,27 @@
         <item name="android:layout_margin">5dp</item>
     </style>
 
+    <style name="fontFamilyStyle.highscoresTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/numbersGameButtonTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fontFamilyStyle.highscoresHeadlineTextStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/numbersGameButtonTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fontFamilyStyle.highScoresButtonStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fontFamilyStyle.highscoresActivityHeadline">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/numbersGameButtonTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

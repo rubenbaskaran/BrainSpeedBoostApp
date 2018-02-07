@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="Highscores"
+        android:text="highscores"
         android:textSize="30dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        style="@style/fontFamilyStyle.highscoresActivityHeadline"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +32,8 @@
             android:text="Local"
             android:onClick="ShowLocalHighscore"
             android:layout_margin="5dp"
-            android:background="@drawable/game_button_background"/>
+            android:background="@drawable/game_button_background"
+            style="@style/fontFamilyStyle.highScoresButtonStyle"/>
         <Button
             android:id="@+id/ShowGlobalHighscoreButton"
             android:layout_width="0dp"
@@ -40,7 +42,8 @@
             android:text="Global"
             android:onClick="ShowGlobalHighscore"
             android:layout_margin="5dp"
-            android:background="@drawable/game_button_background"/>
+            android:background="@drawable/game_button_background"
+            style="@style/fontFamilyStyle.highScoresButtonStyle"/>
     </LinearLayout>
 
 

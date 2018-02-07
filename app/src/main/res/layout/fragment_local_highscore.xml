@@ -7,10 +7,10 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="*"
-        android:weightSum="1.2"
         android:layout_margin="6dp"
-        android:background="@drawable/highscore_background">
+        android:background="@drawable/highscore_background"
+        android:stretchColumns="*"
+        android:weightSum="1.2">
 
         <TableRow
             android:layout_width="match_parent"
@@ -18,22 +18,25 @@
             android:layout_weight="0.20">
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Rank"/>
+                android:text="rank"/>
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Score"/>
+                android:text="score"/>
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Percentage"/>
+                android:text="pct"/>
         </TableRow>
 
         <TableRow
@@ -43,6 +46,7 @@
 
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -50,6 +54,7 @@
 
             <TextView
                 android:id="@+id/FirstPlaceScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -57,6 +62,7 @@
 
             <TextView
                 android:id="@+id/FirstPlacePercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -69,6 +75,7 @@
             android:layout_weight="0.20">
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -76,6 +83,7 @@
 
             <TextView
                 android:id="@+id/SecondPlaceScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -83,6 +91,7 @@
 
             <TextView
                 android:id="@+id/SecondPlacePercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -95,6 +104,7 @@
             android:layout_weight="0.20">
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -102,6 +112,7 @@
 
             <TextView
                 android:id="@+id/ThirdPlaceScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -109,6 +120,7 @@
 
             <TextView
                 android:id="@+id/ThirdPlacePercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -121,6 +133,7 @@
             android:layout_weight="0.20">
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -128,6 +141,7 @@
 
             <TextView
                 android:id="@+id/FourthPlaceScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -135,6 +149,7 @@
 
             <TextView
                 android:id="@+id/FourthPlacePercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -147,6 +162,7 @@
             android:layout_weight="0.20">
 
             <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -154,6 +170,7 @@
 
             <TextView
                 android:id="@+id/FifthPlaceScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -161,6 +178,7 @@
 
             <TextView
                 android:id="@+id/FifthPlacePercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
