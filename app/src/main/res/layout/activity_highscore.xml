@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="rubenbaskaran.com.brainchallenge.Highscores.HighscoreActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/app_background">
 
     <TextView
         android:layout_width="match_parent"
@@ -28,14 +29,18 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:text="Local"
-            android:onClick="ShowLocalHighscore"/>
+            android:onClick="ShowLocalHighscore"
+            android:layout_margin="5dp"
+            android:background="@drawable/game_button_background"/>
         <Button
             android:id="@+id/ShowGlobalHighscoreButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:text="Global"
-            android:onClick="ShowGlobalHighscore"/>
+            android:onClick="ShowGlobalHighscore"
+            android:layout_margin="5dp"
+            android:background="@drawable/game_button_background"/>
     </LinearLayout>
 
 

@@ -7,7 +7,9 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="3">
+        android:columnCount="3"
+        android:layout_margin="6dp"
+        android:background="@drawable/highscore_background">
 
         <TextView
             android:id="@+id/editText0"

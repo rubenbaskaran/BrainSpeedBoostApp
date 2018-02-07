@@ -8,32 +8,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:stretchColumns="*"
-        android:weightSum="1.2">
+        android:weightSum="1.2"
+        android:layout_margin="6dp"
+        android:background="@drawable/highscore_background">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@drawable/table_cell_border">
+            android:layout_weight="0.20">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="Rank"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="Score"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="Percentage"/>
         </TableRow>
@@ -41,13 +39,12 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@drawable/table_cell_border">
+            android:layout_weight="0.20">
+
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="1st"/>
 
@@ -55,7 +52,6 @@
                 android:id="@+id/FirstPlaceScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="x out of x"/>
 
@@ -63,7 +59,6 @@
                 android:id="@+id/FirstPlacePercentage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="%"/>
         </TableRow>
@@ -71,13 +66,11 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@drawable/table_cell_border">
+            android:layout_weight="0.20">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="2nd"/>
 
@@ -85,7 +78,6 @@
                 android:id="@+id/SecondPlaceScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="x out of x"/>
 
@@ -93,7 +85,6 @@
                 android:id="@+id/SecondPlacePercentage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="%"/>
         </TableRow>
@@ -101,13 +92,11 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@drawable/table_cell_border">
+            android:layout_weight="0.20">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="3rd"/>
 
@@ -115,7 +104,6 @@
                 android:id="@+id/ThirdPlaceScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="x out of x"/>
 
@@ -123,7 +111,6 @@
                 android:id="@+id/ThirdPlacePercentage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="%"/>
         </TableRow>
@@ -131,13 +118,11 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@drawable/table_cell_border">
+            android:layout_weight="0.20">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="4th"/>
 
@@ -145,7 +130,6 @@
                 android:id="@+id/FourthPlaceScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="x out of x"/>
 
@@ -153,7 +137,6 @@
                 android:id="@+id/FourthPlacePercentage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="%"/>
         </TableRow>
@@ -161,13 +144,11 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@drawable/table_cell_border">
+            android:layout_weight="0.20">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="5th"/>
 
@@ -175,7 +156,6 @@
                 android:id="@+id/FifthPlaceScore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="x out of x"/>
 
@@ -183,7 +163,6 @@
                 android:id="@+id/FifthPlacePercentage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/table_cell_border"
                 android:gravity="center"
                 android:text="%"/>
         </TableRow>
