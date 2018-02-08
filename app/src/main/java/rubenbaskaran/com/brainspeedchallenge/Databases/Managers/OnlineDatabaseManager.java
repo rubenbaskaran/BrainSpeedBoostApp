@@ -5,6 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Contracts.DatabaseContract;
@@ -67,10 +70,9 @@ public class OnlineDatabaseManager
 
     public static void AddTestDataToFirebaseDatabase()
     {
-        //      FirebaseDatabase db = new FirebaseDatabase();
-        //      mFirebaseDatabase = FirebaseDatabase.getInstance();
-        //      myRef = mFirebaseDatabase.getReference();
-        //      myRef.child("Food").child("Favorite Foods").child(newFood).setValue("true");
+              FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+              DatabaseReference myRef = mFirebaseDatabase.getReference();
+              myRef.child("Food").child("Favorite Foods").child("newFood").setValue("true");
     }
 
     public boolean SaveNewScoreOnline(Score score)
