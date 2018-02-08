@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Highscores;
+package rubenbaskaran.com.brainspeedchallenge.Highscores;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Databases.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Models.Score;
-import rubenbaskaran.com.brainchallenge.R;
+import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Models.Score;
+import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class LocalHighscoreFragment extends Fragment
 {

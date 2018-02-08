@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Databases.Managers;
+package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,9 +9,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Databases.Contracts.DatabaseContract;
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Models.Score;
+import rubenbaskaran.com.brainspeedchallenge.Databases.Contracts.DatabaseContract;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
 /**
  * Created by Ruben on 17-01-2018.
@@ -19,6 +19,7 @@ import rubenbaskaran.com.brainchallenge.Models.Score;
 
 public class OnlineDatabaseManager extends SQLiteOpenHelper
 {
+    //region SQL statements
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "BrainSpeedChallengeDatabase.db";
 
@@ -62,12 +63,9 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
     private static final String SQL_DELETE_MULTIPLICATION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.MultiplicationHighscore.TABLE_NAME;
     private static final String SQL_DELETE_DIVISION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.DivisionHighscore.TABLE_NAME;
     private static final String SQL_DELETE_COLOR_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.ColorHighscore.TABLE_NAME;
+    //endregion
 
-    public OnlineDatabaseManager(Context context)
-    {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
+    //region SQLiteOpenHelper overrides
     @Override
     public void onCreate(SQLiteDatabase db)
     {
@@ -81,29 +79,22 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        DeleteTables(db);
         onCreate(db);
     }
+    //endregion
 
-    public void DeleteTables(SQLiteDatabase db)
+    public OnlineDatabaseManager(Context context)
     {
-        db.execSQL(SQL_DELETE_ADDITION_TABLE);
-        db.execSQL(SQL_DELETE_SUBTRACTION_TABLE);
-        db.execSQL(SQL_DELETE_MULTIPLICATION_TABLE);
-        db.execSQL(SQL_DELETE_DIVISION_TABLE);
-        db.execSQL(SQL_DELETE_COLOR_TABLE);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public void ResetDatabase()
+    public boolean SaveNewScoreOnline(Score score)
     {
-        SQLiteDatabase db = getWritableDatabase();
-        DeleteTables(db);
-        onCreate(db);
-    }
+        //        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        //        myRef = mFirebaseDatabase.getReference();
+        //        myRef.child("Food").child("Favorite Foods").child(newFood).setValue("true");
 
-    public boolean SaveNewScore(Score score)
-    {
-        ArrayList<Score> highscoreList = GetLocalHighscores(score.getGameType());
+        ArrayList<Score> highscoreList = GetOnlineHighscores(score.getGameType());
         boolean listIsFull = highscoreList.size() >= 5;
 
         if (listIsFull)
@@ -164,7 +155,7 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
 
         if (listIsFull)
         {
-            String[] arguments = {String.valueOf(highscoreList.get(highscoreList.size()-1).get_Id())};
+            String[] arguments = {String.valueOf(highscoreList.get(highscoreList.size() - 1).get_Id())};
             Log.e("SaveNewScore", "Deleting the lowest score on the top 5!");
             long returnValue = db.delete(table, rowColumnToDelete + " = ?", arguments);
 
@@ -188,22 +179,7 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
         return true;
     }
 
-    private boolean ValidateHighscore(Score newScore, ArrayList<Score> oldScores)
-    {
-        for (Score oldScore : oldScores)
-        {
-            if (newScore.getPercentage() > oldScore.getPercentage())
-                return true;
-            else if (newScore.getPercentage() == oldScore.getPercentage() && newScore.getAnsweredCorrectly() > oldScore.getAnsweredCorrectly())
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public ArrayList<Score> GetLocalHighscores(GameTypes gameType)
+    public ArrayList<Score> GetOnlineHighscores(GameTypes gameType)
     {
         String id = null;
         String tableName = null;
@@ -290,7 +266,7 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
 
         if (scores.isEmpty())
         {
-            Log.e("GetLocalHighscores", gameType.toString() + " highscores is empty");
+            Log.e("GetOnlineHighscores", gameType.toString() + " highscores is empty");
         }
 
         for (Score score : scores)
@@ -298,5 +274,20 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
             Log.e("Item: ", score.toString());
         }
         return scores;
+    }
+
+    private boolean ValidateHighscore(Score newScore, ArrayList<Score> oldScores)
+    {
+        for (Score oldScore : oldScores)
+        {
+            if (newScore.getPercentage() > oldScore.getPercentage())
+                return true;
+            else if (newScore.getPercentage() == oldScore.getPercentage() && newScore.getAnsweredCorrectly() > oldScore.getAnsweredCorrectly())
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

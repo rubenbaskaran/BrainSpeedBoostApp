@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="rubenbaskaran.com.brainchallenge.Menus.MainMenuActivity"
+    tools:context="rubenbaskaran.com.brainspeedchallenge.Menus.MainMenuActivity"
     android:background="@drawable/app_background">
 
     <Space

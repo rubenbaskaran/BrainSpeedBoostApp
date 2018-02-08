@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="rubenbaskaran.com.brainchallenge">
+          package="rubenbaskaran.com.brainspeedchallenge">
 
     <application
         android:allowBackup="true"
@@ -9,26 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menus.MainMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.MainMenuActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Games.NumbersGameActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Games.NumbersGameActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Highscores.HighscoreActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.NumbersMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.NumbersMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.AdditionMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.AdditionMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.SubtractionMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.SubtractionMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.MultiplicationMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.MultiplicationMenuActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Menus.DivisionMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.DivisionMenuActivity" android:screenOrientation="portrait">
         </activity>
     </application>
 

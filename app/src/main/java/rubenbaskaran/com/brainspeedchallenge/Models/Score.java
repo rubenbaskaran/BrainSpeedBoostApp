@@ -1,8 +1,8 @@
-package rubenbaskaran.com.brainchallenge.Models;
+package rubenbaskaran.com.brainspeedchallenge.Models;
 
 import java.io.Serializable;
 
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 
 /**
  * Created by Ruben on 17-01-2018.

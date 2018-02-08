@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Enums;
+package rubenbaskaran.com.brainspeedchallenge.Enums;
 
 /**
  * Created by Ruben on 20-01-2018.

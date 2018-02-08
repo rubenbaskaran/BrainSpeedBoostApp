@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rubenbaskaran.com.brainchallenge.Highscores.HighscoreActivity"
+    tools:context="rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity"
     android:orientation="vertical"
     android:weightSum="1"
     android:background="@drawable/app_background">

@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Games;
+package rubenbaskaran.com.brainspeedchallenge.Games;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,11 +16,11 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import rubenbaskaran.com.brainchallenge.Databases.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Highscores.HighscoreActivity;
-import rubenbaskaran.com.brainchallenge.Models.Score;
-import rubenbaskaran.com.brainchallenge.R;
+import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
+import rubenbaskaran.com.brainspeedchallenge.Models.Score;
+import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class NumbersGameActivity extends AppCompatActivity
 {

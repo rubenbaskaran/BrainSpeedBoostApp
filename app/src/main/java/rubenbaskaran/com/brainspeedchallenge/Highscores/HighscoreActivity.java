@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Highscores;
+package rubenbaskaran.com.brainspeedchallenge.Highscores;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.R;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class HighscoreActivity extends AppCompatActivity
 {

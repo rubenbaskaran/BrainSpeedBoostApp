@@ -1,14 +1,14 @@
-package rubenbaskaran.com.brainchallenge.Menus;
+package rubenbaskaran.com.brainspeedchallenge.Menus;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Games.NumbersGameActivity;
-import rubenbaskaran.com.brainchallenge.Highscores.HighscoreActivity;
-import rubenbaskaran.com.brainchallenge.R;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Games.NumbersGameActivity;
+import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
+import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class DivisionMenuActivity extends AppCompatActivity
 {

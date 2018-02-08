@@ -1,11 +1,11 @@
-package rubenbaskaran.com.brainchallenge.Menus;
+package rubenbaskaran.com.brainspeedchallenge.Menus;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import rubenbaskaran.com.brainchallenge.R;
+import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class NumbersMenuActivity extends AppCompatActivity
 {

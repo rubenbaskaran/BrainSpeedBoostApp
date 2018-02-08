@@ -1,4 +1,4 @@
-package rubenbaskaran.com.brainchallenge.Databases.Managers;
+package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,9 +9,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import rubenbaskaran.com.brainchallenge.Databases.Contracts.DatabaseContract;
-import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainchallenge.Models.Score;
+import rubenbaskaran.com.brainspeedchallenge.Databases.Contracts.DatabaseContract;
+import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
 /**
  * Created by Ruben on 17-01-2018.
