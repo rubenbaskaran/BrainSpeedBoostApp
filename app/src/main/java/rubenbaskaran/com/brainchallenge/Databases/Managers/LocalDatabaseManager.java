@@ -103,7 +103,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
 
     public boolean SaveNewScore(Score score)
     {
-        ArrayList<Score> highscoreList = GetLocalHighscores(score.GameType);
+        ArrayList<Score> highscoreList = GetLocalHighscores(score.getGameType());
         boolean listIsFull = highscoreList.size() >= 5;
 
         if (listIsFull)
@@ -121,41 +121,41 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         String table = "";
         String rowColumnToDelete = null;
 
-        switch (score.GameType)
+        switch (score.getGameType())
         {
             case Addition:
                 table = DatabaseContract.AdditionHighscore.TABLE_NAME;
-                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.AnsweredCorrectly);
-                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED, score.Answered);
-                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE, score.Percentage);
+                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
+                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
+                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
                 rowColumnToDelete = DatabaseContract.AdditionHighscore._ID;
                 break;
             case Subtraction:
                 table = DatabaseContract.SubtractionHighscore.TABLE_NAME;
-                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.AnsweredCorrectly);
-                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED, score.Answered);
-                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE, score.Percentage);
+                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
+                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
+                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
                 rowColumnToDelete = DatabaseContract.SubtractionHighscore._ID;
                 break;
             case Multiplication:
                 table = DatabaseContract.MultiplicationHighscore.TABLE_NAME;
-                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.AnsweredCorrectly);
-                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED, score.Answered);
-                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE, score.Percentage);
+                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
+                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
+                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
                 rowColumnToDelete = DatabaseContract.MultiplicationHighscore._ID;
                 break;
             case Division:
                 table = DatabaseContract.DivisionHighscore.TABLE_NAME;
-                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.AnsweredCorrectly);
-                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED, score.Answered);
-                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE, score.Percentage);
+                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
+                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
+                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
                 rowColumnToDelete = DatabaseContract.DivisionHighscore._ID;
                 break;
             case Color:
                 table = DatabaseContract.ColorHighscore.TABLE_NAME;
-                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.AnsweredCorrectly);
-                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED, score.Answered);
-                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE, score.Percentage);
+                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
+                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
+                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
                 rowColumnToDelete = DatabaseContract.ColorHighscore._ID;
                 break;
         }
@@ -164,7 +164,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
 
         if (listIsFull)
         {
-            String[] arguments = {String.valueOf(highscoreList.get(highscoreList.size()-1)._Id)};
+            String[] arguments = {String.valueOf(highscoreList.get(highscoreList.size()-1).get_Id())};
             Log.e("SaveNewScore", "Deleting the lowest score on the top 5!");
             long returnValue = db.delete(table, rowColumnToDelete + " = ?", arguments);
 
@@ -192,9 +192,9 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
     {
         for (Score oldScore : oldScores)
         {
-            if (newScore.Percentage > oldScore.Percentage)
+            if (newScore.getPercentage() > oldScore.getPercentage())
                 return true;
-            else if (newScore.Percentage == oldScore.Percentage && newScore.AnsweredCorrectly > oldScore.AnsweredCorrectly)
+            else if (newScore.getPercentage() == oldScore.getPercentage() && newScore.getAnsweredCorrectly() > oldScore.getAnsweredCorrectly())
             {
                 return true;
             }

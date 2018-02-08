@@ -176,24 +176,24 @@ public class NumbersGameActivity extends AppCompatActivity
         switch (gameType)
         {
             case Addition:
-                score.GameType = GameTypes.Addition;
+                score.setGameType(GameTypes.Addition);
                 break;
             case Subtraction:
-                score.GameType = GameTypes.Subtraction;
+                score.setGameType(GameTypes.Subtraction);
                 break;
             case Multiplication:
-                score.GameType = GameTypes.Multiplication;
+                score.setGameType(GameTypes.Multiplication);
                 break;
             case Division:
-                score.GameType = GameTypes.Division;
+                score.setGameType(GameTypes.Division);
                 break;
         }
-        score.Answered = questionsAnswered;
-        score.AnsweredCorrectly = answeredCorrectly;
+        score.setAnswered(questionsAnswered);
+        score.setAnsweredCorrectly(answeredCorrectly);
         DecimalFormat decimalFormat = new DecimalFormat();
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         decimalFormat.setMaximumFractionDigits(0);
-        score.Percentage = questionsAnswered == 0 ? 0 : Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100));
+        score.setPercentage(questionsAnswered == 0 ? 0 : Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100)));
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         return localDatabaseManager.SaveNewScore(score);

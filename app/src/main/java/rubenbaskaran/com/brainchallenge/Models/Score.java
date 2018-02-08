@@ -10,11 +10,11 @@ import rubenbaskaran.com.brainchallenge.Enums.GameTypes;
 
 public class Score implements Serializable
 {
-    public Integer _Id;
-    public GameTypes GameType;
-    public int Answered;
-    public int AnsweredCorrectly;
-    public int Percentage;
+    private Integer _Id;
+    private GameTypes GameType;
+    private int Answered;
+    private int AnsweredCorrectly;
+    private int Percentage;
 
     public Score()
     {
@@ -47,5 +47,55 @@ public class Score implements Serializable
                 ", AnsweredCorrectly=" + AnsweredCorrectly +
                 ", Percentage=" + Percentage +
                 '}';
+    }
+
+    public Integer get_Id()
+    {
+        return _Id;
+    }
+
+    public void set_Id(Integer _Id)
+    {
+        this._Id = _Id;
+    }
+
+    public GameTypes getGameType()
+    {
+        return GameType;
+    }
+
+    public void setGameType(GameTypes gameType)
+    {
+        GameType = gameType;
+    }
+
+    public int getAnswered()
+    {
+        return Answered;
+    }
+
+    public void setAnswered(int answered)
+    {
+        Answered = answered;
+    }
+
+    public int getAnsweredCorrectly()
+    {
+        return AnsweredCorrectly;
+    }
+
+    public void setAnsweredCorrectly(int answeredCorrectly)
+    {
+        AnsweredCorrectly = answeredCorrectly;
+    }
+
+    public int getPercentage()
+    {
+        return Percentage;
+    }
+
+    public void setPercentage(int percentage)
+    {
+        Percentage = percentage;
     }
 }
