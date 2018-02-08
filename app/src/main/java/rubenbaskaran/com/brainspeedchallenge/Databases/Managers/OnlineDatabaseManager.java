@@ -1,10 +1,8 @@
 package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ import rubenbaskaran.com.brainspeedchallenge.Models.Score;
  * Created by Ruben on 17-01-2018.
  */
 
-public class OnlineDatabaseManager extends SQLiteOpenHelper
+public class OnlineDatabaseManager
 {
     //region SQL statements
     public static final int DATABASE_VERSION = 1;
@@ -65,35 +63,18 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
     private static final String SQL_DELETE_COLOR_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.ColorHighscore.TABLE_NAME;
     //endregion
 
-    //region SQLiteOpenHelper overrides
-    @Override
-    public void onCreate(SQLiteDatabase db)
-    {
-        db.execSQL(SQL_CREATE_ADDITION_TABLE);
-        db.execSQL(SQL_CREATE_SUBTRACTION_TABLE);
-        db.execSQL(SQL_CREATE_MULTIPLICATION_TABLE);
-        db.execSQL(SQL_CREATE_DIVISION_TABLE);
-        db.execSQL(SQL_CREATE_COLOR_TABLE);
-    }
+    public OnlineDatabaseManager(){}
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
+    public static void AddTestDataToFirebaseDatabase()
     {
-        onCreate(db);
-    }
-    //endregion
-
-    public OnlineDatabaseManager(Context context)
-    {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        //      FirebaseDatabase db = new FirebaseDatabase();
+        //      mFirebaseDatabase = FirebaseDatabase.getInstance();
+        //      myRef = mFirebaseDatabase.getReference();
+        //      myRef.child("Food").child("Favorite Foods").child(newFood).setValue("true");
     }
 
     public boolean SaveNewScoreOnline(Score score)
     {
-        //        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        //        myRef = mFirebaseDatabase.getReference();
-        //        myRef.child("Food").child("Favorite Foods").child(newFood).setValue("true");
-
         ArrayList<Score> highscoreList = GetOnlineHighscores(score.getGameType());
         boolean listIsFull = highscoreList.size() >= 5;
 
@@ -151,7 +132,7 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
                 break;
         }
 
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = null; // getWritableDatabase();
 
         if (listIsFull)
         {
@@ -234,7 +215,7 @@ public class OnlineDatabaseManager extends SQLiteOpenHelper
                         PercentageColumn
                 };
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = null; // getReadableDatabase();
         Cursor cursor = db.query(
                 tableName,
                 projection,
