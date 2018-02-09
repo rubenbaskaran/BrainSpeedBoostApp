@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.OnlineDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.R;
 
@@ -18,6 +20,9 @@ public class MainMenuActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        OnlineDatabaseManager.AddTestDataToFirebaseDatabase();
+        Log.e("TestData", "Sent to Firebase");
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         localDatabaseManager.GetLocalHighscores(GameTypes.Addition);

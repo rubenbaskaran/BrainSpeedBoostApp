@@ -72,7 +72,7 @@ public class OnlineDatabaseManager
     {
               FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
               DatabaseReference myRef = mFirebaseDatabase.getReference();
-              myRef.child("Food").child("Favorite Foods").child("newFood").setValue("true");
+              myRef.child("Food").child("Burger").child("Meat").setValue("true");
     }
 
     public boolean SaveNewScoreOnline(Score score)
