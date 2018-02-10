@@ -5,8 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -66,13 +69,54 @@ public class OnlineDatabaseManager
     private static final String SQL_DELETE_COLOR_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.ColorHighscore.TABLE_NAME;
     //endregion
 
-    public OnlineDatabaseManager(){}
+    FirebaseDatabase firebaseDatabase;
 
-    public static void AddTestDataToFirebaseDatabase()
+    public OnlineDatabaseManager()
     {
-              FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
-              DatabaseReference myRef = mFirebaseDatabase.getReference();
-              myRef.child("Food").child("Burger").child("Meat").setValue("true");
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference rootRef = firebaseDatabase.getReference();
+
+        for (int i = 1; i < 11; i++)
+        {
+            String gametype = i <= 5 ? "0" : "1";
+            String value = String.valueOf(i);
+
+            rootRef.child("Highscores").child("Addition").child("Score" + value).child("_Id").setValue(value);
+            rootRef.child("Highscores").child("Addition").child("Score" + value).child("GameType").setValue(gametype);
+            rootRef.child("Highscores").child("Addition").child("Score" + value).child("Answered").setValue(value);
+            rootRef.child("Highscores").child("Addition").child("Score" + value).child("AnsweredCorrectly").setValue(value);
+            rootRef.child("Highscores").child("Addition").child("Score" + value).child("Percentage").setValue(value);
+        }
+    }
+
+    public void ReadFromFirebase()
+    {
+        DatabaseReference additionRef = firebaseDatabase.getReference("Highscores").child("Addition");
+        additionRef.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    Score score = new Score();
+
+                    score.set_Id(Integer.parseInt(snapshot.child("_Id").getValue(String.class)));
+                    score.setGameType(GameTypes.values()[Integer.parseInt(snapshot.child("GameType").getValue(String.class))]);
+                    score.setAnswered(Integer.parseInt(snapshot.child("Answered").getValue(String.class)));
+                    score.setAnsweredCorrectly(Integer.parseInt(snapshot.child("AnsweredCorrectly").getValue(String.class)));
+                    score.setPercentage(Integer.parseInt(snapshot.child("Percentage").getValue(String.class)));
+
+                    Log.e("Score", score.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+
+            }
+        });
     }
 
     public boolean SaveNewScoreOnline(Score score)

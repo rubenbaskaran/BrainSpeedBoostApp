@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,8 +20,9 @@ public class MainMenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        OnlineDatabaseManager.AddTestDataToFirebaseDatabase();
-        Log.e("TestData", "Sent to Firebase");
+        // TODO: Remove after test
+        OnlineDatabaseManager onlineDb = new OnlineDatabaseManager();
+        onlineDb.ReadFromFirebase();
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         localDatabaseManager.GetLocalHighscores(GameTypes.Addition);
