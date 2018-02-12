@@ -290,7 +290,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
 
         if (scores.isEmpty())
         {
-            Log.e("GetLocalHighscores", gameType.toString() + " highscores is empty");
+            Log.e("GetLocalHighscores", gameType.toString() + " highscores list is empty");
         }
 
         for (Score score : scores)

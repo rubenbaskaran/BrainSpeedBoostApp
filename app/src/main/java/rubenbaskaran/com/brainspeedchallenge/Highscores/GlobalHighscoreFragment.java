@@ -2,6 +2,7 @@ package rubenbaskaran.com.brainspeedchallenge.Highscores;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,13 +72,14 @@ public class GlobalHighscoreFragment extends Fragment
 
     public void ShowScore(ArrayList<Score> highscores)
     {
-        Collections.reverse(highscores);
         if (highscores.size() == 0)
         {
+            Log.e("GetOnlineHighscores", getGameType().toString() + " highscore list is empty");
             Toast.makeText(HighscoreActivity.context, "Highscores list is emtpy", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        Collections.reverse(highscores);
         if (highscores.size() > 0)
         {
             Score score = highscores.get(0);

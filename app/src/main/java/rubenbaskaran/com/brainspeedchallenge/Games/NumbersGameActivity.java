@@ -17,6 +17,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
+import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.OnlineDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainspeedchallenge.Models.Score;
@@ -194,6 +195,9 @@ public class NumbersGameActivity extends AppCompatActivity
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         decimalFormat.setMaximumFractionDigits(0);
         score.setPercentage(questionsAnswered == 0 ? 0 : Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100)));
+
+        OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
+        onlineDatabaseManager.SaveNewScoreOnline(score);
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         return localDatabaseManager.SaveNewScore(score);
