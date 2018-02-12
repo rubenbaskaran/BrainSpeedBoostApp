@@ -22,7 +22,6 @@ public class MainMenuActivity extends AppCompatActivity
 
         // TODO: Remove after test
         OnlineDatabaseManager onlineDb = new OnlineDatabaseManager();
-        onlineDb.ReadFromFirebase();
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         localDatabaseManager.GetLocalHighscores(GameTypes.Addition);

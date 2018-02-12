@@ -1,6 +1,5 @@
 package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -9,6 +8,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -23,91 +23,73 @@ import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
 public class OnlineDatabaseManager
 {
-    //region SQL statements
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "BrainSpeedChallengeDatabase.db";
-
-    private static final String SQL_CREATE_ADDITION_TABLE =
-            "CREATE TABLE " + DatabaseContract.AdditionHighscore.TABLE_NAME + " (" +
-                    DatabaseContract.AdditionHighscore._ID + " INTEGER PRIMARY KEY," +
-                    DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
-                    DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
-
-    private static final String SQL_CREATE_SUBTRACTION_TABLE =
-            "CREATE TABLE " + DatabaseContract.SubtractionHighscore.TABLE_NAME + " (" +
-                    DatabaseContract.SubtractionHighscore._ID + " INTEGER PRIMARY KEY," +
-                    DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
-                    DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
-
-    private static final String SQL_CREATE_MULTIPLICATION_TABLE =
-            "CREATE TABLE " + DatabaseContract.MultiplicationHighscore.TABLE_NAME + " (" +
-                    DatabaseContract.MultiplicationHighscore._ID + " INTEGER PRIMARY KEY," +
-                    DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
-                    DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
-
-    private static final String SQL_CREATE_DIVISION_TABLE =
-            "CREATE TABLE " + DatabaseContract.DivisionHighscore.TABLE_NAME + " (" +
-                    DatabaseContract.DivisionHighscore._ID + " INTEGER PRIMARY KEY," +
-                    DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
-                    DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
-
-    private static final String SQL_CREATE_COLOR_TABLE =
-            "CREATE TABLE " + DatabaseContract.ColorHighscore.TABLE_NAME + " (" +
-                    DatabaseContract.ColorHighscore._ID + " INTEGER PRIMARY KEY," +
-                    DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED_CORRECTLY + " INTEGER," +
-                    DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED + " INTEGER," +
-                    DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE + " INTEGER)";
-
-    private static final String SQL_DELETE_ADDITION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.AdditionHighscore.TABLE_NAME;
-    private static final String SQL_DELETE_SUBTRACTION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.SubtractionHighscore.TABLE_NAME;
-    private static final String SQL_DELETE_MULTIPLICATION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.MultiplicationHighscore.TABLE_NAME;
-    private static final String SQL_DELETE_DIVISION_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.DivisionHighscore.TABLE_NAME;
-    private static final String SQL_DELETE_COLOR_TABLE = "DROP TABLE IF EXISTS " + DatabaseContract.ColorHighscore.TABLE_NAME;
-    //endregion
-
     FirebaseDatabase firebaseDatabase;
 
     public OnlineDatabaseManager()
     {
         firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference rootRef = firebaseDatabase.getReference();
 
-        for (int i = 1; i < 11; i++)
-        {
-            String gametype = i <= 5 ? "0" : "1";
-            String value = String.valueOf(i);
-
-            rootRef.child("Highscores").child("Addition").child("Score" + value).child("_Id").setValue(value);
-            rootRef.child("Highscores").child("Addition").child("Score" + value).child("GameType").setValue(gametype);
-            rootRef.child("Highscores").child("Addition").child("Score" + value).child("Answered").setValue(value);
-            rootRef.child("Highscores").child("Addition").child("Score" + value).child("AnsweredCorrectly").setValue(value);
-            rootRef.child("Highscores").child("Addition").child("Score" + value).child("Percentage").setValue(value);
-        }
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 0, 0));
+        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 1, 10));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 2, 20));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 3, 30));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 4, 40));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 5, 50));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 6, 60));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 7, 70));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 8, 80));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 9, 90));
+//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 10, 100));
     }
 
-    public void ReadFromFirebase()
+    public boolean SaveNewScoreOnline(final Score score)
     {
-        DatabaseReference additionRef = firebaseDatabase.getReference("Highscores").child("Addition");
-        additionRef.addListenerForSingleValueEvent(new ValueEventListener()
+        final ArrayList<Score> highscoreList = new ArrayList<>();
+        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(score.getGameType().toString());
+        Query myQuery = highscoresGameTypeReference.orderByValue();
+        myQuery.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
+                    Log.e("Existing item", snapshot.toString());
                     Score score = new Score();
 
-                    score.set_Id(Integer.parseInt(snapshot.child("_Id").getValue(String.class)));
-                    score.setGameType(GameTypes.values()[Integer.parseInt(snapshot.child("GameType").getValue(String.class))]);
-                    score.setAnswered(Integer.parseInt(snapshot.child("Answered").getValue(String.class)));
-                    score.setAnsweredCorrectly(Integer.parseInt(snapshot.child("AnsweredCorrectly").getValue(String.class)));
-                    score.setPercentage(Integer.parseInt(snapshot.child("Percentage").getValue(String.class)));
+                    score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
+                    score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
+                    score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
+                    score.setAnsweredCorrectly((snapshot.child("answeredCorrectly").getValue(Long.class)).intValue());
+                    score.setPercentage((snapshot.child("percentage").getValue(Long.class)).intValue());
 
-                    Log.e("Score", score.toString());
+                    highscoreList.add(score);
+                }
+
+                boolean listIsFull = highscoreList.size() >= 5;
+                Log.e("ListIsFull", String.valueOf(listIsFull));
+                String scoreKey;
+
+                if (listIsFull)
+                {
+                    Log.e("SaveNewScore", "List is full!");
+                    if (!ValidateHighscore(score, highscoreList))
+                    {
+                        Log.e("SaveNewScore", "Not a new highscore - Returning!");
+                        return;
+                    }
+                    Log.e("SaveNewScore", "New highscore!");
+                    Log.e("SaveNewScore", "Overwriting the lowest score on the top 5!");
+                    score.set_Id(5); // TODO: Should be the lowest score instead of just the 5th
+                    firebaseDatabase.getReference().child(score.getGameType().toString()).child("5").setValue(score);
+                }
+                else
+                {
+                    scoreKey = String.valueOf(highscoreList.size() + 1);
+                    Log.e("ScoreKey", scoreKey);
+                    score.set_Id(Integer.valueOf(scoreKey));
+                    Log.e("SaveNewScore", "List has less than 5 rows. No need to overwrite existing one!");
+                    firebaseDatabase.getReference().child(score.getGameType().toString()).child(scoreKey).setValue(score);
                 }
             }
 
@@ -117,97 +99,14 @@ public class OnlineDatabaseManager
 
             }
         });
-    }
-
-    public boolean SaveNewScoreOnline(Score score)
-    {
-        ArrayList<Score> highscoreList = GetOnlineHighscores(score.getGameType());
-        boolean listIsFull = highscoreList.size() >= 5;
-
-        if (listIsFull)
-        {
-            Log.e("SaveNewScore", "List is full!");
-            if (!ValidateHighscore(score, highscoreList))
-            {
-                Log.e("SaveNewScore", "Not a new highscore - Returning!");
-                return false;
-            }
-            Log.e("SaveNewScore", "New highscore!");
-        }
-
-        ContentValues values = new ContentValues();
-        String table = "";
-        String rowColumnToDelete = null;
-
-        switch (score.getGameType())
-        {
-            case Addition:
-                table = DatabaseContract.AdditionHighscore.TABLE_NAME;
-                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
-                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
-                values.put(DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
-                rowColumnToDelete = DatabaseContract.AdditionHighscore._ID;
-                break;
-            case Subtraction:
-                table = DatabaseContract.SubtractionHighscore.TABLE_NAME;
-                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
-                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
-                values.put(DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
-                rowColumnToDelete = DatabaseContract.SubtractionHighscore._ID;
-                break;
-            case Multiplication:
-                table = DatabaseContract.MultiplicationHighscore.TABLE_NAME;
-                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
-                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
-                values.put(DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
-                rowColumnToDelete = DatabaseContract.MultiplicationHighscore._ID;
-                break;
-            case Division:
-                table = DatabaseContract.DivisionHighscore.TABLE_NAME;
-                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
-                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
-                values.put(DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
-                rowColumnToDelete = DatabaseContract.DivisionHighscore._ID;
-                break;
-            case Color:
-                table = DatabaseContract.ColorHighscore.TABLE_NAME;
-                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED_CORRECTLY, score.getAnsweredCorrectly());
-                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED, score.getAnswered());
-                values.put(DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE, score.getPercentage());
-                rowColumnToDelete = DatabaseContract.ColorHighscore._ID;
-                break;
-        }
-
-        SQLiteDatabase db = null; // getWritableDatabase();
-
-        if (listIsFull)
-        {
-            String[] arguments = {String.valueOf(highscoreList.get(highscoreList.size() - 1).get_Id())};
-            Log.e("SaveNewScore", "Deleting the lowest score on the top 5!");
-            long returnValue = db.delete(table, rowColumnToDelete + " = ?", arguments);
-
-            if (returnValue == -1)
-            {
-                Log.e("Error", "Couldn't delete record from local database");
-            }
-        }
-        else
-        {
-            Log.e("SaveNewScore", "List has less than 5 rows. No need to delete existing ones!");
-        }
-
-        long returnValue = db.insert(table, null, values);
-
-        if (returnValue == -1)
-        {
-            Log.e("Error", "Couldn't save record to local database");
-        }
 
         return true;
     }
 
     public ArrayList<Score> GetOnlineHighscores(GameTypes gameType)
     {
+        // TODO: ADD LOADING ANIMATION BEFORE AND AFTER
+
         String id = null;
         String tableName = null;
         String AnsweredCorrectlyColumn = null;
