@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.OnlineDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
@@ -67,7 +68,7 @@ public class GlobalHighscoreFragment extends Fragment
 
     public void ShowScore(ArrayList<Score> highscores)
     {
-        // TODO: Reverse list
+        Collections.reverse(highscores);
         if (highscores.size() == 0)
         {
             Toast.makeText(HighscoreActivity.context, "Highscores list is emtpy", Toast.LENGTH_SHORT).show();
