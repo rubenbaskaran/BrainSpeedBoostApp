@@ -31,6 +31,8 @@ public class OnlineDatabaseManager
 
     public boolean SaveNewScoreOnline(final Score score)
     {
+        // TODO: Implement concurrent handling
+
         final ArrayList<Score> highscoreList = new ArrayList<>();
         DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(score.getGameType().toString());
         Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
