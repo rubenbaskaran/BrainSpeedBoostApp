@@ -106,8 +106,6 @@ public class OnlineDatabaseManager
 
     public void GetOnlineHighscores(final GlobalHighscoreFragment globalHighscoreFragment)
     {
-        // TODO: Add loading animation
-
         final ArrayList<Score> highscoreList = new ArrayList<>();
         DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(globalHighscoreFragment.getGameType().toString());
         Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
@@ -144,7 +142,6 @@ public class OnlineDatabaseManager
                 });
 
                 globalHighscoreFragment.ShowScore(highscoreList);
-                // TODO: Remove loading animation
             }
 
             @Override

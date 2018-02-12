@@ -61,7 +61,10 @@ public class GlobalHighscoreFragment extends Fragment
         fifthPlaceGlobalPercentage = view.findViewById(R.id.FifthPlaceGlobalPercentage);
 
         OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
+
+        // TODO: Add loading animation
         onlineDatabaseManager.GetOnlineHighscores(this);
+        // TODO: Remove loading animation
 
         return view;
     }
