@@ -12,6 +12,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Contracts.DatabaseContract;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
@@ -28,25 +30,14 @@ public class OnlineDatabaseManager
     public OnlineDatabaseManager()
     {
         firebaseDatabase = FirebaseDatabase.getInstance();
-
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 0, 0));
-        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 1, 10));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 2, 20));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 3, 30));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 4, 40));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 5, 50));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 6, 60));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 7, 70));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 8, 80));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 9, 90));
-//        SaveNewScoreOnline(new Score(GameTypes.Addition, 10, 10, 100));
+        SaveNewScoreOnline(new Score(GameTypes.Addition, 21, 21, 100));
     }
 
     public boolean SaveNewScoreOnline(final Score score)
     {
         final ArrayList<Score> highscoreList = new ArrayList<>();
         DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(score.getGameType().toString());
-        Query myQuery = highscoresGameTypeReference.orderByValue();
+        Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
         myQuery.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
@@ -67,28 +58,39 @@ public class OnlineDatabaseManager
                 }
 
                 boolean listIsFull = highscoreList.size() >= 5;
-                Log.e("ListIsFull", String.valueOf(listIsFull));
-                String scoreKey;
-
                 if (listIsFull)
                 {
-                    Log.e("SaveNewScore", "List is full!");
+                    Log.e("SaveNewScoreOnline", "List is full!");
                     if (!ValidateHighscore(score, highscoreList))
                     {
-                        Log.e("SaveNewScore", "Not a new highscore - Returning!");
+                        Log.e("SaveNewScoreOnline", "Not a new highscore - Returning!");
                         return;
                     }
-                    Log.e("SaveNewScore", "New highscore!");
-                    Log.e("SaveNewScore", "Overwriting the lowest score on the top 5!");
-                    score.set_Id(5); // TODO: Should be the lowest score instead of just the 5th
-                    firebaseDatabase.getReference().child(score.getGameType().toString()).child("5").setValue(score);
+                    Log.e("SaveNewScoreOnline", "New highscore!");
+                    Log.e("SaveNewScoreOnline", "Overwriting the lowest score on the top 5!");
+
+                    Collections.sort(highscoreList, new Comparator<Score>()
+                    {
+                        @Override
+                        public int compare(Score o1, Score o2)
+                        {
+                            if (o1.getPercentage() > o2.getPercentage())
+                                return 1;
+                            if (o1.getPercentage() < o2.getPercentage())
+                                return -1;
+                            return 0;
+                        }
+                    });
+
+                    score.set_Id(highscoreList.get(0).get_Id());
+                    firebaseDatabase.getReference().child(score.getGameType().toString()).child(String.valueOf(score.get_Id())).setValue(score);
                 }
                 else
                 {
-                    scoreKey = String.valueOf(highscoreList.size() + 1);
+                    String scoreKey = String.valueOf(highscoreList.size() + 1);
                     Log.e("ScoreKey", scoreKey);
                     score.set_Id(Integer.valueOf(scoreKey));
-                    Log.e("SaveNewScore", "List has less than 5 rows. No need to overwrite existing one!");
+                    Log.e("SaveNewScoreOnline", "List has less than 5 rows. No need to overwrite existing one!");
                     firebaseDatabase.getReference().child(score.getGameType().toString()).child(scoreKey).setValue(score);
                 }
             }
