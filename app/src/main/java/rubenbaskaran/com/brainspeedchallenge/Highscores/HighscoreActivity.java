@@ -20,6 +20,7 @@ public class HighscoreActivity extends AppCompatActivity
     FragmentManager fragmentManager;
     public static Context context;
     LocalHighscoreFragment localHighscoreFragment;
+    GameTypes gameTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,7 +30,7 @@ public class HighscoreActivity extends AppCompatActivity
         context = getApplicationContext();
 
         Intent receivedIntent = getIntent();
-        GameTypes gameTypes = (GameTypes) receivedIntent.getSerializableExtra("gametype");
+        gameTypes = (GameTypes) receivedIntent.getSerializableExtra("gametype");
         Boolean newHighscore = receivedIntent.getBooleanExtra("newhighscore", false);
 
         ShowLocalHighscoreButton = findViewById(R.id.ShowLocalHighscoreButton);
@@ -51,7 +52,6 @@ public class HighscoreActivity extends AppCompatActivity
         }
     }
 
-
     public void ShowLocalHighscore(View view)
     {
         ShowLocalHighscoreButton.setEnabled(false);
@@ -66,6 +66,7 @@ public class HighscoreActivity extends AppCompatActivity
         ShowGlobalHighscoreButton.setEnabled(false);
         ShowLocalHighscoreButton.setEnabled(true);
         GlobalHighscoreFragment globalHighscoreFragment = new GlobalHighscoreFragment();
+        globalHighscoreFragment.setGameType(gameTypes);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, globalHighscoreFragment, null);
         fragmentTransaction.commit();

@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
+import rubenbaskaran.com.brainspeedchallenge.Highscores.GlobalHighscoreFragment;
 import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
 /**
@@ -103,12 +104,12 @@ public class OnlineDatabaseManager
         return true;
     }
 
-    public void ShowOnlineHighscores(GameTypes gameType)
+    public void GetOnlineHighscores(final GlobalHighscoreFragment globalHighscoreFragment)
     {
         // TODO: Add loading animation
 
         final ArrayList<Score> highscoreList = new ArrayList<>();
-        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(gameType.toString());
+        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(globalHighscoreFragment.getGameType().toString());
         Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
         myQuery.addListenerForSingleValueEvent(new ValueEventListener()
         {
@@ -142,7 +143,7 @@ public class OnlineDatabaseManager
                     }
                 });
 
-                // TODO: Set scores in UI from here
+                globalHighscoreFragment.ShowScore(highscoreList);
                 // TODO: Remove loading animation
             }
 
