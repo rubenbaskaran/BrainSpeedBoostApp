@@ -1,7 +1,5 @@
 package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import rubenbaskaran.com.brainspeedchallenge.Databases.Contracts.DatabaseContract;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
@@ -30,7 +27,6 @@ public class OnlineDatabaseManager
     public OnlineDatabaseManager()
     {
         firebaseDatabase = FirebaseDatabase.getInstance();
-        SaveNewScoreOnline(new Score(GameTypes.Addition, 21, 21, 100));
     }
 
     public boolean SaveNewScoreOnline(final Score score)
@@ -105,103 +101,55 @@ public class OnlineDatabaseManager
         return true;
     }
 
-    public ArrayList<Score> GetOnlineHighscores(GameTypes gameType)
+    public void ShowOnlineHighscores(GameTypes gameType)
     {
-        // TODO: ADD LOADING ANIMATION BEFORE AND AFTER
+        // TODO: Add loading animation
 
-        String id = null;
-        String tableName = null;
-        String AnsweredCorrectlyColumn = null;
-        String AnsweredColumn = null;
-        String PercentageColumn = null;
-
-        switch (gameType)
+        final ArrayList<Score> highscoreList = new ArrayList<>();
+        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(gameType.toString());
+        Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
+        myQuery.addListenerForSingleValueEvent(new ValueEventListener()
         {
-            case Addition:
-                id = DatabaseContract.AdditionHighscore._ID;
-                tableName = DatabaseContract.AdditionHighscore.TABLE_NAME;
-                AnsweredCorrectlyColumn = DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY;
-                AnsweredColumn = DatabaseContract.AdditionHighscore.COLUMN_NAME_ANSWERED;
-                PercentageColumn = DatabaseContract.AdditionHighscore.COLUMN_NAME_PERCENTAGE;
-                break;
-            case Subtraction:
-                id = DatabaseContract.SubtractionHighscore._ID;
-                tableName = DatabaseContract.SubtractionHighscore.TABLE_NAME;
-                AnsweredCorrectlyColumn = DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY;
-                AnsweredColumn = DatabaseContract.SubtractionHighscore.COLUMN_NAME_ANSWERED;
-                PercentageColumn = DatabaseContract.SubtractionHighscore.COLUMN_NAME_PERCENTAGE;
-                break;
-            case Multiplication:
-                id = DatabaseContract.MultiplicationHighscore._ID;
-                tableName = DatabaseContract.MultiplicationHighscore.TABLE_NAME;
-                AnsweredCorrectlyColumn = DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED_CORRECTLY;
-                AnsweredColumn = DatabaseContract.MultiplicationHighscore.COLUMN_NAME_ANSWERED;
-                PercentageColumn = DatabaseContract.MultiplicationHighscore.COLUMN_NAME_PERCENTAGE;
-                break;
-            case Division:
-                id = DatabaseContract.DivisionHighscore._ID;
-                tableName = DatabaseContract.DivisionHighscore.TABLE_NAME;
-                AnsweredCorrectlyColumn = DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED_CORRECTLY;
-                AnsweredColumn = DatabaseContract.DivisionHighscore.COLUMN_NAME_ANSWERED;
-                PercentageColumn = DatabaseContract.DivisionHighscore.COLUMN_NAME_PERCENTAGE;
-                break;
-            case Color:
-                id = DatabaseContract.ColorHighscore._ID;
-                tableName = DatabaseContract.ColorHighscore.TABLE_NAME;
-                AnsweredCorrectlyColumn = DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED_CORRECTLY;
-                AnsweredColumn = DatabaseContract.ColorHighscore.COLUMN_NAME_ANSWERED;
-                PercentageColumn = DatabaseContract.ColorHighscore.COLUMN_NAME_PERCENTAGE;
-                break;
-        }
-
-        String[] projection =
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
-                        id,
-                        AnsweredCorrectlyColumn,
-                        AnsweredColumn,
-                        PercentageColumn
-                };
+                    Log.e("Existing item", snapshot.toString());
+                    Score score = new Score();
 
-        SQLiteDatabase db = null; // getReadableDatabase();
-        Cursor cursor = db.query(
-                tableName,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                PercentageColumn + " DESC," + AnsweredCorrectlyColumn + " DESC;"
-        );
+                    score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
+                    score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
+                    score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
+                    score.setAnsweredCorrectly((snapshot.child("answeredCorrectly").getValue(Long.class)).intValue());
+                    score.setPercentage((snapshot.child("percentage").getValue(Long.class)).intValue());
 
-        ArrayList<Score> scores = new ArrayList<>();
-        while (cursor.moveToNext())
-        {
-            Integer _ID = cursor.getInt(cursor.getColumnIndexOrThrow(id));
-            int levelOneAnsweredCorrectly = cursor.getInt(cursor.getColumnIndexOrThrow(AnsweredCorrectlyColumn));
-            int levelOneAnswered = cursor.getInt(cursor.getColumnIndexOrThrow(AnsweredColumn));
-            int levelOnePercentage = cursor.getInt(cursor.getColumnIndexOrThrow(PercentageColumn));
+                    highscoreList.add(score);
+                }
 
-            scores.add(new Score
-                    (
-                            _ID,
-                            gameType,
-                            levelOneAnswered,
-                            levelOneAnsweredCorrectly,
-                            levelOnePercentage
-                    ));
-        }
-        cursor.close();
+                Collections.sort(highscoreList, new Comparator<Score>()
+                {
+                    @Override
+                    public int compare(Score o1, Score o2)
+                    {
+                        if (o1.getPercentage() > o2.getPercentage())
+                            return 1;
+                        if (o1.getPercentage() < o2.getPercentage())
+                            return -1;
+                        return 0;
+                    }
+                });
 
-        if (scores.isEmpty())
-        {
-            Log.e("GetOnlineHighscores", gameType.toString() + " highscores is empty");
-        }
+                // TODO: Set scores in UI from here
+                // TODO: Remove loading animation
+            }
 
-        for (Score score : scores)
-        {
-            Log.e("Item: ", score.toString());
-        }
-        return scores;
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+
+            }
+        });
     }
 
     private boolean ValidateHighscore(Score newScore, ArrayList<Score> oldScores)
