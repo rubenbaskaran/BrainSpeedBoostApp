@@ -66,6 +66,7 @@ public class OnlineDatabaseManager
                         return;
                     }
                     Log.e("SaveNewScoreOnline", "New highscore!");
+                    // TODO: Get name of user from dialog box
                     Log.e("SaveNewScoreOnline", "Overwriting the lowest score on the top 5!");
 
                     Collections.sort(highscoreList, new Comparator<Score>()
@@ -81,6 +82,7 @@ public class OnlineDatabaseManager
                         }
                     });
 
+                    // TODO: Set name of user in Score object
                     score.set_Id(highscoreList.get(0).get_Id());
                     firebaseDatabase.getReference().child(score.getGameType().toString()).child(String.valueOf(score.get_Id())).setValue(score);
                 }
@@ -119,6 +121,7 @@ public class OnlineDatabaseManager
                     Log.e("Existing item", snapshot.toString());
                     Score score = new Score();
 
+                    // TODO: Get name of user from new Name property in Score class
                     score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
                     score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
                     score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
