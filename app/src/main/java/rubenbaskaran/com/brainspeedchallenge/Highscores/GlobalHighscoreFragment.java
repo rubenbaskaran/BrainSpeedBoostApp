@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class GlobalHighscoreFragment extends Fragment
     TextView fifthPlaceGlobalScore;
     TextView fifthPlaceGlobalPercentage;
     GameTypes gameType;
+    ProgressBar progressBar;
 
     public GameTypes getGameType()
     {
@@ -60,14 +62,29 @@ public class GlobalHighscoreFragment extends Fragment
         fourthPlaceGlobalPercentage = view.findViewById(R.id.FourthPlaceGlobalPercentage);
         fifthPlaceGlobalScore = view.findViewById(R.id.FifthPlaceGlobalScore);
         fifthPlaceGlobalPercentage = view.findViewById(R.id.FifthPlaceGlobalPercentage);
+        progressBar = view.findViewById(R.id.progressBar);
 
+        ShowProgressBar();
         OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
-
-        // TODO: Add loading animation
         onlineDatabaseManager.GetOnlineHighscores(this);
-        // TODO: Remove loading animation
 
         return view;
+    }
+
+    public void ShowProgressBar()
+    {
+        if (progressBar.getVisibility() == View.INVISIBLE)
+        {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void HideProgressBar()
+    {
+        if (progressBar.getVisibility() == View.VISIBLE)
+        {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void ShowScore(ArrayList<Score> highscores)

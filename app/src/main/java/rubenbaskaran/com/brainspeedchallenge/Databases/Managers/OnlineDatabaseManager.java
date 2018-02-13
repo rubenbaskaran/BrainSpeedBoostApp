@@ -142,6 +142,7 @@ public class OnlineDatabaseManager
                 });
 
                 globalHighscoreFragment.ShowScore(highscoreList);
+                globalHighscoreFragment.HideProgressBar();
             }
 
             @Override

@@ -4,183 +4,197 @@
              android:layout_height="match_parent"
              tools:context="rubenbaskaran.com.brainspeedchallenge.Highscores.GlobalHighscoreFragment">
 
-    <GridLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="6dp"
-        android:background="@drawable/highscore_background"
-        android:columnCount="3">
+        android:layout_height="match_parent">
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="rank"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:translationZ="2dp"
+            android:visibility="invisible"/>
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="score"/>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:background="@drawable/highscore_background"
+            android:columnCount="3">
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="pct"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="rank"/>
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="1st"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1.4"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="score"/>
 
-        <TextView
-            android:id="@+id/FirstPlaceGlobalScore"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="x out of x"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresHeadlineTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="pct"/>
 
-        <TextView
-            android:id="@+id/FirstPlaceGlobalPercentage"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="%"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="1st"/>
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="2nd"/>
+            <TextView
+                android:id="@+id/FirstPlaceGlobalScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1.4"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="x out of x"/>
 
-        <TextView
-            android:id="@+id/SecondPlaceGlobalScore"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="x out of x"/>
+            <TextView
+                android:id="@+id/FirstPlaceGlobalPercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="%"/>
 
-        <TextView
-            android:id="@+id/SecondPlaceGlobalPercentage"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="%"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="2nd"/>
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="3rd"/>
+            <TextView
+                android:id="@+id/SecondPlaceGlobalScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1.4"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="x out of x"/>
 
-        <TextView
-            android:id="@+id/ThirdPlaceGlobalScore"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="x out of x"/>
+            <TextView
+                android:id="@+id/SecondPlaceGlobalPercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="%"/>
 
-        <TextView
-            android:id="@+id/ThirdPlaceGlobalPercentage"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="%"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="3rd"/>
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="4th"/>
+            <TextView
+                android:id="@+id/ThirdPlaceGlobalScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1.4"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="x out of x"/>
 
-        <TextView
-            android:id="@+id/FourthPlaceGlobalScore"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="x out of x"/>
+            <TextView
+                android:id="@+id/ThirdPlaceGlobalPercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="%"/>
 
-        <TextView
-            android:id="@+id/FourthPlaceGlobalPercentage"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="%"/>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="4th"/>
 
-        <TextView
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="5th"/>
+            <TextView
+                android:id="@+id/FourthPlaceGlobalScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1.4"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="x out of x"/>
 
-        <TextView
-            android:id="@+id/FifthPlaceGlobalScore"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="x out of x"/>
+            <TextView
+                android:id="@+id/FourthPlaceGlobalPercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="%"/>
 
-        <TextView
-            android:id="@+id/FifthPlaceGlobalPercentage"
-            style="@style/fontFamilyStyle.highscoresTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
-            android:text="%"/>
-    </GridLayout>
+            <TextView
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="5th"/>
+
+            <TextView
+                android:id="@+id/FifthPlaceGlobalScore"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1.4"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="x out of x"/>
+
+            <TextView
+                android:id="@+id/FifthPlaceGlobalPercentage"
+                style="@style/fontFamilyStyle.highscoresTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="0.8"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:text="%"/>
+        </GridLayout>
+    </RelativeLayout>
 </FrameLayout>
