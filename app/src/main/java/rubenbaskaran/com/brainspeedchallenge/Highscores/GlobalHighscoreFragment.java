@@ -96,7 +96,7 @@ public class GlobalHighscoreFragment extends Fragment
             return;
         }
 
-        // TODO: Set the name of the user in a TextView in each of the if scopes
+        // TODO: Set name of user in each of the if-scopes
 
         Collections.reverse(highscores);
         if (highscores.size() > 0)
