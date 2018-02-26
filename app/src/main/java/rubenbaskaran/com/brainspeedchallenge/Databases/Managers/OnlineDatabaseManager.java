@@ -136,7 +136,7 @@ public class OnlineDatabaseManager
     public void GetOnlineHighscores(final GlobalHighscoreFragment globalHighscoreFragment)
     {
         final ArrayList<Score> highscoreList = new ArrayList<>();
-        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(globalHighscoreFragment.getGameType().toString());
+        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(globalHighscoreFragment.getGameType().toString()).child("Scores");
         Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
         myQuery.addListenerForSingleValueEvent(new ValueEventListener()
         {
