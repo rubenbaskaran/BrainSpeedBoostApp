@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.OnlineDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.R;
 
@@ -20,8 +19,9 @@ public class MainMenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        // TODO: Remove after test
-        OnlineDatabaseManager onlineDb = new OnlineDatabaseManager();
+//        TODO: Remove after test
+//        OnlineDatabaseManager onlineDb = new OnlineDatabaseManager();
+//        onlineDb.SaveNewScoreOnline(new Score(GameTypes.Addition, 100, 50, 50));
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         localDatabaseManager.GetLocalHighscores(GameTypes.Addition);
