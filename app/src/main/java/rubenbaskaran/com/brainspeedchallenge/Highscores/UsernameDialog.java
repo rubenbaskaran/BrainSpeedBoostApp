@@ -58,6 +58,10 @@ public class UsernameDialog extends DialogFragment
                 {
                     submitButton.setEnabled(true);
                 }
+                else
+                {
+                    submitButton.setEnabled(false);
+                }
             }
         });
 
