@@ -53,25 +53,12 @@
                 android:text="pct"/>
 
             <TextView
-                android:id="@+id/FirstPlaceName"
-                style="@style/fontFamilyStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnSpan="3"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="0.5"
-                android:gravity="left|bottom"
-                android:paddingLeft="30dp"
-                android:textColor="@color/usernameHighscoresColor"
-                android:textSize="@dimen/usernameHighscoresTextSize"/>
-
-            <TextView
                 style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top"
+                android:gravity="bottom"
                 android:paddingLeft="30dp"
                 android:text="1st"/>
 
@@ -82,7 +69,7 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1.4"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
 
             <TextView
@@ -92,8 +79,21 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
+
+            <TextView
+                android:id="@+id/FirstPlaceName"
+                style="@style/fontFamilyStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="0.5"
+                android:gravity="top|left"
+                android:paddingLeft="30dp"
+                android:textColor="@color/usernameHighscoresColor"
+                android:textSize="@dimen/usernameHighscoresTextSize"/>
 
             <Space
                 android:layout_width="0dp"
@@ -104,25 +104,12 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/SecondPlaceName"
-                style="@style/fontFamilyStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnSpan="3"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="0.5"
-                android:gravity="left|bottom"
-                android:paddingLeft="30dp"
-                android:textColor="@color/usernameHighscoresColor"
-                android:textSize="@dimen/usernameHighscoresTextSize"/>
-
-            <TextView
                 style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top"
+                android:gravity="bottom"
                 android:paddingLeft="30dp"
                 android:text="2nd"/>
 
@@ -133,7 +120,7 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1.4"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
 
             <TextView
@@ -143,8 +130,21 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
+
+            <TextView
+                android:id="@+id/SecondPlaceName"
+                style="@style/fontFamilyStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="0.5"
+                android:gravity="top|left"
+                android:paddingLeft="30dp"
+                android:textColor="@color/usernameHighscoresColor"
+                android:textSize="@dimen/usernameHighscoresTextSize"/>
 
             <Space
                 android:layout_width="0dp"
@@ -155,25 +155,12 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/ThirdPlaceName"
-                style="@style/fontFamilyStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnSpan="3"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="0.5"
-                android:gravity="left|bottom"
-                android:paddingLeft="30dp"
-                android:textColor="@color/usernameHighscoresColor"
-                android:textSize="@dimen/usernameHighscoresTextSize"/>
-
-            <TextView
                 style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top"
+                android:gravity="bottom"
                 android:paddingLeft="30dp"
                 android:text="3rd"/>
 
@@ -184,7 +171,7 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1.4"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
 
             <TextView
@@ -194,8 +181,21 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
+
+            <TextView
+                android:id="@+id/ThirdPlaceName"
+                style="@style/fontFamilyStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="0.5"
+                android:gravity="top|left"
+                android:paddingLeft="30dp"
+                android:textColor="@color/usernameHighscoresColor"
+                android:textSize="@dimen/usernameHighscoresTextSize"/>
 
             <Space
                 android:layout_width="0dp"
@@ -206,25 +206,12 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/FourthPlaceName"
-                style="@style/fontFamilyStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnSpan="3"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="0.5"
-                android:gravity="left|bottom"
-                android:paddingLeft="30dp"
-                android:textColor="@color/usernameHighscoresColor"
-                android:textSize="@dimen/usernameHighscoresTextSize"/>
-
-            <TextView
                 style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top"
+                android:gravity="bottom"
                 android:paddingLeft="30dp"
                 android:text="4th"/>
 
@@ -235,7 +222,7 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1.4"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
 
             <TextView
@@ -245,8 +232,21 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
+
+            <TextView
+                android:id="@+id/FourthPlaceName"
+                style="@style/fontFamilyStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="0.5"
+                android:gravity="top|left"
+                android:paddingLeft="30dp"
+                android:textColor="@color/usernameHighscoresColor"
+                android:textSize="@dimen/usernameHighscoresTextSize"/>
 
             <Space
                 android:layout_width="0dp"
@@ -257,25 +257,12 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/FifthPlaceName"
-                style="@style/fontFamilyStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnSpan="3"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="0.5"
-                android:gravity="left|bottom"
-                android:paddingLeft="30dp"
-                android:textColor="@color/usernameHighscoresColor"
-                android:textSize="@dimen/usernameHighscoresTextSize"/>
-
-            <TextView
                 style="@style/fontFamilyStyle.highscoresTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top"
+                android:gravity="bottom"
                 android:paddingLeft="30dp"
                 android:text="5th"/>
 
@@ -286,7 +273,7 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="1.4"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
 
             <TextView
@@ -296,8 +283,21 @@
                 android:layout_height="0dp"
                 android:layout_columnWeight="0.8"
                 android:layout_rowWeight="0.5"
-                android:gravity="top|center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 />
+
+            <TextView
+                android:id="@+id/FifthPlaceName"
+                style="@style/fontFamilyStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnSpan="3"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="0.5"
+                android:gravity="top|left"
+                android:paddingLeft="30dp"
+                android:textColor="@color/usernameHighscoresColor"
+                android:textSize="@dimen/usernameHighscoresTextSize"/>
 
             <Space
                 android:layout_width="0dp"
