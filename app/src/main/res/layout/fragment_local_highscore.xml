@@ -17,7 +17,8 @@
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
             android:layout_rowWeight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
             android:text="rank"/>
 
         <TextView
@@ -39,12 +40,24 @@
             android:text="pct"/>
 
         <TextView
+            style="@style/fontFamilyStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.5"
+            android:gravity="left|bottom"
+            android:paddingLeft="30dp"
+            android:text="Ruben"/>
+
+        <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top"
+            android:paddingLeft="30dp"
             android:text="1st"/>
 
         <TextView
@@ -53,8 +66,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="x out of x"/>
 
         <TextView
@@ -63,17 +76,37 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="%"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.25"
+            android:gravity="center"/>
+
+        <TextView
+            style="@style/fontFamilyStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.5"
+            android:gravity="left|bottom"
+            android:paddingLeft="30dp"
+            android:text="Baskaran"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top"
+            android:paddingLeft="30dp"
             android:text="2nd"/>
 
         <TextView
@@ -82,8 +115,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="x out of x"/>
 
         <TextView
@@ -92,17 +125,37 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="%"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.25"
+            android:gravity="center"/>
+
+        <TextView
+            style="@style/fontFamilyStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.5"
+            android:gravity="left|bottom"
+            android:paddingLeft="30dp"
+            android:text="Sivasakthy"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top"
+            android:paddingLeft="30dp"
             android:text="3rd"/>
 
         <TextView
@@ -111,8 +164,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="x out of x"/>
 
         <TextView
@@ -121,17 +174,37 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="%"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.25"
+            android:gravity="center"/>
+
+        <TextView
+            style="@style/fontFamilyStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.5"
+            android:gravity="left|bottom"
+            android:paddingLeft="30dp"
+            android:text="Adina"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top"
+            android:paddingLeft="30dp"
             android:text="4th"/>
 
         <TextView
@@ -140,8 +213,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="x out of x"/>
 
         <TextView
@@ -150,17 +223,37 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="%"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.25"
+            android:gravity="center"/>
+
+        <TextView
+            style="@style/fontFamilyStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.5"
+            android:gravity="left|bottom"
+            android:paddingLeft="30dp"
+            android:text="Rajakrishnan"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top"
+            android:paddingLeft="30dp"
             android:text="5th"/>
 
         <TextView
@@ -169,8 +262,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1.4"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="x out of x"/>
 
         <TextView
@@ -179,8 +272,16 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="0.8"
-            android:layout_rowWeight="1"
-            android:gravity="center"
+            android:layout_rowWeight="0.5"
+            android:gravity="top|center_horizontal"
             android:text="%"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="0.25"
+            android:gravity="center"/>
     </GridLayout>
 </FrameLayout>
