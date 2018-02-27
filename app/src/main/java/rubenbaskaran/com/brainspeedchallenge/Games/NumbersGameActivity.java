@@ -35,6 +35,11 @@ public class NumbersGameActivity extends AppCompatActivity
     GridLayout gridLayout;
     Timer timer = null;
     GameTypes gameType;
+    Button button0;
+    Button button1;
+    Button button2;
+    Button button3;
+    Button restartButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +53,11 @@ public class NumbersGameActivity extends AppCompatActivity
         equationTextView = findViewById(R.id.equationTextView);
         counterTextView = findViewById(R.id.counterTextView);
         gridLayout = findViewById(R.id.gridLayout);
+        button0 = findViewById(R.id.button0);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        restartButton = findViewById(R.id.restartButton);
 
         new AlertDialog.Builder(this)
                 .setTitle("Welcome!")
@@ -64,11 +74,10 @@ public class NumbersGameActivity extends AppCompatActivity
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener()
                 {
-                    // TODO: Why is there a 1 sec white screen when cancel is pressed?
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i)
                     {
-                        System.exit(0);
+                        finish();
                     }
                 })
                 .show();
@@ -76,9 +85,19 @@ public class NumbersGameActivity extends AppCompatActivity
 
     public void StartGame()
     {
+        EnableButtons();
         GenerateEquation();
         UpdateScore();
         StartTimer();
+    }
+
+    private void EnableButtons()
+    {
+        button0.setEnabled(true);
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        restartButton.setEnabled(true);
     }
 
     public void GridlayoutSetEnabled(boolean bool)
@@ -340,6 +359,9 @@ public class NumbersGameActivity extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
-        timer.cancel();
+        if(timer != null)
+        {
+            timer.cancel();
+        }
     }
 }
