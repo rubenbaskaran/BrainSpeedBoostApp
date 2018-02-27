@@ -10,13 +10,14 @@
     android:background="@drawable/app_background">
 
     <TextView
+        android:id="@+id/highscoresFragmentContainerTitle"
+        style="@style/fontFamilyStyle.highscoresActivityHeadline"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="highscores"
-        android:textSize="30dp"
         android:gravity="center"
-        style="@style/fontFamilyStyle.highscoresActivityHeadline"/>
+        android:text="highscores"
+        android:textSize="30dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

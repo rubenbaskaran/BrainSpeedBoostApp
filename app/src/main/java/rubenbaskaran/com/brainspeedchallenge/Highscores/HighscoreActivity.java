@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
@@ -21,6 +22,7 @@ public class HighscoreActivity extends AppCompatActivity
     public static Context context;
     LocalHighscoreFragment localHighscoreFragment;
     GameTypes gameTypes;
+    TextView highscoresFragmentContainerTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,8 +34,10 @@ public class HighscoreActivity extends AppCompatActivity
 
         Intent receivedIntent = getIntent();
         gameTypes = (GameTypes) receivedIntent.getSerializableExtra("gametype");
-        Boolean newHighscore = receivedIntent.getBooleanExtra("newhighscore", false);
 
+        highscoresFragmentContainerTitle = findViewById(R.id.highscoresFragmentContainerTitle);
+        String title = String.format(gameTypes.toString() + " highscores").toLowerCase();
+        highscoresFragmentContainerTitle.setText(title);
         ShowLocalHighscoreButton = findViewById(R.id.ShowLocalHighscoreButton);
         ShowGlobalHighscoreButton = findViewById(R.id.ShowGlobalHighscoreButton);
 
