@@ -17,7 +17,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.OnlineDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainspeedchallenge.Models.Score;
@@ -146,16 +145,7 @@ public class NumbersGameActivity extends AppCompatActivity
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        boolean newHighscore = false;
-                        if (SaveScore())
-                        {
-                            newHighscore = true;
-                        }
-                        finish();
-                        Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
-                        i.putExtra("gametype", gameType);
-                        i.putExtra("newhighscore", newHighscore);
-                        startActivity(i);
+                        SaveScore();
                     }
                 })
                 .setNegativeButton("Restart level", new DialogInterface.OnClickListener()
@@ -170,7 +160,7 @@ public class NumbersGameActivity extends AppCompatActivity
                 .show();
     }
 
-    private boolean SaveScore()
+    private void SaveScore()
     {
         Score score = new Score();
 
@@ -196,11 +186,17 @@ public class NumbersGameActivity extends AppCompatActivity
         decimalFormat.setMaximumFractionDigits(0);
         score.setPercentage(questionsAnswered == 0 ? 0 : Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100)));
 
-        OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
-        onlineDatabaseManager.SaveNewScoreOnline(score);
-
+        // TODO: Step 0
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
-        return localDatabaseManager.SaveNewScore(score);
+        boolean navigateToHighscoreActivityNow = localDatabaseManager.CheckNewScore(score, getFragmentManager(), this);
+
+        if (navigateToHighscoreActivityNow)
+        {
+            finish();
+            Intent i = new Intent(getApplicationContext(), HighscoreActivity.class);
+            i.putExtra("gametype", score.getGameType());
+            startActivity(i);
+        }
     }
 
     public String SetResultComment()
@@ -263,7 +259,7 @@ public class NumbersGameActivity extends AppCompatActivity
                 {
                     number2 = random.nextInt(10);
                 }
-                equation = String.format(String.valueOf(number1*number2) + " / " + String.valueOf(number2));
+                equation = String.format(String.valueOf(number1 * number2) + " / " + String.valueOf(number2));
                 correctAnswer = number1;
                 break;
         }

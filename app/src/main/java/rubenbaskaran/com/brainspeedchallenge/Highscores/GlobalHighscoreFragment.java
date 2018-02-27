@@ -96,7 +96,7 @@ public class GlobalHighscoreFragment extends Fragment
             return;
         }
 
-        // TODO: Set name of user in each of the if-scopes
+        // TODO: Show username
 
         Collections.reverse(highscores);
         if (highscores.size() > 0)

@@ -62,6 +62,8 @@ public class LocalHighscoreFragment extends Fragment
 
     public void ShowScore(ArrayList<Score> highscores)
     {
+        // TODO: Show username
+
         if (highscores.size() == 0)
         {
             Toast.makeText(HighscoreActivity.context, "Highscores list is emtpy", Toast.LENGTH_SHORT).show();

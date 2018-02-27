@@ -146,7 +146,7 @@ public class OnlineDatabaseManager
                     Log.e("Existing item", snapshot.toString());
                     Score score = new Score();
 
-                    // TODO: Get name of user
+                    score.setUsername(snapshot.child("username").getValue(String.class));
                     score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
                     score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
                     score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());

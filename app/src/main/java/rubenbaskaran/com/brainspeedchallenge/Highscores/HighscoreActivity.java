@@ -46,10 +46,10 @@ public class HighscoreActivity extends AppCompatActivity
         fragmentTransaction.add(R.id.fragmentContainer, localHighscoreFragment, null);
         fragmentTransaction.commit();
 
-        if (newHighscore)
-        {
-            Toast.makeText(getApplicationContext(), "Congratulations! New highscore!", Toast.LENGTH_LONG).show();
-        }
+//        if (newHighscore)
+//        {
+//            Toast.makeText(getApplicationContext(), "Congratulations! New highscore!", Toast.LENGTH_LONG).show();
+//        }
     }
 
     public void ShowLocalHighscore(View view)

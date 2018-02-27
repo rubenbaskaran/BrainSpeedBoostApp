@@ -29,13 +29,14 @@ public class Score implements Serializable
         this.Percentage = percentage;
     }
 
-    public Score(Integer _id, GameTypes gameType, int answered, int answeredcorrectly, int percentage)
+    public Score(Integer _id, GameTypes gameType, int answered, int answeredcorrectly, int percentage, String username)
     {
         this._Id = _id;
         this.GameType = gameType;
         this.Answered = answered;
         this.AnsweredCorrectly = answeredcorrectly;
         this.Percentage = percentage;
+        this.Username = username;
     }
 
     @Override
@@ -47,6 +48,7 @@ public class Score implements Serializable
                 ", Answered=" + Answered +
                 ", AnsweredCorrectly=" + AnsweredCorrectly +
                 ", Percentage=" + Percentage +
+                ", Username='" + Username + '\'' +
                 '}';
     }
 
