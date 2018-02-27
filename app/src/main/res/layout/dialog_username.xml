@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/app_background">
+    android:background="@drawable/username_dialog_background">
 
     <TextView
         android:textColor="@color/usernameHighscoresColor"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

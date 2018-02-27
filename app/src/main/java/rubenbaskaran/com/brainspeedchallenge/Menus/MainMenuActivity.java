@@ -16,6 +16,7 @@ public class MainMenuActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
+        // TODO: Remove this activity, but check usages first
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 

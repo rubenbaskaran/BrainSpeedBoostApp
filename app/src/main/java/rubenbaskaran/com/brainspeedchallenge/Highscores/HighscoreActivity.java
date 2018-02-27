@@ -25,6 +25,7 @@ public class HighscoreActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //TODO: Add gametype in front of Highscores title
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscore);
         context = getApplicationContext();
