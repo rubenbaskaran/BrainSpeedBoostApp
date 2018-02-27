@@ -129,7 +129,6 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
             Log.e("CheckNewScore", "New highscore!");
         }
 
-        // TODO: Step 1
         UsernameDialog usernameDialog = new UsernameDialog();
         usernameDialog.setContext(context);
         usernameDialog.setScore(score);

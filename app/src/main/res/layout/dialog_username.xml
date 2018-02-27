@@ -8,14 +8,13 @@
     android:background="@drawable/app_background">
 
     <TextView
+        android:textColor="@color/usernameHighscoresColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="5dp"
         style="@style/fontFamilyStyle"
-        android:text="Congratulations!
-You made a new world record!"
-        />
+        android:text="Congratulations!\nNew highscore!"/>
 
     <EditText
         android:id="@+id/usernameEditText"

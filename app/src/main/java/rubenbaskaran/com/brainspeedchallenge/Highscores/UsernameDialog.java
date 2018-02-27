@@ -70,7 +70,6 @@ public class UsernameDialog extends DialogFragment
             @Override
             public void onClick(View v)
             {
-                // TODO: Step 2
                 score.setUsername(usernameEditText.getText().toString());
 
                 LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(context);

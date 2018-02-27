@@ -17,14 +17,19 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class LocalHighscoreFragment extends Fragment
 {
+    TextView firstPlaceName;
     TextView firstPlaceScore;
     TextView firstPlacePercentage;
+    TextView secondPlaceName;
     TextView secondPlaceScore;
     TextView secondPlacePercentage;
+    TextView thirdPlaceName;
     TextView thirdPlaceScore;
     TextView thirdPlacePercentage;
+    TextView fourthPlaceName;
     TextView fourthPlaceScore;
     TextView fourthPlacePercentage;
+    TextView fifthPlaceName;
     TextView fifthPlaceScore;
     TextView fifthPlacePercentage;
     GameTypes gameType;
@@ -43,14 +48,19 @@ public class LocalHighscoreFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_local_highscore, container, false);
 
+        firstPlaceName = view.findViewById(R.id.FirstPlaceName);
         firstPlaceScore = view.findViewById(R.id.FirstPlaceScore);
         firstPlacePercentage = view.findViewById(R.id.FirstPlacePercentage);
+        secondPlaceName = view.findViewById(R.id.SecondPlaceName);
         secondPlaceScore = view.findViewById(R.id.SecondPlaceScore);
         secondPlacePercentage = view.findViewById(R.id.SecondPlacePercentage);
+        thirdPlaceName = view.findViewById(R.id.ThirdPlaceName);
         thirdPlaceScore = view.findViewById(R.id.ThirdPlaceScore);
         thirdPlacePercentage = view.findViewById(R.id.ThirdPlacePercentage);
+        fourthPlaceName = view.findViewById(R.id.FourthPlaceName);
         fourthPlaceScore = view.findViewById(R.id.FourthPlaceScore);
         fourthPlacePercentage = view.findViewById(R.id.FourthPlacePercentage);
+        fifthPlaceName = view.findViewById(R.id.FifthPlaceName);
         fifthPlaceScore = view.findViewById(R.id.FifthPlaceScore);
         fifthPlacePercentage = view.findViewById(R.id.FifthPlacePercentage);
 
@@ -62,17 +72,16 @@ public class LocalHighscoreFragment extends Fragment
 
     public void ShowScore(ArrayList<Score> highscores)
     {
-        // TODO: Show username
-
         if (highscores.size() == 0)
         {
-            Toast.makeText(HighscoreActivity.context, "Highscores list is emtpy", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HighscoreActivity.context, "Highscores list is empty", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (highscores.size() > 0)
         {
             Score score = highscores.get(0);
+            firstPlaceName.setText(score.getUsername());
             String text = score.getAnsweredCorrectly() + " out of " + score.getAnswered();
             firstPlaceScore.setText(text);
             String percentage = String.valueOf(score.getPercentage()) + "%";
@@ -81,6 +90,7 @@ public class LocalHighscoreFragment extends Fragment
         if (highscores.size() > 1)
         {
             Score score = highscores.get(1);
+            secondPlaceName.setText(score.getUsername());
             String text = score.getAnsweredCorrectly() + " out of " + score.getAnswered();
             secondPlaceScore.setText(text);
             String percentage = String.valueOf(score.getPercentage()) + "%";
@@ -89,6 +99,7 @@ public class LocalHighscoreFragment extends Fragment
         if (highscores.size() > 2)
         {
             Score score = highscores.get(2);
+            thirdPlaceName.setText(score.getUsername());
             String text = score.getAnsweredCorrectly() + " out of " + score.getAnswered();
             thirdPlaceScore.setText(text);
             String percentage = String.valueOf(score.getPercentage()) + "%";
@@ -97,6 +108,7 @@ public class LocalHighscoreFragment extends Fragment
         if (highscores.size() > 3)
         {
             Score score = highscores.get(3);
+            fourthPlaceName.setText(score.getUsername());
             String text = score.getAnsweredCorrectly() + " out of " + score.getAnswered();
             fourthPlaceScore.setText(text);
             String percentage = String.valueOf(score.getPercentage()) + "%";
@@ -105,6 +117,7 @@ public class LocalHighscoreFragment extends Fragment
         if (highscores.size() == 5)
         {
             Score score = highscores.get(4);
+            fifthPlaceName.setText(score.getUsername());
             String text = score.getAnsweredCorrectly() + " out of " + score.getAnswered();
             fifthPlaceScore.setText(text);
             String percentage = String.valueOf(score.getPercentage()) + "%";

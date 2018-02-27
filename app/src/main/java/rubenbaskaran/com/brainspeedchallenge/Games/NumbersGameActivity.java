@@ -64,6 +64,7 @@ public class NumbersGameActivity extends AppCompatActivity
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener()
                 {
+                    // TODO: Why is there a 1 sec white screen when cancel is pressed?
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i)
                     {
@@ -186,7 +187,6 @@ public class NumbersGameActivity extends AppCompatActivity
         decimalFormat.setMaximumFractionDigits(0);
         score.setPercentage(questionsAnswered == 0 ? 0 : Integer.parseInt(decimalFormat.format((((double) answeredCorrectly) / questionsAnswered) * 100)));
 
-        // TODO: Step 0
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         boolean navigateToHighscoreActivityNow = localDatabaseManager.CheckNewScore(score, getFragmentManager(), this);
 

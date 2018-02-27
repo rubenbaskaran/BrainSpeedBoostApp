@@ -40,9 +40,8 @@
             android:text="pct"/>
 
         <TextView
+            android:id="@+id/FirstPlaceName"
             style="@style/fontFamilyStyle"
-            android:textColor="@color/usernameHighscoresColor"
-            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -50,7 +49,8 @@
             android:layout_rowWeight="0.5"
             android:gravity="left|bottom"
             android:paddingLeft="30dp"
-            android:text="Ruben"/>
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
@@ -70,7 +70,7 @@
             android:layout_columnWeight="1.4"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="x out of x"/>
+            />
 
         <TextView
             android:id="@+id/FirstPlacePercentage"
@@ -80,7 +80,7 @@
             android:layout_columnWeight="0.8"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="%"/>
+            />
 
         <Space
             android:layout_width="0dp"
@@ -91,9 +91,8 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/SecondPlaceName"
             style="@style/fontFamilyStyle"
-            android:textColor="@color/usernameHighscoresColor"
-            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -101,7 +100,8 @@
             android:layout_rowWeight="0.5"
             android:gravity="left|bottom"
             android:paddingLeft="30dp"
-            android:text="Baskaran"/>
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
@@ -121,7 +121,7 @@
             android:layout_columnWeight="1.4"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="x out of x"/>
+            />
 
         <TextView
             android:id="@+id/SecondPlacePercentage"
@@ -131,7 +131,7 @@
             android:layout_columnWeight="0.8"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="%"/>
+            />
 
         <Space
             android:layout_width="0dp"
@@ -142,9 +142,8 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/ThirdPlaceName"
             style="@style/fontFamilyStyle"
-            android:textColor="@color/usernameHighscoresColor"
-            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -152,7 +151,8 @@
             android:layout_rowWeight="0.5"
             android:gravity="left|bottom"
             android:paddingLeft="30dp"
-            android:text="Sivasakthy"/>
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
@@ -172,7 +172,7 @@
             android:layout_columnWeight="1.4"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="x out of x"/>
+            />
 
         <TextView
             android:id="@+id/ThirdPlacePercentage"
@@ -182,7 +182,7 @@
             android:layout_columnWeight="0.8"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="%"/>
+            />
 
         <Space
             android:layout_width="0dp"
@@ -193,9 +193,8 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/FourthPlaceName"
             style="@style/fontFamilyStyle"
-            android:textColor="@color/usernameHighscoresColor"
-            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -203,7 +202,8 @@
             android:layout_rowWeight="0.5"
             android:gravity="left|bottom"
             android:paddingLeft="30dp"
-            android:text="Adina"/>
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
@@ -223,7 +223,7 @@
             android:layout_columnWeight="1.4"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="x out of x"/>
+            />
 
         <TextView
             android:id="@+id/FourthPlacePercentage"
@@ -233,7 +233,7 @@
             android:layout_columnWeight="0.8"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="%"/>
+            />
 
         <Space
             android:layout_width="0dp"
@@ -244,9 +244,8 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/FifthPlaceName"
             style="@style/fontFamilyStyle"
-            android:textColor="@color/usernameHighscoresColor"
-            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -254,7 +253,8 @@
             android:layout_rowWeight="0.5"
             android:gravity="left|bottom"
             android:paddingLeft="30dp"
-            android:text="Rajakrishnan"/>
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"/>
 
         <TextView
             style="@style/fontFamilyStyle.highscoresTextStyle"
@@ -274,7 +274,7 @@
             android:layout_columnWeight="1.4"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="x out of x"/>
+            />
 
         <TextView
             android:id="@+id/FifthPlacePercentage"
@@ -284,7 +284,7 @@
             android:layout_columnWeight="0.8"
             android:layout_rowWeight="0.5"
             android:gravity="top|center_horizontal"
-            android:text="%"/>
+            />
 
         <Space
             android:layout_width="0dp"
