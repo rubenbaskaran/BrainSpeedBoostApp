@@ -339,6 +339,12 @@ public class NumbersGameActivity extends AppCompatActivity
         if (Integer.parseInt(button.getTag().toString()) == correctAnswerIndexValue)
         {
             answeredCorrectly++;
+            // TODO: Play happy sound
+
+        }
+        else if (Integer.parseInt(button.getTag().toString()) != correctAnswerIndexValue)
+        {
+            // TODO: Play sad sound
         }
 
         questionsAnswered++;

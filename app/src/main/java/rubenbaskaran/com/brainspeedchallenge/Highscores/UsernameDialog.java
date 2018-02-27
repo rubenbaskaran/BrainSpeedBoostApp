@@ -31,6 +31,8 @@ public class UsernameDialog extends DialogFragment
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
     {
+        // TODO: Get name from sharedpreference if any
+
         View view = inflater.inflate(R.layout.dialog_username, container, false);
 
         final Button submitButton = view.findViewById(R.id.submitButton);
