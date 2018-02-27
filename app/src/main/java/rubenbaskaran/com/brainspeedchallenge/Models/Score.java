@@ -15,6 +15,7 @@ public class Score implements Serializable
     private int Answered;
     private int AnsweredCorrectly;
     private int Percentage;
+    private String Username;
 
     public Score()
     {
@@ -97,5 +98,15 @@ public class Score implements Serializable
     public void setPercentage(int percentage)
     {
         Percentage = percentage;
+    }
+
+    public String getUsername()
+    {
+        return Username;
+    }
+
+    public void setUsername(String username)
+    {
+        Username = username;
     }
 }

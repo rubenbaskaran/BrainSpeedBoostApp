@@ -91,7 +91,7 @@ public class OnlineDatabaseManager
                                     return;
                                 }
                                 Log.e("SaveNewScoreOnline", "New highscore!");
-                                // TODO: Get name of user
+                                //String username = GetUsernameFromDialog();
                                 Log.e("SaveNewScoreOnline", "Overwriting the lowest score on the top 5!");
 
                                 Collections.sort(highscoreList, new Comparator<Score>()
@@ -107,7 +107,7 @@ public class OnlineDatabaseManager
                                     }
                                 });
 
-                                // TODO: Set name of user
+                                //score.setUsername(username);
                                 score.set_Id(highscoreList.get(0).get_Id());
                                 firebaseDatabase.getReference().child(score.getGameType().toString()).child("Scores").child(String.valueOf(score.get_Id())).setValue(score);
                             }
