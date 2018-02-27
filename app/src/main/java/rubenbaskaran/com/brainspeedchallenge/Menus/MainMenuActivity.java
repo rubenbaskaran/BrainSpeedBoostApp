@@ -19,10 +19,6 @@ public class MainMenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-//        TODO: Remove after test
-//        OnlineDatabaseManager onlineDb = new OnlineDatabaseManager();
-//        onlineDb.SaveNewScoreOnline(new Score(GameTypes.Addition, 100, 50, 50));
-
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         localDatabaseManager.GetLocalHighscores(GameTypes.Addition);
         localDatabaseManager.GetLocalHighscores(GameTypes.Subtraction);
