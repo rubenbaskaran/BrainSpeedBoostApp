@@ -41,6 +41,8 @@
 
         <TextView
             style="@style/fontFamilyStyle"
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -90,6 +92,8 @@
 
         <TextView
             style="@style/fontFamilyStyle"
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -139,6 +143,8 @@
 
         <TextView
             style="@style/fontFamilyStyle"
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -188,6 +194,8 @@
 
         <TextView
             style="@style/fontFamilyStyle"
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"
@@ -237,6 +245,8 @@
 
         <TextView
             style="@style/fontFamilyStyle"
+            android:textColor="@color/usernameHighscoresColor"
+            android:textSize="@dimen/usernameHighscoresTextSize"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnSpan="3"

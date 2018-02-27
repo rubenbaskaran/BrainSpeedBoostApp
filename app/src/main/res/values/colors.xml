@@ -12,6 +12,7 @@
     <color name="menuHeadlineColor">#212121</color>
     <color name="numbersGameButtonTextColor">#212121</color>
     <color name="numbersGameHeadlineColor">#212121</color>
+    <color name="usernameHighscoresColor">#212121</color>
     <color name="numbersGameButtonStrokeColor">#000000</color>
     <color name="numbersGameButtonLightBlue">#9be7ff</color>
     <color name="numbersGameButtonDarkBlue">#64b5f6</color>

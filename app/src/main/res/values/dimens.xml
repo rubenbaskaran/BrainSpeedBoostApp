@@ -8,4 +8,5 @@
     <dimen name="numbersGameButtonBackgroundGradientAngle">90</dimen>
     <dimen name="numbersGameButtonCornerRadius">10dp</dimen>
     <dimen name="numbersGameResetButtonStrokeWidth">1dp</dimen>
+    <dimen name="usernameHighscoresTextSize">18sp</dimen>
 </resources>
