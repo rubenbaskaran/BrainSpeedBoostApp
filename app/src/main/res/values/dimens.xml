@@ -9,4 +9,5 @@
     <dimen name="numbersGameButtonCornerRadius">10dp</dimen>
     <dimen name="numbersGameResetButtonStrokeWidth">1dp</dimen>
     <dimen name="usernameHighscoresTextSize">18sp</dimen>
+    <dimen name="usernameDialogButtonStrokeWidth">1dp</dimen>
 </resources>

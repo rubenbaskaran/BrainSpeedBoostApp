@@ -9,18 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.MainMenuActivity" android:screenOrientation="portrait">
+        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.NumbersMenuActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name="rubenbaskaran.com.brainspeedchallenge.Games.NumbersGameActivity" android:screenOrientation="portrait">
         </activity>
         <activity android:name="rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity" android:screenOrientation="portrait">
-        </activity>
-        <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.NumbersMenuActivity" android:screenOrientation="portrait">
         </activity>
         <activity android:name="rubenbaskaran.com.brainspeedchallenge.Menus.AdditionMenuActivity" android:screenOrientation="portrait">
         </activity>
