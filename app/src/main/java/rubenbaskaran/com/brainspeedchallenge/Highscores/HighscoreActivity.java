@@ -16,7 +16,6 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class HighscoreActivity extends AppCompatActivity
 {
-    //TODO: "Multiplication Highscores" is too big for the screen
     Button ShowLocalHighscoreButton;
     Button ShowGlobalHighscoreButton;
     FragmentManager fragmentManager;
