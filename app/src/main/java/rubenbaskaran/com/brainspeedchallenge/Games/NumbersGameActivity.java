@@ -25,6 +25,7 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class NumbersGameActivity extends AppCompatActivity
 {
+    // TODO: Add "mute" toggle button under the time
     TextView equationTextView;
     TextView scoreTextView;
     TextView counterTextView;
