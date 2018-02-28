@@ -2,6 +2,7 @@ package rubenbaskaran.com.brainspeedchallenge.Games;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -339,8 +340,16 @@ public class NumbersGameActivity extends AppCompatActivity
         if (Integer.parseInt(button.getTag().toString()) == correctAnswerIndexValue)
         {
             answeredCorrectly++;
-            // TODO: Play happy sound
 
+            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.correct);
+            mp.start();
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+            {
+                public void onCompletion(MediaPlayer mp)
+                {
+                    mp.release();
+                }
+            });
         }
         else if (Integer.parseInt(button.getTag().toString()) != correctAnswerIndexValue)
         {
@@ -365,7 +374,7 @@ public class NumbersGameActivity extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
-        if(timer != null)
+        if (timer != null)
         {
             timer.cancel();
         }
