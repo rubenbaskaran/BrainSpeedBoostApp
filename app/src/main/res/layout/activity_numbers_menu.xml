@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.13"
-        android:text="select category"/>
+        android:text="select game"/>
 
     <Button
         android:layout_width="match_parent"

@@ -74,7 +74,7 @@ public class LocalHighscoreFragment extends Fragment
     {
         if (highscores.size() == 0)
         {
-            Toast.makeText(HighscoreActivity.context, "Highscores list is empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HighscoreActivity.context, "No local highscores", Toast.LENGTH_SHORT).show();
             return;
         }
 

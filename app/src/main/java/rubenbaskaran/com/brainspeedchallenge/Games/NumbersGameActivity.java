@@ -337,6 +337,8 @@ public class NumbersGameActivity extends AppCompatActivity
         }
     }
 
+    // TODO: Add Advertisement above Restart button
+
     public void Restart(View view)
     {
         answeredCorrectly = 0;

@@ -102,7 +102,7 @@ public class GlobalHighscoreFragment extends Fragment
         if (highscores.size() == 0)
         {
             Log.e("GetOnlineHighscores", getGameType().toString() + " highscore list is empty");
-            Toast.makeText(HighscoreActivity.context, "Highscores list is empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HighscoreActivity.context, "No global highscores", Toast.LENGTH_SHORT).show();
             return;
         }
 
