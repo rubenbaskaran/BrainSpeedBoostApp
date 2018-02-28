@@ -2,6 +2,7 @@ package rubenbaskaran.com.brainspeedchallenge.Games;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.math.RoundingMode;
@@ -42,6 +44,9 @@ public class NumbersGameActivity extends AppCompatActivity
     Button button2;
     Button button3;
     Button restartButton;
+    ImageView soundToggleImageView;
+    SharedPreferences sharedPreferences;
+    boolean SoundOn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,6 +65,21 @@ public class NumbersGameActivity extends AppCompatActivity
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         restartButton = findViewById(R.id.restartButton);
+        soundToggleImageView = findViewById(R.id.soundToggleImageView);
+
+        sharedPreferences = getSharedPreferences("rubenbaskaran.com.brainspeedchallenge", MODE_PRIVATE);
+        SoundOn = sharedPreferences.getBoolean("sound", true);
+
+        if (SoundOn)
+        {
+            soundToggleImageView.setImageResource(R.drawable.unmute);
+            soundToggleImageView.setTag(R.drawable.unmute);
+        }
+        else
+        {
+            soundToggleImageView.setImageResource(R.drawable.mute);
+            soundToggleImageView.setTag(R.drawable.mute);
+        }
 
         new AlertDialog.Builder(this)
                 .setTitle("Welcome!")
@@ -342,17 +362,20 @@ public class NumbersGameActivity extends AppCompatActivity
         {
             answeredCorrectly++;
 
-            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.correct);
-            mp.start();
-            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+            if(SoundOn)
             {
-                public void onCompletion(MediaPlayer mp)
+                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.correct);
+                mp.start();
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
                 {
-                    mp.release();
-                }
-            });
+                    public void onCompletion(MediaPlayer mp)
+                    {
+                        mp.release();
+                    }
+                });
+            }
         }
-        else if (Integer.parseInt(button.getTag().toString()) != correctAnswerIndexValue)
+        else if (SoundOn && Integer.parseInt(button.getTag().toString()) != correctAnswerIndexValue)
         {
             MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
             mp.start();
@@ -386,6 +409,27 @@ public class NumbersGameActivity extends AppCompatActivity
         if (timer != null)
         {
             timer.cancel();
+        }
+    }
+
+    public void SoundToggle(View view)
+    {
+        ImageView imageView = (ImageView) view;
+        Integer tagId = (Integer) imageView.getTag();
+
+        if (tagId.equals(R.drawable.mute))
+        {
+            SoundOn = true;
+            imageView.setImageResource(R.drawable.unmute);
+            soundToggleImageView.setTag(R.drawable.unmute);
+            sharedPreferences.edit().putBoolean("sound", true).apply();
+        }
+        else if (tagId.equals(R.drawable.unmute))
+        {
+            SoundOn = false;
+            imageView.setImageResource(R.drawable.mute);
+            soundToggleImageView.setTag(R.drawable.mute);
+            sharedPreferences.edit().putBoolean("sound", false).apply();
         }
     }
 }

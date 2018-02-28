@@ -47,16 +47,26 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/soundToggleImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="10dp"
+            android:onClick="SoundToggle"
+            android:src="@drawable/unmute"/>
+
         <TextView
             android:id="@+id/equationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:paddingLeft="-60dp"
             android:text="Equation"
+            android:textColor="@color/numbersGameHeadlineColor"
             android:textSize="50sp"
-            android:textStyle="bold"
-            android:textColor="@color/numbersGameHeadlineColor"/>
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
