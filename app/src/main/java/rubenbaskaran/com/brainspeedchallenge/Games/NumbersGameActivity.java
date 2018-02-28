@@ -353,7 +353,15 @@ public class NumbersGameActivity extends AppCompatActivity
         }
         else if (Integer.parseInt(button.getTag().toString()) != correctAnswerIndexValue)
         {
-            // TODO: Play sad sound
+            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
+            mp.start();
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+            {
+                public void onCompletion(MediaPlayer mp)
+                {
+                    mp.release();
+                }
+            });
         }
 
         questionsAnswered++;
