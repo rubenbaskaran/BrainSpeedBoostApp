@@ -3,6 +3,7 @@ package rubenbaskaran.com.brainspeedchallenge.Highscores;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,18 +28,29 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class UsernameDialog extends DialogFragment
 {
+    SharedPreferences sharedPreferences;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
     {
-        // TODO: Get name from sharedpreference if any
-
         View view = inflater.inflate(R.layout.dialog_username, container, false);
 
         final Button submitButton = view.findViewById(R.id.submitButton);
-        submitButton.setEnabled(false);
-
         final EditText usernameEditText = view.findViewById(R.id.usernameEditText);
+
+        sharedPreferences = context.getSharedPreferences("rubenbaskaran.com.brainspeedchallenge", Context.MODE_PRIVATE);
+        String savedUsername = sharedPreferences.getString("username", "");
+
+        if (!savedUsername.isEmpty())
+        {
+            usernameEditText.setText(savedUsername);
+        }
+        else
+        {
+            submitButton.setEnabled(false);
+        }
+
         usernameEditText.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -72,7 +84,9 @@ public class UsernameDialog extends DialogFragment
             @Override
             public void onClick(View v)
             {
-                score.setUsername(usernameEditText.getText().toString());
+                String retrievedUsername = usernameEditText.getText().toString();
+                sharedPreferences.edit().putString("username", retrievedUsername).apply();
+                score.setUsername(retrievedUsername);
 
                 LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(context);
                 localDatabaseManager.SaveNewScore(score, listIsFull, highscoreList);

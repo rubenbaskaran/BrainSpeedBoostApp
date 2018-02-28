@@ -9,19 +9,20 @@
 
     <TextView
         android:textColor="@color/usernameHighscoresColor"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_margin="5dp"
+        android:layout_margin="20dp"
         style="@style/fontFamilyStyle"
-        android:text="Congratulations!\nNew highscore!"/>
+        android:text="congratulations!\nnew highscore!"/>
 
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:hint="Enter your name here..."
         android:inputType="textPersonName|textCapWords"
@@ -33,7 +34,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_margin="5dp"
+            android:layout_margin="20dp"
             android:id="@+id/cancelButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
             android:background="@drawable/game_button_background"/>
 
         <Button
-            android:layout_margin="5dp"
+            android:layout_margin="20dp"
             android:id="@+id/submitButton"
             android:layout_width="0dp"
             android:layout_weight="0.5"

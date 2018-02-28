@@ -130,6 +130,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper
         }
 
         UsernameDialog usernameDialog = new UsernameDialog();
+        usernameDialog.setCancelable(false);
         usernameDialog.setContext(context);
         usernameDialog.setScore(score);
         usernameDialog.setListIsFull(listIsFull);
