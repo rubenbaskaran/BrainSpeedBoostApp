@@ -33,4 +33,6 @@ public class DivisionMenuActivity extends AppCompatActivity
         i.putExtra("gametype", GameTypes.Division);
         startActivity(i);
     }
+
+    // TODO: Add advertisement below Highscores button
 }

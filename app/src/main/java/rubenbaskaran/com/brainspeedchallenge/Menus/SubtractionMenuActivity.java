@@ -33,4 +33,6 @@ public class SubtractionMenuActivity extends AppCompatActivity
         i.putExtra("gametype", GameTypes.Subtraction);
         startActivity(i);
     }
+
+    // TODO: Add advertisement below Highscores button
 }
