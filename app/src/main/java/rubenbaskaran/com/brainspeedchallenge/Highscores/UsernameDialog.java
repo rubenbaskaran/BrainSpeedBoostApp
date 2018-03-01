@@ -42,9 +42,8 @@ public class UsernameDialog extends DialogFragment
     {
         View view = inflater.inflate(R.layout.dialog_username, container, false);
 
-        // TODO: Replace with my own AdMob ID + in the XML.
         mInterstitialAd = new InterstitialAd(context);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-4429595719358536/3669794038");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         final Button submitButton = view.findViewById(R.id.submitButton);
