@@ -12,6 +12,7 @@ import com.google.android.gms.ads.MobileAds;
 
 public class NumbersMenuActivity extends AppCompatActivity
 {
+    // TODO: Remember to link app to google play in admob after app has been released
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -19,7 +20,6 @@ public class NumbersMenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers_menu);
 
-        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, "ca-app-pub-4429595719358536~3725225234");
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
