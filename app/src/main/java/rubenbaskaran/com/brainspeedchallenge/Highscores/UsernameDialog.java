@@ -9,11 +9,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 
@@ -29,12 +34,18 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 public class UsernameDialog extends DialogFragment
 {
     SharedPreferences sharedPreferences;
+    private InterstitialAd mInterstitialAd;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.dialog_username, container, false);
+
+        // TODO: Replace with my own AdMob ID.
+        mInterstitialAd = new InterstitialAd(context);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         final Button submitButton = view.findViewById(R.id.submitButton);
         final EditText usernameEditText = view.findViewById(R.id.usernameEditText);
@@ -94,8 +105,27 @@ public class UsernameDialog extends DialogFragment
                 OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
                 onlineDatabaseManager.SaveNewScoreOnline(score);
 
-                // TODO: Add Interstitial ad
+                if (mInterstitialAd.isLoaded())
+                {
+                    Log.e("UsernameDialog", "Showing interstitial ad");
+                    mInterstitialAd.show();
+                }
+                else
+                {
+                    Log.e("UsernameDialog", "The interstitial wasn't loaded yet");
+                    numbersGameActivity.finish();
+                    Intent i = new Intent(context, HighscoreActivity.class);
+                    i.putExtra("gametype", score.getGameType());
+                    startActivity(i);
+                }
+            }
+        });
 
+        mInterstitialAd.setAdListener(new AdListener()
+        {
+            @Override
+            public void onAdClosed()
+            {
                 numbersGameActivity.finish();
                 Intent i = new Intent(context, HighscoreActivity.class);
                 i.putExtra("gametype", score.getGameType());
