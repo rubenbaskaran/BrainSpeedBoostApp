@@ -94,6 +94,8 @@ public class UsernameDialog extends DialogFragment
                 OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
                 onlineDatabaseManager.SaveNewScoreOnline(score);
 
+                // TODO: Add Interstitial ad
+
                 numbersGameActivity.finish();
                 Intent i = new Intent(context, HighscoreActivity.class);
                 i.putExtra("gametype", score.getGameType());

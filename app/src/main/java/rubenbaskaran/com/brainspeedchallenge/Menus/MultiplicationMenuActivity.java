@@ -10,14 +10,22 @@ import rubenbaskaran.com.brainspeedchallenge.Games.NumbersGameActivity;
 import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainspeedchallenge.R;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class MultiplicationMenuActivity extends AppCompatActivity
 {
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplication_menu);
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     public void StartMultiplicationGame(View view)
@@ -34,5 +42,5 @@ public class MultiplicationMenuActivity extends AppCompatActivity
         startActivity(i);
     }
 
-    // TODO: Add advertisement below Highscores button
+    // TODO: Add banner ad
 }

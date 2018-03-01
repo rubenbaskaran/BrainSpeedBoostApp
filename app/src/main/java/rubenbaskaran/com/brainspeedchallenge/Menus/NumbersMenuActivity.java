@@ -8,6 +8,7 @@ import android.view.View;
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.R;
+import com.google.android.gms.ads.MobileAds;
 
 public class NumbersMenuActivity extends AppCompatActivity
 {
@@ -17,6 +18,11 @@ public class NumbersMenuActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers_menu);
+
+        // TODO: Replace with my own AdMob ID.
+        // You can find your app's App ID in the AdMob User Interface.
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
 
         LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
         localDatabaseManager.GetLocalHighscores(GameTypes.Addition);
