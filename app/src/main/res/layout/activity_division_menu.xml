@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_background"
     android:orientation="vertical"
-    tools:context="rubenbaskaran.com.brainspeedchallenge.Menus.DivisionMenuActivity"
-    android:background="@drawable/app_background">
+    android:weightSum="1"
+    tools:context="rubenbaskaran.com.brainspeedchallenge.Menus.DivisionMenuActivity">
 
     <Space
         android:layout_width="match_parent"
@@ -17,47 +18,40 @@
         style="@style/fontFamilyStyle.menuHeadlineStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.175"
         android:text="division"/>
 
     <Button
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.2125"
+        android:background="@drawable/menu_button_background"
         android:onClick="StartDivisionGame"
-        android:text="@string/startGameButtonText"
-        style="@style/fontFamilyStyle.MenuButtonStyle"
-        android:background="@drawable/menu_button_background"/>
+        android:text="@string/startGameButtonText"/>
 
     <Button
+        style="@style/fontFamilyStyle.MenuButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.2125"
+        android:background="@drawable/menu_button_background"
         android:onClick="ShowDivisionHighscores"
-        android:text="Highscores"
-        style="@style/fontFamilyStyle.MenuButtonStyle"
-        android:background="@drawable/menu_button_background"/>
+        android:text="Highscores"/>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.025"/>
+        android:layout_weight="0.1"/>
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="0dp"
+        android:layout_gravity="center"
         android:layout_weight="0.25"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
+        ads:adSize="LARGE_BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.025"/>
-
 </LinearLayout>
