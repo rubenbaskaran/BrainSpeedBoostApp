@@ -19,7 +19,7 @@ public class NumbersMenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers_menu);
 
-        // TODO: Replace with my own AdMob ID.
+        // TODO: Replace with my own AdMob ID + in the XML.
         // You can find your app's App ID in the AdMob User Interface.
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
