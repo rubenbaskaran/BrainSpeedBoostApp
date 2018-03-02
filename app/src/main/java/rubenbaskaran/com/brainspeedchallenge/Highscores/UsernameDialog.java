@@ -31,6 +31,7 @@ import rubenbaskaran.com.brainspeedchallenge.R;
  * Created by Ruben on 27-02-2018.
  */
 
+// TODO: Why is there a white space above the dialog?
 public class UsernameDialog extends DialogFragment
 {
     SharedPreferences sharedPreferences;
