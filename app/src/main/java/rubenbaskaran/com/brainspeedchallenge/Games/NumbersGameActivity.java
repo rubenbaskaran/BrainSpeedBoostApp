@@ -361,7 +361,7 @@ public class NumbersGameActivity extends AppCompatActivity
         {
             answeredCorrectly++;
 
-            if(SoundOn)
+            if (SoundOn)
             {
                 MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.correct);
                 mp.start();

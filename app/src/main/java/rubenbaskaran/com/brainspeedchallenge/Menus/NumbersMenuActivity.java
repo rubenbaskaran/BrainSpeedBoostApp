@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.google.android.gms.ads.MobileAds;
+
 import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.R;
-import com.google.android.gms.ads.MobileAds;
 
 public class NumbersMenuActivity extends AppCompatActivity
 {

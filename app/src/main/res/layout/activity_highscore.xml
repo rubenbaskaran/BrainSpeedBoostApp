@@ -25,6 +25,7 @@
         android:layout_weight="0.1"
         android:orientation="horizontal"
         android:weightSum="1">
+
         <Button
             android:id="@+id/ShowLocalHighscoreButton"
             android:layout_width="0dp"
@@ -35,6 +36,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/game_button_background"
             style="@style/fontFamilyStyle.highScoresButtonStyle"/>
+
         <Button
             android:id="@+id/ShowGlobalHighscoreButton"
             android:layout_width="0dp"

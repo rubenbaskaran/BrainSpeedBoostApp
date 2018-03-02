@@ -3,7 +3,6 @@ package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 
 import rubenbaskaran.com.brainspeedchallenge.Databases.Contracts.DatabaseContract;
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
-import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainspeedchallenge.Highscores.UsernameDialog;
 import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
