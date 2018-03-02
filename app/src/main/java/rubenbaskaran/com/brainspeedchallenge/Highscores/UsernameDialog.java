@@ -46,6 +46,22 @@ public class UsernameDialog extends DialogFragment
         mInterstitialAd = new InterstitialAd(context);
         mInterstitialAd.setAdUnitId("ca-app-pub-4429595719358536/3669794038");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener()
+        {
+            @Override
+            public void onAdFailedToLoad(int i)
+            {
+                super.onAdFailedToLoad(i);
+                Log.e("InterstitialAd", "FAILED");
+            }
+
+            @Override
+            public void onAdLoaded()
+            {
+                super.onAdLoaded();
+                Log.e("InterstitialAd", "LOADED");
+            }
+        });
 
         final Button submitButton = view.findViewById(R.id.submitButton);
         final EditText usernameEditText = view.findViewById(R.id.usernameEditText);
