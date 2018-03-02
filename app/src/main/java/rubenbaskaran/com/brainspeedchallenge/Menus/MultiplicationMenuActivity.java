@@ -1,17 +1,19 @@
 package rubenbaskaran.com.brainspeedchallenge.Menus;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.Games.NumbersGameActivity;
 import rubenbaskaran.com.brainspeedchallenge.Highscores.HighscoreActivity;
 import rubenbaskaran.com.brainspeedchallenge.R;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 public class MultiplicationMenuActivity extends AppCompatActivity
 {
@@ -26,6 +28,22 @@ public class MultiplicationMenuActivity extends AppCompatActivity
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener()
+        {
+            @Override
+            public void onAdFailedToLoad(int i)
+            {
+                super.onAdFailedToLoad(i);
+                Log.e("MultiplicationAd", "FAILED");
+            }
+
+            @Override
+            public void onAdLoaded()
+            {
+                super.onAdLoaded();
+                Log.e("MultiplicationAd", "LOADED");
+            }
+        });
     }
 
     public void StartMultiplicationGame(View view)
