@@ -83,7 +83,7 @@ public class NumbersGameActivity extends AppCompatActivity
         new AlertDialog.Builder(this)
                 .setTitle("Welcome!")
                 .setMessage("Solve as many equations as possible within 15 seconds. Are you ready?")
-                .setIcon(android.R.drawable.sym_def_app_icon) // TODO: Change icon
+                .setIcon(android.R.drawable.btn_star)
                 .setCancelable(false)
                 .setPositiveButton("Start game!", new DialogInterface.OnClickListener()
                 {
