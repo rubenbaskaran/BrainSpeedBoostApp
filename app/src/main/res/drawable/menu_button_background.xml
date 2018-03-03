@@ -3,8 +3,8 @@
     <item>
         <shape>
             <corners android:radius="@dimen/menuButtonCornerRadius"/>
-            <gradient android:angle="@dimen/menuButtonBackgroundGradientAngle" android:endColor="@color/menuButtonLightBlue" android:startColor="@color/menuButtonDarkBlue"/>
-            <stroke android:width="@dimen/menuButtonStrokeWidth" android:color="@color/menuButtonStrokeColor"/>
+            <gradient android:angle="@dimen/menuButtonBackgroundGradientAngle" android:endColor="@color/lightBlue" android:startColor="@color/darkerBlue"/>
+            <stroke android:width="@dimen/menuButtonStrokeWidth" android:color="@color/colorPrimaryDark"/>
         </shape>
     </item>
 </selector>

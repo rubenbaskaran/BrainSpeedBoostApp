@@ -17,15 +17,13 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class DivisionMenuActivity extends AppCompatActivity
 {
-    private AdView mAdView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_division_menu);
 
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         mAdView.setAdListener(new AdListener()

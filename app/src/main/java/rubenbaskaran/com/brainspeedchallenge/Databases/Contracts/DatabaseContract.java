@@ -47,13 +47,4 @@ public class DatabaseContract
         public static final String COLUMN_NAME_ANSWERED = "answered";
         public static final String COLUMN_NAME_PERCENTAGE = "percentage";
     }
-
-    public static class ColorHighscore implements BaseColumns
-    {
-        public static final String TABLE_NAME = "colorhighscore";
-        public static final String COLUMN_NAME_USERNAME = "username";
-        public static final String COLUMN_NAME_ANSWERED_CORRECTLY = "answeredcorrectly";
-        public static final String COLUMN_NAME_ANSWERED = "answered";
-        public static final String COLUMN_NAME_PERCENTAGE = "percentage";
-    }
 }

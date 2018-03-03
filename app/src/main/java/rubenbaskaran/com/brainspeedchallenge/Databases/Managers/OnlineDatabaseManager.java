@@ -1,6 +1,8 @@
 package rubenbaskaran.com.brainspeedchallenge.Databases.Managers;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,162 +27,183 @@ import rubenbaskaran.com.brainspeedchallenge.Models.Score;
 
 public class OnlineDatabaseManager
 {
-    FirebaseDatabase firebaseDatabase;
+    //region Fields
+    private FirebaseDatabase firebaseDatabase;
+    private Context context;
+    //endregion
 
-    public OnlineDatabaseManager()
+    public OnlineDatabaseManager(Context context)
     {
         firebaseDatabase = FirebaseDatabase.getInstance();
+        this.context = context;
     }
 
     public void SaveNewScoreOnline(final Score score)
     {
-        DatabaseReference gametypeCounterReference = FirebaseDatabase.getInstance().getReference().child(score.getGameType().toString()).child("counter");
-        gametypeCounterReference.runTransaction(new Transaction.Handler()
+        try
         {
-            /* Note: Because doTransaction() is called multiple times, it must be able to handle null data.
-               Even if there is existing data in your remote database, it may not be locally cached when the
-               transaction function is run, resulting in null for the initial value.
-               https://firebase.google.com/docs/database/android/read-and-write#save_data_as_transactions */
-            @Override
-            public Transaction.Result doTransaction(MutableData mutableData)
+            DatabaseReference gametypeCounterReference = FirebaseDatabase.getInstance().getReference().child(score.getGameType().toString()).child("counter");
+            gametypeCounterReference.runTransaction(new Transaction.Handler()
             {
-                final Long p = mutableData.getValue(Long.class);
-                if (p != null)
+                /* Note: Because doTransaction() is called multiple times, it must be able to handle null data.
+                   Even if there is existing data in your remote database, it may not be locally cached when the
+                   transaction function is run, resulting in null for the initial value.
+                   https://firebase.google.com/docs/database/android/read-and-write#save_data_as_transactions */
+                @Override
+                public Transaction.Result doTransaction(MutableData mutableData)
                 {
-                    Log.e("doTransaction", "p is " + String.valueOf(p));
-                    if (p < 5)
+                    final Long p = mutableData.getValue(Long.class);
+                    if (p != null)
                     {
-                        Log.e("SaveNewScoreOnline", "List has less than 5 rows. No need to overwrite existing one!");
-
-                        String scoreKey = String.valueOf(p + 1);
-                        Log.e("ScoreKey", scoreKey);
-                        score.set_Id(Integer.valueOf(scoreKey));
-                        firebaseDatabase.getReference().child(score.getGameType().toString()).child("Scores").child(scoreKey).setValue(score);
-                        mutableData.setValue(p + 1);
-                        return Transaction.success(mutableData);
-                    }
-                    else if (p == 5)
-                    {
-                        Log.e("SaveNewScoreOnline", "List is full! Overwriting existing one if new highscore");
-
-                        final ArrayList<Score> highscoreList = new ArrayList<>();
-                        DatabaseReference gametypeScoresReference = firebaseDatabase.getReference(score.getGameType().toString()).child("Scores");
-                        Query myQuery = gametypeScoresReference.orderByChild("answeredCorrectly");
-                        myQuery.addListenerForSingleValueEvent(new ValueEventListener()
+                        Log.e("doTransaction", "p is " + String.valueOf(p));
+                        if (p < 5)
                         {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot)
+                            Log.e("SaveNewScoreOnline", "List has less than 5 rows. No need to overwrite existing one!");
+
+                            String scoreKey = String.valueOf(p + 1);
+                            Log.e("ScoreKey", scoreKey);
+                            score.set_Id(Integer.valueOf(scoreKey));
+                            firebaseDatabase.getReference().child(score.getGameType().toString()).child("Scores").child(scoreKey).setValue(score);
+                            mutableData.setValue(p + 1);
+                            return Transaction.success(mutableData);
+                        }
+                        else if (p == 5)
+                        {
+                            Log.e("SaveNewScoreOnline", "List is full! Overwriting existing one if new highscore");
+
+                            final ArrayList<Score> highscoreList = new ArrayList<>();
+                            DatabaseReference gametypeScoresReference = firebaseDatabase.getReference(score.getGameType().toString()).child("Scores");
+                            Query myQuery = gametypeScoresReference.orderByChild("answeredCorrectly");
+                            myQuery.addListenerForSingleValueEvent(new ValueEventListener()
                             {
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot)
                                 {
-                                    Log.e("Existing item", snapshot.toString());
-                                    Score score = new Score();
-
-                                    score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
-                                    score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
-                                    score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
-                                    score.setAnsweredCorrectly((snapshot.child("answeredCorrectly").getValue(Long.class)).intValue());
-                                    score.setPercentage((snapshot.child("percentage").getValue(Long.class)).intValue());
-
-                                    highscoreList.add(score);
-                                }
-
-                                if (!ValidateHighscore(score, highscoreList))
-                                {
-                                    Log.e("SaveNewScoreOnline", "Not a new highscore - Returning!");
-                                    return;
-                                }
-                                Log.e("SaveNewScoreOnline", "New highscore!");
-                                Log.e("SaveNewScoreOnline", "Overwriting the lowest score on the top 5!");
-
-                                Collections.sort(highscoreList, new Comparator<Score>()
-                                {
-                                    @Override
-                                    public int compare(Score o1, Score o2)
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren())
                                     {
-                                        if (o1.getPercentage() > o2.getPercentage())
-                                            return 1;
-                                        if (o1.getPercentage() < o2.getPercentage())
-                                            return -1;
-                                        return 0;
+                                        Log.e("Existing item", snapshot.toString());
+                                        Score score = new Score();
+
+                                        score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
+                                        score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
+                                        score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
+                                        score.setAnsweredCorrectly((snapshot.child("answeredCorrectly").getValue(Long.class)).intValue());
+                                        score.setPercentage((snapshot.child("percentage").getValue(Long.class)).intValue());
+
+                                        highscoreList.add(score);
                                     }
-                                });
 
-                                score.set_Id(highscoreList.get(0).get_Id());
-                                firebaseDatabase.getReference().child(score.getGameType().toString()).child("Scores").child(String.valueOf(score.get_Id())).setValue(score);
-                            }
+                                    if (!ValidateHighscore(score, highscoreList))
+                                    {
+                                        Log.e("SaveNewScoreOnline", "Not a new highscore - Returning!");
+                                        return;
+                                    }
+                                    Log.e("SaveNewScoreOnline", "New highscore!");
+                                    Log.e("SaveNewScoreOnline", "Overwriting the lowest score on the top 5!");
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError)
-                            {
+                                    Collections.sort(highscoreList, new Comparator<Score>()
+                                    {
+                                        @Override
+                                        public int compare(Score o1, Score o2)
+                                        {
+                                            if (o1.getPercentage() > o2.getPercentage())
+                                                return 1;
+                                            if (o1.getPercentage() < o2.getPercentage())
+                                                return -1;
+                                            return 0;
+                                        }
+                                    });
 
-                            }
-                        });
+                                    score.set_Id(highscoreList.get(0).get_Id());
+                                    firebaseDatabase.getReference().child(score.getGameType().toString()).child("Scores").child(String.valueOf(score.get_Id())).setValue(score);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError)
+                                {
+
+                                }
+                            });
+                        }
                     }
+
+                    Log.e("doTransaction", "p is null");
+                    return Transaction.success(mutableData);
                 }
 
-                Log.e("doTransaction", "p is null");
-                return Transaction.success(mutableData);
-            }
-
-            @Override
-            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot)
-            {
-                Log.e("onComplete", "postTransaction:onComplete:" + databaseError);
-            }
-        });
+                @Override
+                public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot)
+                {
+                    Log.e("onComplete", "postTransaction:onComplete:" + databaseError);
+                }
+            });
+        }
+        catch (Exception ex)
+        {
+            Log.e("SaveNewScoreOnline", ex.toString());
+            Toast.makeText(context, "Couldn't save highscore in online database", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void GetOnlineHighscores(final GlobalHighscoreFragment globalHighscoreFragment)
     {
-        final ArrayList<Score> highscoreList = new ArrayList<>();
-        DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(globalHighscoreFragment.getGameType().toString()).child("Scores");
-        Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
-        myQuery.addListenerForSingleValueEvent(new ValueEventListener()
+        try
         {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
+            final ArrayList<Score> highscoreList = new ArrayList<>();
+            DatabaseReference highscoresGameTypeReference = firebaseDatabase.getReference(globalHighscoreFragment.getGameType().toString()).child("Scores");
+            Query myQuery = highscoresGameTypeReference.orderByChild("answeredCorrectly");
+            myQuery.addListenerForSingleValueEvent(new ValueEventListener()
             {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
                 {
-                    Log.e("Existing item", snapshot.toString());
-                    Score score = new Score();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                    {
+                        Log.e("Existing item", snapshot.toString());
+                        Score score = new Score();
 
-                    score.setUsername(snapshot.child("username").getValue(String.class));
-                    score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
-                    score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
-                    score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
-                    score.setAnsweredCorrectly((snapshot.child("answeredCorrectly").getValue(Long.class)).intValue());
-                    score.setPercentage((snapshot.child("percentage").getValue(Long.class)).intValue());
+                        score.setUsername(snapshot.child("username").getValue(String.class));
+                        score.set_Id((snapshot.child("_Id").getValue(Long.class)).intValue());
+                        score.setGameType(Enum.valueOf(GameTypes.class, snapshot.child("gameType").getValue(String.class)));
+                        score.setAnswered((snapshot.child("answered").getValue(Long.class)).intValue());
+                        score.setAnsweredCorrectly((snapshot.child("answeredCorrectly").getValue(Long.class)).intValue());
+                        score.setPercentage((snapshot.child("percentage").getValue(Long.class)).intValue());
 
-                    highscoreList.add(score);
+                        highscoreList.add(score);
+                    }
+
+                    Collections.sort(highscoreList, new Comparator<Score>()
+                    {
+                        @Override
+                        public int compare(Score o1, Score o2)
+                        {
+                            if (o1.getPercentage() > o2.getPercentage())
+                                return 1;
+                            if (o1.getPercentage() < o2.getPercentage())
+                                return -1;
+                            return 0;
+                        }
+                    });
+
+                    globalHighscoreFragment.ShowScore(highscoreList);
+                    globalHighscoreFragment.HideProgressBar();
                 }
 
-                Collections.sort(highscoreList, new Comparator<Score>()
+                @Override
+                public void onCancelled(DatabaseError databaseError)
                 {
-                    @Override
-                    public int compare(Score o1, Score o2)
-                    {
-                        if (o1.getPercentage() > o2.getPercentage())
-                            return 1;
-                        if (o1.getPercentage() < o2.getPercentage())
-                            return -1;
-                        return 0;
-                    }
-                });
 
-                globalHighscoreFragment.ShowScore(highscoreList);
-                globalHighscoreFragment.HideProgressBar();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-
-            }
-        });
+                }
+            });
+        }
+        catch (Exception ex)
+        {
+            Log.e("GetOnlineHighscores", ex.toString());
+            Toast.makeText(context, "Couldn't get highscores from online database", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    //region Helper methods
     private boolean ValidateHighscore(Score newScore, ArrayList<Score> oldScores)
     {
         for (Score oldScore : oldScores)
@@ -195,4 +218,5 @@ public class OnlineDatabaseManager
 
         return false;
     }
+    //endregion
 }

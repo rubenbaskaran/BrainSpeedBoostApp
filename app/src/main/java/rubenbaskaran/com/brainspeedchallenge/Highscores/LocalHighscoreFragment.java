@@ -17,6 +17,7 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class LocalHighscoreFragment extends Fragment
 {
+    //region Fields
     TextView firstPlaceName;
     TextView firstPlaceScore;
     TextView firstPlacePercentage;
@@ -33,11 +34,14 @@ public class LocalHighscoreFragment extends Fragment
     TextView fifthPlaceScore;
     TextView fifthPlacePercentage;
     GameTypes gameType;
+    //endregion
 
+    //region Properties
     public void setGameType(GameTypes gameType)
     {
         this.gameType = gameType;
     }
+    //endregion
 
     public LocalHighscoreFragment()
     {

@@ -20,6 +20,7 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class GlobalHighscoreFragment extends Fragment
 {
+    //region Fields
     TextView firstPlaceName;
     TextView firstPlaceGlobalScore;
     TextView firstPlaceGlobalPercentage;
@@ -37,7 +38,9 @@ public class GlobalHighscoreFragment extends Fragment
     TextView fifthPlaceGlobalPercentage;
     GameTypes gameType;
     ProgressBar progressBar;
+    //endregion
 
+    //region Properties
     public GameTypes getGameType()
     {
         return gameType;
@@ -47,6 +50,7 @@ public class GlobalHighscoreFragment extends Fragment
     {
         this.gameType = gameType;
     }
+    //endregion
 
     public GlobalHighscoreFragment()
     {
@@ -75,7 +79,7 @@ public class GlobalHighscoreFragment extends Fragment
         progressBar = view.findViewById(R.id.progressBar);
 
         ShowProgressBar();
-        OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
+        OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager(HighscoreActivity.context);
         onlineDatabaseManager.GetOnlineHighscores(this);
 
         return view;

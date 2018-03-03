@@ -6,5 +6,5 @@ package rubenbaskaran.com.brainspeedchallenge.Enums;
 
 public enum GameTypes
 {
-    Addition, Subtraction, Multiplication, Division, Color
+    Addition, Subtraction, Multiplication, Division
 }

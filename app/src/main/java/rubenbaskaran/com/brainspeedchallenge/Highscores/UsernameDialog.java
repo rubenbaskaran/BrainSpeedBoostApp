@@ -33,8 +33,42 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class UsernameDialog extends DialogFragment
 {
+    //region Fields
     SharedPreferences sharedPreferences;
     private InterstitialAd mInterstitialAd;
+    AppCompatActivity numbersGameActivity;
+    ArrayList<Score> highscoreList;
+    public Context context;
+    public Score score;
+    public boolean listIsFull;
+    //endregion
+
+    //region Properties
+    public void setNumbersGameActivity(AppCompatActivity numbersGameActivity)
+    {
+        this.numbersGameActivity = numbersGameActivity;
+    }
+
+    public void setHighscoreList(ArrayList<Score> highscoreList)
+    {
+        this.highscoreList = highscoreList;
+    }
+
+    public void setContext(Context context)
+    {
+        this.context = context;
+    }
+
+    public void setScore(Score score)
+    {
+        this.score = score;
+    }
+
+    public void setListIsFull(boolean listIsFull)
+    {
+        this.listIsFull = listIsFull;
+    }
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -50,7 +84,8 @@ public class UsernameDialog extends DialogFragment
         View view = inflater.inflate(R.layout.dialog_username, container, false);
 
         mInterstitialAd = new InterstitialAd(context);
-        mInterstitialAd.setAdUnitId("ca-app-pub-4429595719358536/3669794038");
+//        mInterstitialAd.setAdUnitId("ca-app-pub-4429595719358536/3669794038"); // REAL ID
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712"); // TEST ID
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         mInterstitialAd.setAdListener(new AdListener()
         {
@@ -124,7 +159,7 @@ public class UsernameDialog extends DialogFragment
                 LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(context);
                 localDatabaseManager.SaveNewScore(score, listIsFull, highscoreList);
 
-                OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager();
+                OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager(context);
                 onlineDatabaseManager.SaveNewScoreOnline(score);
 
                 if (mInterstitialAd.isLoaded())
@@ -170,39 +205,4 @@ public class UsernameDialog extends DialogFragment
 
         return view;
     }
-
-    public void setNumbersGameActivity(AppCompatActivity numbersGameActivity)
-    {
-        this.numbersGameActivity = numbersGameActivity;
-    }
-
-    AppCompatActivity numbersGameActivity;
-
-    public void setHighscoreList(ArrayList<Score> highscoreList)
-    {
-        this.highscoreList = highscoreList;
-    }
-
-    ArrayList<Score> highscoreList;
-
-    public void setContext(Context context)
-    {
-        this.context = context;
-    }
-
-    public Context context;
-
-    public void setScore(Score score)
-    {
-        this.score = score;
-    }
-
-    public Score score;
-
-    public void setListIsFull(boolean listIsFull)
-    {
-        this.listIsFull = listIsFull;
-    }
-
-    public boolean listIsFull;
 }

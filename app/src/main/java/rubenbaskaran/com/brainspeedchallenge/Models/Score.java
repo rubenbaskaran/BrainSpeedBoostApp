@@ -10,48 +10,16 @@ import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 
 public class Score implements Serializable
 {
+    //region Fields
     private Integer _Id;
     private GameTypes GameType;
     private int Answered;
     private int AnsweredCorrectly;
     private int Percentage;
     private String Username;
+    //endregion
 
-    public Score()
-    {
-    }
-
-    public Score(GameTypes gameType, int answered, int answeredcorrectly, int percentage)
-    {
-        this.GameType = gameType;
-        this.Answered = answered;
-        this.AnsweredCorrectly = answeredcorrectly;
-        this.Percentage = percentage;
-    }
-
-    public Score(Integer _id, GameTypes gameType, int answered, int answeredcorrectly, int percentage, String username)
-    {
-        this._Id = _id;
-        this.GameType = gameType;
-        this.Answered = answered;
-        this.AnsweredCorrectly = answeredcorrectly;
-        this.Percentage = percentage;
-        this.Username = username;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Score{" +
-                "_Id=" + _Id +
-                ", GameType=" + GameType +
-                ", Answered=" + Answered +
-                ", AnsweredCorrectly=" + AnsweredCorrectly +
-                ", Percentage=" + Percentage +
-                ", Username='" + Username + '\'' +
-                '}';
-    }
-
+    //region Properties
     public Integer get_Id()
     {
         return _Id;
@@ -110,5 +78,33 @@ public class Score implements Serializable
     public void setUsername(String username)
     {
         Username = username;
+    }
+    //endregion
+
+    public Score()
+    {
+    }
+
+    public Score(Integer _id, GameTypes gameType, int answered, int answeredcorrectly, int percentage, String username)
+    {
+        this._Id = _id;
+        this.GameType = gameType;
+        this.Answered = answered;
+        this.AnsweredCorrectly = answeredcorrectly;
+        this.Percentage = percentage;
+        this.Username = username;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Score{" +
+                "_Id=" + _Id +
+                ", GameType=" + GameType +
+                ", Answered=" + Answered +
+                ", AnsweredCorrectly=" + AnsweredCorrectly +
+                ", Percentage=" + Percentage +
+                ", Username='" + Username + '\'' +
+                '}';
     }
 }

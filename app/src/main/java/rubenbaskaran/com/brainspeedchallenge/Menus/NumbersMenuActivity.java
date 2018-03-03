@@ -28,7 +28,6 @@ public class NumbersMenuActivity extends AppCompatActivity
         localDatabaseManager.GetLocalHighscores(GameTypes.Subtraction);
         localDatabaseManager.GetLocalHighscores(GameTypes.Multiplication);
         localDatabaseManager.GetLocalHighscores(GameTypes.Division);
-        localDatabaseManager.GetLocalHighscores(GameTypes.Color);
     }
 
     public void StartGame(View view)

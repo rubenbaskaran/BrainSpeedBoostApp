@@ -27,6 +27,7 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class NumbersGameActivity extends AppCompatActivity
 {
+    //region Fields
     TextView equationTextView;
     TextView scoreTextView;
     TextView counterTextView;
@@ -46,6 +47,7 @@ public class NumbersGameActivity extends AppCompatActivity
     ImageView soundToggleImageView;
     SharedPreferences sharedPreferences;
     boolean SoundOn = true;
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

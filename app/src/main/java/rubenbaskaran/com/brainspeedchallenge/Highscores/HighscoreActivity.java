@@ -15,6 +15,7 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class HighscoreActivity extends AppCompatActivity
 {
+    //region Fields
     Button ShowLocalHighscoreButton;
     Button ShowGlobalHighscoreButton;
     FragmentManager fragmentManager;
@@ -22,6 +23,7 @@ public class HighscoreActivity extends AppCompatActivity
     LocalHighscoreFragment localHighscoreFragment;
     GameTypes gameTypes;
     TextView highscoresFragmentContainerTitle;
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,11 +50,6 @@ public class HighscoreActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, localHighscoreFragment, null);
         fragmentTransaction.commit();
-
-//        if (newHighscore)
-//        {
-//            Toast.makeText(getApplicationContext(), "Congratulations! New highscore!", Toast.LENGTH_LONG).show();
-//        }
     }
 
     public void ShowLocalHighscore(View view)
