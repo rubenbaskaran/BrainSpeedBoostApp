@@ -39,7 +39,7 @@ public class NumbersGameActivity extends AppCompatActivity
     int correctAnswerIndexValue;
     int answeredCorrectly = 0;
     int questionsAnswered = 0;
-    int counter = 16;
+    int counter = 31;
     GridLayout gridLayout;
     Timer timer = null;
     GameTypes gameType;
@@ -88,7 +88,7 @@ public class NumbersGameActivity extends AppCompatActivity
 
         new AlertDialog.Builder(this)
                 .setTitle("Welcome!")
-                .setMessage("Solve as many equations as possible within 15 seconds. Are you ready?")
+                .setMessage("Solve as many equations as possible within 30 seconds. Are you ready?")
                 .setCancelable(false)
                 .setPositiveButton("Start game", new DialogInterface.OnClickListener()
                 {
@@ -366,7 +366,7 @@ public class NumbersGameActivity extends AppCompatActivity
     {
         answeredCorrectly = 0;
         questionsAnswered = 0;
-        counter = 16;
+        counter = 31;
         GenerateEquation();
         UpdateScore();
         GridlayoutSetEnabled(true);
