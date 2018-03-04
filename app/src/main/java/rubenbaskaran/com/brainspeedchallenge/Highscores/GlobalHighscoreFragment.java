@@ -1,6 +1,8 @@
 package rubenbaskaran.com.brainspeedchallenge.Highscores;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,11 +80,23 @@ public class GlobalHighscoreFragment extends Fragment
         fifthPlaceGlobalPercentage = view.findViewById(R.id.FifthPlaceGlobalPercentage);
         progressBar = view.findViewById(R.id.progressBar);
 
+        if (!isNetworkConnected())
+        {
+            Toast.makeText(HighscoreActivity.context, "No internet connection", Toast.LENGTH_LONG).show();
+        }
+
         ShowProgressBar();
         OnlineDatabaseManager onlineDatabaseManager = new OnlineDatabaseManager(HighscoreActivity.context);
         onlineDatabaseManager.GetOnlineHighscores(this);
 
         return view;
+    }
+
+    private boolean isNetworkConnected()
+    {
+        ConnectivityManager cm = (ConnectivityManager) HighscoreActivity.context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
     }
 
     public void ShowProgressBar()
