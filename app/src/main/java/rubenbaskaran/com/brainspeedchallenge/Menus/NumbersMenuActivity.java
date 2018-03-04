@@ -3,7 +3,11 @@ package rubenbaskaran.com.brainspeedchallenge.Menus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
 
@@ -16,6 +20,9 @@ public class NumbersMenuActivity extends AppCompatActivity
     // TODO: Remember to link app to google play in admob after app has been released
     // TODO: Add "throw new exception" in try-catches
     // TODO: Insert real ad IDs
+    // TODO: Add credits to creator of images used for app icon
+    // TODO: Use names "Peter Parker", "Bruce Wayne", "Clark Kent", "Tony Stark" & "Bruce Banner" for global highscore screenshot
+    // TODO: Use names "Me", "Mom", "Dad", "Grandma" & "Grandpa" for local highscore screenshot
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +37,27 @@ public class NumbersMenuActivity extends AppCompatActivity
         localDatabaseManager.GetLocalHighscores(GameTypes.Subtraction);
         localDatabaseManager.GetLocalHighscores(GameTypes.Multiplication);
         localDatabaseManager.GetLocalHighscores(GameTypes.Division);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.about_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+        if (id == R.id.about)
+        {
+            Toast.makeText(getApplicationContext(), "Made by Ruben Baskaran", Toast.LENGTH_LONG).show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void StartGame(View view)
