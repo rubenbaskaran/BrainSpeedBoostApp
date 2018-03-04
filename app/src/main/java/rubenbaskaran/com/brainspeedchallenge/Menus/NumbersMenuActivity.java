@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
 
-import rubenbaskaran.com.brainspeedchallenge.Databases.Managers.LocalDatabaseManager;
-import rubenbaskaran.com.brainspeedchallenge.Enums.GameTypes;
 import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class NumbersMenuActivity extends AppCompatActivity
@@ -31,12 +29,6 @@ public class NumbersMenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_numbers_menu);
 
         MobileAds.initialize(this, "ca-app-pub-4429595719358536~3725225234");
-
-        LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getApplicationContext());
-        localDatabaseManager.GetLocalHighscores(GameTypes.Addition);
-        localDatabaseManager.GetLocalHighscores(GameTypes.Subtraction);
-        localDatabaseManager.GetLocalHighscores(GameTypes.Multiplication);
-        localDatabaseManager.GetLocalHighscores(GameTypes.Division);
     }
 
     @Override
