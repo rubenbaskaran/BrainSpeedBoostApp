@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -119,6 +121,11 @@ public class UsernameDialog extends DialogFragment
             submitButton.setEnabled(false);
         }
 
+        if (!isNetworkConnected())
+        {
+            Toast.makeText(context, "Enable internet connection to submit highscore online", Toast.LENGTH_LONG).show();
+        }
+
         usernameEditText.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -152,6 +159,11 @@ public class UsernameDialog extends DialogFragment
             @Override
             public void onClick(View v)
             {
+                if (!isNetworkConnected())
+                {
+                    Toast.makeText(context, "Highscore was not submitted online because internet connection is disabled", Toast.LENGTH_LONG).show();
+                }
+
                 String retrievedUsername = usernameEditText.getText().toString();
                 sharedPreferences.edit().putString("username", retrievedUsername).apply();
                 score.setUsername(retrievedUsername);
@@ -205,4 +217,13 @@ public class UsernameDialog extends DialogFragment
 
         return view;
     }
+
+    //region Helper methods
+    private boolean isNetworkConnected()
+    {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
+    }
+    //endregion
 }
