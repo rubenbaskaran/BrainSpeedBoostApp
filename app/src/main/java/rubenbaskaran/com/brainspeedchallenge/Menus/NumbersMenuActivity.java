@@ -14,6 +14,8 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 public class NumbersMenuActivity extends AppCompatActivity
 {
     // TODO: Remember to link app to google play in admob after app has been released
+    // TODO: Add "throw new exception" in try-catches
+    // TODO: Insert real ad IDs
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
