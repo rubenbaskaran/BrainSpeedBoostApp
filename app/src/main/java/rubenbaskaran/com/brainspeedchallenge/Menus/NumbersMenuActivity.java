@@ -23,6 +23,7 @@ public class NumbersMenuActivity extends AppCompatActivity
     // TODO: Add credits to creator of images used for app icon
     // TODO: Use names "Peter Parker", "Bruce Wayne", "Clark Kent", "Tony Stark" & "Bruce Banner" for global highscore screenshot
     // TODO: Use names "Me", "Mom", "Dad", "Grandma" & "Grandpa" for local highscore screenshot
+    // TODO: Change game length back to 30 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
