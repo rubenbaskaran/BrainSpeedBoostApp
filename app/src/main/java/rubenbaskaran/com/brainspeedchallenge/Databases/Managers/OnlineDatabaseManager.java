@@ -141,7 +141,7 @@ public class OnlineDatabaseManager
         catch (Exception ex)
         {
             Log.e("SaveNewScoreOnline", ex.toString());
-            Toast.makeText(context, "Couldn't save highscore in online database", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Couldn't save new highscore in online database", Toast.LENGTH_SHORT).show();
         }
     }
 

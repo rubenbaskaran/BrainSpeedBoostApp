@@ -18,7 +18,6 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 public class NumbersMenuActivity extends AppCompatActivity
 {
     // TODO: Remember to link app to google play in admob after app has been released
-    // TODO: Add "throw new exception" in try-catches
     // TODO: Insert real ad IDs
     // TODO: Add credits to creator of images used for app icon
     // TODO: Use names "Peter Parker", "Bruce Wayne", "Clark Kent", "Tony Stark" & "Bruce Banner" for global highscore screenshot
