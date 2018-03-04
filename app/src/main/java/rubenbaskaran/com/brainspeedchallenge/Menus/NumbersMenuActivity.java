@@ -15,10 +15,6 @@ import rubenbaskaran.com.brainspeedchallenge.R;
 
 public class NumbersMenuActivity extends AppCompatActivity
 {
-    // TODO: Remember to link app to google play in admob after app has been released
-    // TODO: Insert real ad IDs
-    // TODO: Add credits to creator of images used for app icon
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
