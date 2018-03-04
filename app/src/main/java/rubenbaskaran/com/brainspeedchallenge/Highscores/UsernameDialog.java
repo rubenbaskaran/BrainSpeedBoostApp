@@ -86,8 +86,7 @@ public class UsernameDialog extends DialogFragment
         View view = inflater.inflate(R.layout.dialog_username, container, false);
 
         mInterstitialAd = new InterstitialAd(context);
-//        mInterstitialAd.setAdUnitId("ca-app-pub-4429595719358536/3669794038"); // REAL ID
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712"); // TEST ID
+        mInterstitialAd.setAdUnitId("ca-app-pub-4429595719358536/3669794038");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         mInterstitialAd.setAdListener(new AdListener()
         {

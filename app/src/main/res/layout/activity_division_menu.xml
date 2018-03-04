@@ -52,8 +52,6 @@
         android:layout_gravity="center"
         android:layout_weight="0.25"
         ads:adSize="LARGE_BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="ca-app-pub-4429595719358536/5022404159">
     </com.google.android.gms.ads.AdView>
 </LinearLayout>
-
-    <!--ads:adUnitId="ca-app-pub-4429595719358536/5022404159"-->
