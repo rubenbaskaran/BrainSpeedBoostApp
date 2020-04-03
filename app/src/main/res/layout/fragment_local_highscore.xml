@@ -5,7 +5,7 @@
              android:layout_height="match_parent"
              tools:context="rubenbaskaran.com.brainspeedchallenge.Highscores.LocalHighscoreFragment">
 
-    <android.support.v7.widget.GridLayout
+    <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="6dp"
@@ -294,5 +294,5 @@
             grid:layout_columnSpan="3"
             grid:layout_columnWeight="1"
             grid:layout_rowWeight="0.25"/>
-    </android.support.v7.widget.GridLayout>
+    </androidx.gridlayout.widget.GridLayout>
 </FrameLayout>
